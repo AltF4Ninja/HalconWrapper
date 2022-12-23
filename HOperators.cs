@@ -1,18 +1,18 @@
 using HalconDotNet;
 namespace HalconWrapper
 {
-	public static class Operators
+	public static class HOperators
 	{
 		public static void ClearTextureInspectionResult (HTuple textureInspectionResultID)
 		{
 			HOperatorSet.ClearTextureInspectionResult(textureInspectionResultID);
 		}
-		public static (HTuple rowWindow, HTuple columnWindow) ConvertCoordinatesImageToWindow (HTuple windowHandle, HTuple rowImage, HTuple columnImage)
+		public static (HTuple RowWindow, HTuple ColumnWindow) ConvertCoordinatesImageToWindow (HTuple windowHandle, HTuple rowImage, HTuple columnImage)
 		{
 			HOperatorSet.ConvertCoordinatesImageToWindow(windowHandle, rowImage, columnImage, out HTuple rowWindow, out HTuple columnWindow);
 			return (rowWindow,columnWindow);
 		}
-		public static (HTuple rowImage, HTuple columnImage) ConvertCoordinatesWindowToImage (HTuple windowHandle, HTuple rowWindow, HTuple columnWindow)
+		public static (HTuple RowImage, HTuple ColumnImage) ConvertCoordinatesWindowToImage (HTuple windowHandle, HTuple rowWindow, HTuple columnWindow)
 		{
 			HOperatorSet.ConvertCoordinatesWindowToImage(windowHandle, rowWindow, columnWindow, out HTuple rowImage, out HTuple columnImage);
 			return (rowImage,columnImage);
@@ -41,17 +41,17 @@ namespace HalconWrapper
 		{
 			HOperatorSet.DispText(windowHandle, stringVal, coordSystem, row, column, color, genParamName, genParamValue);
 		}
-		public static (HTuple classVal, HTuple confidence) DoOcrMultiClassCnn (HObject character, HObject image, HTuple OCRHandle)
+		public static (HTuple ClassVal, HTuple Confidence) DoOcrMultiClassCnn (HObject character, HObject image, HTuple OCRHandle)
 		{
 			HOperatorSet.DoOcrMultiClassCnn(character, image, OCRHandle, out HTuple classVal, out HTuple confidence);
 			return (classVal,confidence);
 		}
-		public static (HTuple classVal, HTuple confidence) DoOcrSingleClassCnn (HObject character, HObject image, HTuple OCRHandle, HTuple num)
+		public static (HTuple ClassVal, HTuple Confidence) DoOcrSingleClassCnn (HObject character, HObject image, HTuple OCRHandle, HTuple num)
 		{
 			HOperatorSet.DoOcrSingleClassCnn(character, image, OCRHandle, num, out HTuple classVal, out HTuple confidence);
 			return (classVal,confidence);
 		}
-		public static (HTuple classVal, HTuple confidence, HTuple word, HTuple score) DoOcrWordCnn (HObject character, HObject image, HTuple OCRHandle, HTuple expression, HTuple numAlternatives, HTuple numCorrections)
+		public static (HTuple ClassVal, HTuple Confidence, HTuple Word, HTuple Score) DoOcrWordCnn (HObject character, HObject image, HTuple OCRHandle, HTuple expression, HTuple numAlternatives, HTuple numCorrections)
 		{
 			HOperatorSet.DoOcrWordCnn(character, image, OCRHandle, expression, numAlternatives, numCorrections, out HTuple classVal, out HTuple confidence, out HTuple word, out HTuple score);
 			return (classVal,confidence,word,score);
@@ -86,12 +86,12 @@ namespace HalconWrapper
 			HOperatorSet.DualQuatToPose(dualQuaternion, out HTuple pose);
 			return pose;
 		}
-		public static (HTuple axisDirectionX, HTuple axisDirectionY, HTuple axisDirectionZ, HTuple axisMomentOrPointX, HTuple axisMomentOrPointY, HTuple axisMomentOrPointZ, HTuple rotation, HTuple translation) DualQuatToScrew (HTuple dualQuaternion, HTuple screwFormat)
+		public static (HTuple AxisDirectionX, HTuple AxisDirectionY, HTuple AxisDirectionZ, HTuple AxisMomentOrPointX, HTuple AxisMomentOrPointY, HTuple AxisMomentOrPointZ, HTuple Rotation, HTuple Translation) DualQuatToScrew (HTuple dualQuaternion, HTuple screwFormat)
 		{
 			HOperatorSet.DualQuatToScrew(dualQuaternion, screwFormat, out HTuple axisDirectionX, out HTuple axisDirectionY, out HTuple axisDirectionZ, out HTuple axisMomentOrPointX, out HTuple axisMomentOrPointY, out HTuple axisMomentOrPointZ, out HTuple rotation, out HTuple translation);
 			return (axisDirectionX,axisDirectionY,axisDirectionZ,axisMomentOrPointX,axisMomentOrPointY,axisMomentOrPointZ,rotation,translation);
 		}
-		public static (HTuple transLineDirectionX, HTuple transLineDirectionY, HTuple transLineDirectionZ, HTuple transLineMomentOrPointX, HTuple transLineMomentOrPointY, HTuple transLineMomentOrPointZ) DualQuatTransLine3d (HTuple dualQuaternion, HTuple lineFormat, HTuple lineDirectionX, HTuple lineDirectionY, HTuple lineDirectionZ, HTuple lineMomentOrPointX, HTuple lineMomentOrPointY, HTuple lineMomentOrPointZ)
+		public static (HTuple TransLineDirectionX, HTuple TransLineDirectionY, HTuple TransLineDirectionZ, HTuple TransLineMomentOrPointX, HTuple TransLineMomentOrPointY, HTuple TransLineMomentOrPointZ) DualQuatTransLine3d (HTuple dualQuaternion, HTuple lineFormat, HTuple lineDirectionX, HTuple lineDirectionY, HTuple lineDirectionZ, HTuple lineMomentOrPointX, HTuple lineMomentOrPointY, HTuple lineMomentOrPointZ)
 		{
 			HOperatorSet.DualQuatTransLine3d(dualQuaternion, lineFormat, lineDirectionX, lineDirectionY, lineDirectionZ, lineMomentOrPointX, lineMomentOrPointY, lineMomentOrPointZ, out HTuple transLineDirectionX, out HTuple transLineDirectionY, out HTuple transLineDirectionZ, out HTuple transLineMomentOrPointX, out HTuple transLineMomentOrPointY, out HTuple transLineMomentOrPointZ);
 			return (transLineDirectionX,transLineDirectionY,transLineDirectionZ,transLineMomentOrPointX,transLineMomentOrPointY,transLineMomentOrPointZ);
@@ -101,12 +101,12 @@ namespace HalconWrapper
 			HOperatorSet.EdgesObjectModel3d(objectModel3D, minAmplitude, genParamName, genParamValue, out HTuple objectModel3DEdges);
 			return objectModel3DEdges;
 		}
-		public static (HTuple row, HTuple column, HTuple angle, HTuple score, HTuple model) FindNccModels (HObject image, HTuple modelIDs, HTuple angleStart, HTuple angleExtent, HTuple minScore, HTuple numMatches, HTuple maxOverlap, HTuple subPixel, HTuple numLevels)
+		public static (HTuple Row, HTuple Column, HTuple Angle, HTuple Score, HTuple Model) FindNccModels (HObject image, HTuple modelIDs, HTuple angleStart, HTuple angleExtent, HTuple minScore, HTuple numMatches, HTuple maxOverlap, HTuple subPixel, HTuple numLevels)
 		{
 			HOperatorSet.FindNccModels(image, modelIDs, angleStart, angleExtent, minScore, numMatches, maxOverlap, subPixel, numLevels, out HTuple row, out HTuple column, out HTuple angle, out HTuple score, out HTuple model);
 			return (row,column,angle,score,model);
 		}
-		public static (HTuple pose, HTuple score, HTuple surfaceMatchingResultID) FindSurfaceModelImage (HObject image, HTuple surfaceModelID, HTuple objectModel3D, HTuple relSamplingDistance, HTuple keyPointFraction, HTuple minScore, HTuple returnResultHandle, HTuple genParamName, HTuple genParamValue)
+		public static (HTuple Pose, HTuple Score, HTuple SurfaceMatchingResultID) FindSurfaceModelImage (HObject image, HTuple surfaceModelID, HTuple objectModel3D, HTuple relSamplingDistance, HTuple keyPointFraction, HTuple minScore, HTuple returnResultHandle, HTuple genParamName, HTuple genParamValue)
 		{
 			HOperatorSet.FindSurfaceModelImage(image, surfaceModelID, objectModel3D, relSamplingDistance, keyPointFraction, minScore, returnResultHandle, genParamName, genParamValue, out HTuple pose, out HTuple score, out HTuple surfaceMatchingResultID);
 			return (pose,score,surfaceMatchingResultID);
@@ -125,7 +125,7 @@ namespace HalconWrapper
 			HOperatorSet.GetParamsOcrClassCnn(OCRHandle, genParamName, out HTuple genParamValue);
 			return genParamValue;
 		}
-		public static (HTuple red, HTuple green, HTuple blue, HTuple alpha) GetRgba (HTuple windowHandle)
+		public static (HTuple Red, HTuple Green, HTuple Blue, HTuple Alpha) GetRgba (HTuple windowHandle)
 		{
 			HOperatorSet.GetRgba(windowHandle, out HTuple red, out HTuple green, out HTuple blue, out HTuple alpha);
 			return (red,green,blue,alpha);
@@ -180,7 +180,7 @@ namespace HalconWrapper
 			HOperatorSet.ReadTextureInspectionModel(fileName, out HTuple textureInspectionModel);
 			return textureInspectionModel;
 		}
-		public static (HTuple pose, HTuple score, HTuple surfaceMatchingResultID) RefineSurfaceModelPoseImage (HObject image, HTuple surfaceModelID, HTuple objectModel3D, HTuple initialPose, HTuple minScore, HTuple returnResultHandle, HTuple genParamName, HTuple genParamValue)
+		public static (HTuple Pose, HTuple Score, HTuple SurfaceMatchingResultID) RefineSurfaceModelPoseImage (HObject image, HTuple surfaceModelID, HTuple objectModel3D, HTuple initialPose, HTuple minScore, HTuple returnResultHandle, HTuple genParamName, HTuple genParamValue)
 		{
 			HOperatorSet.RefineSurfaceModelPoseImage(image, surfaceModelID, objectModel3D, initialPose, minScore, returnResultHandle, genParamName, genParamValue, out HTuple pose, out HTuple score, out HTuple surfaceMatchingResultID);
 			return (pose,score,surfaceMatchingResultID);
@@ -259,7 +259,7 @@ namespace HalconWrapper
 		{
 			HOperatorSet.WriteTextureInspectionModel(textureInspectionModel, fileName);
 		}
-		public static (HObject normalField, HObject gradient, HObject albedo) UncalibratedPhotometricStereo (HObject images, HTuple resultType)
+		public static (HObject NormalField, HObject Gradient, HObject Albedo) UncalibratedPhotometricStereo (HObject images, HTuple resultType)
 		{
 			HOperatorSet.UncalibratedPhotometricStereo(images, out HObject normalField, out HObject gradient, out HObject albedo, resultType);
 			return (normalField,gradient,albedo);
@@ -304,7 +304,7 @@ namespace HalconWrapper
 			HOperatorSet.DeserializeStructuredLightModel(serializedItemHandle, out HTuple structuredLightModel);
 			return structuredLightModel;
 		}
-		public static (HTuple distanceMin, HTuple row1, HTuple column1, HTuple row2, HTuple column2) DistanceCcMinPoints (HObject contour1, HObject contour2, HTuple mode)
+		public static (HTuple DistanceMin, HTuple Row1, HTuple Column1, HTuple Row2, HTuple Column2) DistanceCcMinPoints (HObject contour1, HObject contour2, HTuple mode)
 		{
 			HOperatorSet.DistanceCcMinPoints(contour1, contour2, mode, out HTuple distanceMin, out HTuple row1, out HTuple column1, out HTuple row2, out HTuple column2);
 			return (distanceMin,row1,column1,row2,column2);
@@ -344,12 +344,12 @@ namespace HalconWrapper
 			HOperatorSet.GetStructuredLightObject(out HObject objectVal, structuredLightModel, objectName);
 			return objectVal;
 		}
-		public static (HTuple height, HTuple width, HTuple ratio) HeightWidthRatio (HObject regions)
+		public static (HTuple Height, HTuple Width, HTuple Ratio) HeightWidthRatio (HObject regions)
 		{
 			HOperatorSet.HeightWidthRatio(regions, out HTuple height, out HTuple width, out HTuple ratio);
 			return (height,width,ratio);
 		}
-		public static (HTuple height, HTuple width, HTuple ratio) HeightWidthRatioXld (HObject XLD)
+		public static (HTuple Height, HTuple Width, HTuple Ratio) HeightWidthRatioXld (HObject XLD)
 		{
 			HOperatorSet.HeightWidthRatioXld(XLD, out HTuple height, out HTuple width, out HTuple ratio);
 			return (height,width,ratio);
@@ -627,7 +627,7 @@ namespace HalconWrapper
 			HOperatorSet.ChangeRadialDistortionContoursXld(contours, out HObject contoursRectified, camParamIn, camParamOut);
 			return contoursRectified;
 		}
-		public static (HTuple rowChanged, HTuple colChanged) ChangeRadialDistortionPoints (HTuple row, HTuple col, HTuple camParamIn, HTuple camParamOut)
+		public static (HTuple RowChanged, HTuple ColChanged) ChangeRadialDistortionPoints (HTuple row, HTuple col, HTuple camParamIn, HTuple camParamOut)
 		{
 			HOperatorSet.ChangeRadialDistortionPoints(row, col, camParamIn, camParamOut, out HTuple rowChanged, out HTuple colChanged);
 			return (rowChanged,colChanged);
@@ -650,7 +650,7 @@ namespace HalconWrapper
 		{
 			HOperatorSet.CreateCaltab(numRows, marksPerRow, diameter, finderRow, finderColumn, polarity, calPlateDescr, calPlatePSFile);
 		}
-		public static (HTuple x, HTuple y, HTuple z) CaltabPoints (HTuple calPlateDescr)
+		public static (HTuple X, HTuple Y, HTuple Z) CaltabPoints (HTuple calPlateDescr)
 		{
 			HOperatorSet.CaltabPoints(calPlateDescr, out HTuple x, out HTuple y, out HTuple z);
 			return (x,y,z);
@@ -660,17 +660,17 @@ namespace HalconWrapper
 			HOperatorSet.GetLineOfSight(row, column, cameraParam, out HTuple PX, out HTuple PY, out HTuple PZ, out HTuple QX, out HTuple QY, out HTuple QZ);
 			return (PX,PY,PZ,QX,QY,QZ);
 		}
-		public static (HTuple qx, HTuple qy, HTuple qw) ProjectHomPointHomMat3d (HTuple homMat3D, HTuple px, HTuple py, HTuple pz, HTuple pw)
+		public static (HTuple Qx, HTuple Qy, HTuple Qw) ProjectHomPointHomMat3d (HTuple homMat3D, HTuple px, HTuple py, HTuple pz, HTuple pw)
 		{
 			HOperatorSet.ProjectHomPointHomMat3d(homMat3D, px, py, pz, pw, out HTuple qx, out HTuple qy, out HTuple qw);
 			return (qx,qy,qw);
 		}
-		public static (HTuple qx, HTuple qy) ProjectPointHomMat3d (HTuple homMat3D, HTuple px, HTuple py, HTuple pz)
+		public static (HTuple Qx, HTuple Qy) ProjectPointHomMat3d (HTuple homMat3D, HTuple px, HTuple py, HTuple pz)
 		{
 			HOperatorSet.ProjectPointHomMat3d(homMat3D, px, py, pz, out HTuple qx, out HTuple qy);
 			return (qx,qy);
 		}
-		public static (HTuple row, HTuple column) Project3dPoint (HTuple x, HTuple y, HTuple z, HTuple cameraParam)
+		public static (HTuple Row, HTuple Column) Project3dPoint (HTuple x, HTuple y, HTuple z, HTuple cameraParam)
 		{
 			HOperatorSet.Project3dPoint(x, y, z, cameraParam, out HTuple row, out HTuple column);
 			return (row,column);
@@ -737,12 +737,12 @@ namespace HalconWrapper
 		{
 			HOperatorSet.DispCaltab(windowHandle, calPlateDescr, cameraParam, calPlatePose, scaleFac);
 		}
-		public static (HTuple cameraParam, HTuple NFinalPose, HTuple errors) CameraCalibration (HTuple NX, HTuple NY, HTuple NZ, HTuple NRow, HTuple NCol, HTuple startCamParam, HTuple NStartPose, HTuple estimateParams)
+		public static (HTuple CameraParam, HTuple NFinalPose, HTuple Errors) CameraCalibration (HTuple NX, HTuple NY, HTuple NZ, HTuple NRow, HTuple NCol, HTuple startCamParam, HTuple NStartPose, HTuple estimateParams)
 		{
 			HOperatorSet.CameraCalibration(NX, NY, NZ, NRow, NCol, startCamParam, NStartPose, estimateParams, out HTuple cameraParam, out HTuple NFinalPose, out HTuple errors);
 			return (cameraParam,NFinalPose,errors);
 		}
-		public static (HTuple RCoord, HTuple CCoord, HTuple startPose) FindMarksAndPose (HObject image, HObject calPlateRegion, HTuple calPlateDescr, HTuple startCamParam, HTuple startThresh, HTuple deltaThresh, HTuple minThresh, HTuple alpha, HTuple minContLength, HTuple maxDiamMarks)
+		public static (HTuple RCoord, HTuple CCoord, HTuple StartPose) FindMarksAndPose (HObject image, HObject calPlateRegion, HTuple calPlateDescr, HTuple startCamParam, HTuple startThresh, HTuple deltaThresh, HTuple minThresh, HTuple alpha, HTuple minContLength, HTuple maxDiamMarks)
 		{
 			HOperatorSet.FindMarksAndPose(image, calPlateRegion, calPlateDescr, startCamParam, startThresh, deltaThresh, minThresh, alpha, minContLength, maxDiamMarks, out HTuple RCoord, out HTuple CCoord, out HTuple startPose);
 			return (RCoord,CCoord,startPose);
@@ -864,7 +864,7 @@ namespace HalconWrapper
 		{
 			HOperatorSet.SetCalibDataObservPose(calibDataID, cameraIdx, calibObjIdx, calibObjPoseIdx, objInCameraPose);
 		}
-		public static (HTuple row, HTuple column, HTuple index, HTuple pose) GetCalibDataObservPoints (HTuple calibDataID, HTuple cameraIdx, HTuple calibObjIdx, HTuple calibObjPoseIdx)
+		public static (HTuple Row, HTuple Column, HTuple Index, HTuple Pose) GetCalibDataObservPoints (HTuple calibDataID, HTuple cameraIdx, HTuple calibObjIdx, HTuple calibObjPoseIdx)
 		{
 			HOperatorSet.GetCalibDataObservPoints(calibDataID, cameraIdx, calibObjIdx, calibObjPoseIdx, out HTuple row, out HTuple column, out HTuple index, out HTuple pose);
 			return (row,column,index,pose);
@@ -873,7 +873,7 @@ namespace HalconWrapper
 		{
 			HOperatorSet.SetCalibDataObservPoints(calibDataID, cameraIdx, calibObjIdx, calibObjPoseIdx, row, column, index, pose);
 		}
-		public static (HTuple index1, HTuple index2) QueryCalibDataObservIndices (HTuple calibDataID, HTuple itemType, HTuple itemIdx)
+		public static (HTuple Index1, HTuple Index2) QueryCalibDataObservIndices (HTuple calibDataID, HTuple itemType, HTuple itemIdx)
 		{
 			HOperatorSet.QueryCalibDataObservIndices(calibDataID, itemType, itemIdx, out HTuple index1, out HTuple index2);
 			return (index1,index2);
@@ -905,7 +905,7 @@ namespace HalconWrapper
 		{
 			HOperatorSet.SetBeadInspectionParam(beadInspectionModel, genParamName, genParamValue);
 		}
-		public static (HObject leftContour, HObject rightContour, HObject errorSegment, HTuple errorType) ApplyBeadInspectionModel (HObject image, HTuple beadInspectionModel)
+		public static (HObject LeftContour, HObject RightContour, HObject ErrorSegment, HTuple ErrorType) ApplyBeadInspectionModel (HObject image, HTuple beadInspectionModel)
 		{
 			HOperatorSet.ApplyBeadInspectionModel(image, out HObject leftContour, out HObject rightContour, out HObject errorSegment, beadInspectionModel, out HTuple errorType);
 			return (leftContour,rightContour,errorSegment,errorType);
@@ -953,7 +953,7 @@ namespace HalconWrapper
 			HOperatorSet.DecodeBarCodeRectangle2(image, barCodeHandle, codeType, row, column, phi, length1, length2, out HTuple decodedDataStrings);
 			return decodedDataStrings;
 		}
-		public static (HObject symbolRegions, HTuple decodedDataStrings) FindBarCode (HObject image, HTuple barCodeHandle, HTuple codeType)
+		public static (HObject SymbolRegions, HTuple DecodedDataStrings) FindBarCode (HObject image, HTuple barCodeHandle, HTuple codeType)
 		{
 			HOperatorSet.FindBarCode(image, out HObject symbolRegions, barCodeHandle, codeType, out HTuple decodedDataStrings);
 			return (symbolRegions,decodedDataStrings);
@@ -1012,7 +1012,7 @@ namespace HalconWrapper
 			HOperatorSet.RunBgEsti(presentImage, out HObject foregroundRegion, bgEstiHandle);
 			return foregroundRegion;
 		}
-		public static (HTuple syspar1, HTuple syspar2, HTuple gainMode, HTuple gain1, HTuple gain2, HTuple adaptMode, HTuple minDiff, HTuple statNum, HTuple confidenceC, HTuple timeC) GetBgEstiParams (HTuple bgEstiHandle)
+		public static (HTuple Syspar1, HTuple Syspar2, HTuple GainMode, HTuple Gain1, HTuple Gain2, HTuple AdaptMode, HTuple MinDiff, HTuple StatNum, HTuple ConfidenceC, HTuple TimeC) GetBgEstiParams (HTuple bgEstiHandle)
 		{
 			HOperatorSet.GetBgEstiParams(bgEstiHandle, out HTuple syspar1, out HTuple syspar2, out HTuple gainMode, out HTuple gain1, out HTuple gain2, out HTuple adaptMode, out HTuple minDiff, out HTuple statNum, out HTuple confidenceC, out HTuple timeC);
 			return (syspar1,syspar2,gainMode,gain1,gain2,adaptMode,minDiff,statNum,confidenceC,timeC);
@@ -1040,7 +1040,7 @@ namespace HalconWrapper
 			HOperatorSet.WriteIoChannel(IOChannelHandle, value, out HTuple status);
 			return status;
 		}
-		public static (HTuple value, HTuple status) ReadIoChannel (HTuple IOChannelHandle)
+		public static (HTuple Value, HTuple Status) ReadIoChannel (HTuple IOChannelHandle)
 		{
 			HOperatorSet.ReadIoChannel(IOChannelHandle, out HTuple value, out HTuple status);
 			return (value,status);
@@ -1110,7 +1110,7 @@ namespace HalconWrapper
 		{
 			HOperatorSet.SetFramegrabberParam(acqHandle, param, value);
 		}
-		public static (HTuple callbackFunction, HTuple userContext) GetFramegrabberCallback (HTuple acqHandle, HTuple callbackType)
+		public static (HTuple CallbackFunction, HTuple UserContext) GetFramegrabberCallback (HTuple acqHandle, HTuple callbackType)
 		{
 			HOperatorSet.GetFramegrabberCallback(acqHandle, callbackType, out HTuple callbackFunction, out HTuple userContext);
 			return (callbackFunction,userContext);
@@ -1119,12 +1119,12 @@ namespace HalconWrapper
 		{
 			HOperatorSet.SetFramegrabberCallback(acqHandle, callbackType, callbackFunction, userContext);
 		}
-		public static (HObject image, HObject region, HObject contours, HTuple data) GrabDataAsync (HTuple acqHandle, HTuple maxDelay)
+		public static (HObject Image, HObject Region, HObject Contours, HTuple Data) GrabDataAsync (HTuple acqHandle, HTuple maxDelay)
 		{
 			HOperatorSet.GrabDataAsync(out HObject image, out HObject region, out HObject contours, acqHandle, maxDelay, out HTuple data);
 			return (image,region,contours,data);
 		}
-		public static (HObject image, HObject region, HObject contours, HTuple data) GrabData (HTuple acqHandle)
+		public static (HObject Image, HObject Region, HObject Contours, HTuple Data) GrabData (HTuple acqHandle)
 		{
 			HOperatorSet.GrabData(out HObject image, out HObject region, out HObject contours, acqHandle, out HTuple data);
 			return (image,region,contours,data);
@@ -1143,7 +1143,7 @@ namespace HalconWrapper
 			HOperatorSet.GrabImage(out HObject image, acqHandle);
 			return image;
 		}
-		public static (HTuple information, HTuple valueList) InfoFramegrabber (HTuple name, HTuple query)
+		public static (HTuple Information, HTuple ValueList) InfoFramegrabber (HTuple name, HTuple query)
 		{
 			HOperatorSet.InfoFramegrabber(name, query, out HTuple information, out HTuple valueList);
 			return (information,valueList);
@@ -1161,7 +1161,7 @@ namespace HalconWrapper
 			HOperatorSet.OpenFramegrabber(name, horizontalResolution, verticalResolution, imageWidth, imageHeight, startRow, startColumn, field, bitsPerChannel, colorSpace, generic, externalTrigger, cameraType, device, port, lineIn, out HTuple acqHandle);
 			return acqHandle;
 		}
-		public static (HTuple imageRed, HTuple imageGreen, HTuple imageBlue) GetFramegrabberLut (HTuple acqHandle)
+		public static (HTuple ImageRed, HTuple ImageGreen, HTuple ImageBlue) GetFramegrabberLut (HTuple acqHandle)
 		{
 			HOperatorSet.GetFramegrabberLut(acqHandle, out HTuple imageRed, out HTuple imageGreen, out HTuple imageBlue);
 			return (imageRed,imageGreen,imageBlue);
@@ -1188,7 +1188,7 @@ namespace HalconWrapper
 			HOperatorSet.AddTextureInspectionModelImage(image, textureInspectionModel, out HTuple indices);
 			return indices;
 		}
-		public static (HObject noveltyRegion, HTuple textureInspectionResultID) ApplyTextureInspectionModel (HObject image, HTuple textureInspectionModel)
+		public static (HObject NoveltyRegion, HTuple TextureInspectionResultID) ApplyTextureInspectionModel (HObject image, HTuple textureInspectionModel)
 		{
 			HOperatorSet.ApplyTextureInspectionModel(image, out HObject noveltyRegion, textureInspectionModel, out HTuple textureInspectionResultID);
 			return (noveltyRegion,textureInspectionResultID);
@@ -1215,7 +1215,7 @@ namespace HalconWrapper
 			HOperatorSet.GetSampleNumClassTrainData(classTrainDataHandle, out HTuple numSamples);
 			return numSamples;
 		}
-		public static (HTuple features, HTuple classID) GetSampleClassTrainData (HTuple classTrainDataHandle, HTuple indexSample)
+		public static (HTuple Features, HTuple ClassID) GetSampleClassTrainData (HTuple classTrainDataHandle, HTuple indexSample)
 		{
 			HOperatorSet.GetSampleClassTrainData(classTrainDataHandle, indexSample, out HTuple features, out HTuple classID);
 			return (features,classID);
@@ -1237,22 +1237,22 @@ namespace HalconWrapper
 			HOperatorSet.CreateClassTrainData(numDim, out HTuple classTrainDataHandle);
 			return classTrainDataHandle;
 		}
-		public static (HTuple MLPHandle, HTuple selectedFeatureIndices, HTuple score) SelectFeatureSetMlp (HTuple classTrainDataHandle, HTuple selectionMethod, HTuple genParamName, HTuple genParamValue)
+		public static (HTuple MLPHandle, HTuple SelectedFeatureIndices, HTuple Score) SelectFeatureSetMlp (HTuple classTrainDataHandle, HTuple selectionMethod, HTuple genParamName, HTuple genParamValue)
 		{
 			HOperatorSet.SelectFeatureSetMlp(classTrainDataHandle, selectionMethod, genParamName, genParamValue, out HTuple MLPHandle, out HTuple selectedFeatureIndices, out HTuple score);
 			return (MLPHandle,selectedFeatureIndices,score);
 		}
-		public static (HTuple SVMHandle, HTuple selectedFeatureIndices, HTuple score) SelectFeatureSetSvm (HTuple classTrainDataHandle, HTuple selectionMethod, HTuple genParamName, HTuple genParamValue)
+		public static (HTuple SVMHandle, HTuple SelectedFeatureIndices, HTuple Score) SelectFeatureSetSvm (HTuple classTrainDataHandle, HTuple selectionMethod, HTuple genParamName, HTuple genParamValue)
 		{
 			HOperatorSet.SelectFeatureSetSvm(classTrainDataHandle, selectionMethod, genParamName, genParamValue, out HTuple SVMHandle, out HTuple selectedFeatureIndices, out HTuple score);
 			return (SVMHandle,selectedFeatureIndices,score);
 		}
-		public static (HTuple GMMHandle, HTuple selectedFeatureIndices, HTuple score) SelectFeatureSetGmm (HTuple classTrainDataHandle, HTuple selectionMethod, HTuple genParamName, HTuple genParamValue)
+		public static (HTuple GMMHandle, HTuple SelectedFeatureIndices, HTuple Score) SelectFeatureSetGmm (HTuple classTrainDataHandle, HTuple selectionMethod, HTuple genParamName, HTuple genParamValue)
 		{
 			HOperatorSet.SelectFeatureSetGmm(classTrainDataHandle, selectionMethod, genParamName, genParamValue, out HTuple GMMHandle, out HTuple selectedFeatureIndices, out HTuple score);
 			return (GMMHandle,selectedFeatureIndices,score);
 		}
-		public static (HTuple KNNHandle, HTuple selectedFeatureIndices, HTuple score) SelectFeatureSetKnn (HTuple classTrainDataHandle, HTuple selectionMethod, HTuple genParamName, HTuple genParamValue)
+		public static (HTuple KNNHandle, HTuple SelectedFeatureIndices, HTuple Score) SelectFeatureSetKnn (HTuple classTrainDataHandle, HTuple selectionMethod, HTuple genParamName, HTuple genParamValue)
 		{
 			HOperatorSet.SelectFeatureSetKnn(classTrainDataHandle, selectionMethod, genParamName, genParamValue, out HTuple KNNHandle, out HTuple selectedFeatureIndices, out HTuple score);
 			return (KNNHandle,selectedFeatureIndices,score);
@@ -1270,7 +1270,7 @@ namespace HalconWrapper
 			HOperatorSet.GetSampleNumClassKnn(KNNHandle, out HTuple numSamples);
 			return numSamples;
 		}
-		public static (HTuple features, HTuple classID) GetSampleClassKnn (HTuple KNNHandle, HTuple indexSample)
+		public static (HTuple Features, HTuple ClassID) GetSampleClassKnn (HTuple KNNHandle, HTuple indexSample)
 		{
 			HOperatorSet.GetSampleClassKnn(KNNHandle, indexSample, out HTuple features, out HTuple classID);
 			return (features,classID);
@@ -1303,7 +1303,7 @@ namespace HalconWrapper
 		{
 			HOperatorSet.SetParamsClassKnn(KNNHandle, genParamName, genParamValue);
 		}
-		public static (HTuple result, HTuple rating) ClassifyClassKnn (HTuple KNNHandle, HTuple features)
+		public static (HTuple Result, HTuple Rating) ClassifyClassKnn (HTuple KNNHandle, HTuple features)
 		{
 			HOperatorSet.ClassifyClassKnn(KNNHandle, features, out HTuple result, out HTuple rating);
 			return (result,rating);
@@ -1388,22 +1388,22 @@ namespace HalconWrapper
 		{
 			HOperatorSet.WriteSamplesClassGmm(GMMHandle, fileName);
 		}
-		public static (HTuple classID, HTuple classProb, HTuple density, HTuple KSigmaProb) ClassifyClassGmm (HTuple GMMHandle, HTuple features, HTuple num)
+		public static (HTuple ClassID, HTuple ClassProb, HTuple Density, HTuple KSigmaProb) ClassifyClassGmm (HTuple GMMHandle, HTuple features, HTuple num)
 		{
 			HOperatorSet.ClassifyClassGmm(GMMHandle, features, num, out HTuple classID, out HTuple classProb, out HTuple density, out HTuple KSigmaProb);
 			return (classID,classProb,density,KSigmaProb);
 		}
-		public static (HTuple classProb, HTuple density, HTuple KSigmaProb) EvaluateClassGmm (HTuple GMMHandle, HTuple features)
+		public static (HTuple ClassProb, HTuple Density, HTuple KSigmaProb) EvaluateClassGmm (HTuple GMMHandle, HTuple features)
 		{
 			HOperatorSet.EvaluateClassGmm(GMMHandle, features, out HTuple classProb, out HTuple density, out HTuple KSigmaProb);
 			return (classProb,density,KSigmaProb);
 		}
-		public static (HTuple centers, HTuple iter) TrainClassGmm (HTuple GMMHandle, HTuple maxIter, HTuple threshold, HTuple classPriors, HTuple regularize)
+		public static (HTuple Centers, HTuple Iter) TrainClassGmm (HTuple GMMHandle, HTuple maxIter, HTuple threshold, HTuple classPriors, HTuple regularize)
 		{
 			HOperatorSet.TrainClassGmm(GMMHandle, maxIter, threshold, classPriors, regularize, out HTuple centers, out HTuple iter);
 			return (centers,iter);
 		}
-		public static (HTuple informationCont, HTuple cumInformationCont) GetPrepInfoClassGmm (HTuple GMMHandle, HTuple preprocessing)
+		public static (HTuple InformationCont, HTuple CumInformationCont) GetPrepInfoClassGmm (HTuple GMMHandle, HTuple preprocessing)
 		{
 			HOperatorSet.GetPrepInfoClassGmm(GMMHandle, preprocessing, out HTuple informationCont, out HTuple cumInformationCont);
 			return (informationCont,cumInformationCont);
@@ -1413,7 +1413,7 @@ namespace HalconWrapper
 			HOperatorSet.GetSampleNumClassGmm(GMMHandle, out HTuple numSamples);
 			return numSamples;
 		}
-		public static (HTuple features, HTuple classID) GetSampleClassGmm (HTuple GMMHandle, HTuple numSample)
+		public static (HTuple Features, HTuple ClassID) GetSampleClassGmm (HTuple GMMHandle, HTuple numSample)
 		{
 			HOperatorSet.GetSampleClassGmm(GMMHandle, numSample, out HTuple features, out HTuple classID);
 			return (features,classID);
@@ -1422,7 +1422,7 @@ namespace HalconWrapper
 		{
 			HOperatorSet.AddSampleClassGmm(GMMHandle, features, classID, randomize);
 		}
-		public static (HTuple numDim, HTuple numClasses, HTuple minCenters, HTuple maxCenters, HTuple covarType) GetParamsClassGmm (HTuple GMMHandle)
+		public static (HTuple NumDim, HTuple NumClasses, HTuple MinCenters, HTuple MaxCenters, HTuple CovarType) GetParamsClassGmm (HTuple GMMHandle)
 		{
 			HOperatorSet.GetParamsClassGmm(GMMHandle, out HTuple numDim, out HTuple numClasses, out HTuple minCenters, out HTuple maxCenters, out HTuple covarType);
 			return (numDim,numClasses,minCenters,maxCenters,covarType);
@@ -1490,12 +1490,12 @@ namespace HalconWrapper
 		{
 			HOperatorSet.TrainClassSvm(SVMHandle, epsilon, trainMode);
 		}
-		public static (HTuple informationCont, HTuple cumInformationCont) GetPrepInfoClassSvm (HTuple SVMHandle, HTuple preprocessing)
+		public static (HTuple InformationCont, HTuple CumInformationCont) GetPrepInfoClassSvm (HTuple SVMHandle, HTuple preprocessing)
 		{
 			HOperatorSet.GetPrepInfoClassSvm(SVMHandle, preprocessing, out HTuple informationCont, out HTuple cumInformationCont);
 			return (informationCont,cumInformationCont);
 		}
-		public static (HTuple numSupportVectors, HTuple numSVPerSVM) GetSupportVectorNumClassSvm (HTuple SVMHandle)
+		public static (HTuple NumSupportVectors, HTuple NumSVPerSVM) GetSupportVectorNumClassSvm (HTuple SVMHandle)
 		{
 			HOperatorSet.GetSupportVectorNumClassSvm(SVMHandle, out HTuple numSupportVectors, out HTuple numSVPerSVM);
 			return (numSupportVectors,numSVPerSVM);
@@ -1510,7 +1510,7 @@ namespace HalconWrapper
 			HOperatorSet.GetSampleNumClassSvm(SVMHandle, out HTuple numSamples);
 			return numSamples;
 		}
-		public static (HTuple features, HTuple target) GetSampleClassSvm (HTuple SVMHandle, HTuple indexSample)
+		public static (HTuple Features, HTuple Target) GetSampleClassSvm (HTuple SVMHandle, HTuple indexSample)
 		{
 			HOperatorSet.GetSampleClassSvm(SVMHandle, indexSample, out HTuple features, out HTuple target);
 			return (features,target);
@@ -1519,7 +1519,7 @@ namespace HalconWrapper
 		{
 			HOperatorSet.AddSampleClassSvm(SVMHandle, features, classVal);
 		}
-		public static (HTuple numFeatures, HTuple kernelType, HTuple kernelParam, HTuple nu, HTuple numClasses, HTuple mode, HTuple preprocessing, HTuple numComponents) GetParamsClassSvm (HTuple SVMHandle)
+		public static (HTuple NumFeatures, HTuple KernelType, HTuple KernelParam, HTuple Nu, HTuple NumClasses, HTuple Mode, HTuple Preprocessing, HTuple NumComponents) GetParamsClassSvm (HTuple SVMHandle)
 		{
 			HOperatorSet.GetParamsClassSvm(SVMHandle, out HTuple numFeatures, out HTuple kernelType, out HTuple kernelParam, out HTuple nu, out HTuple numClasses, out HTuple mode, out HTuple preprocessing, out HTuple numComponents);
 			return (numFeatures,kernelType,kernelParam,nu,numClasses,mode,preprocessing,numComponents);
@@ -1568,7 +1568,7 @@ namespace HalconWrapper
 		{
 			HOperatorSet.WriteSamplesClassMlp(MLPHandle, fileName);
 		}
-		public static (HTuple classVal, HTuple confidence) ClassifyClassMlp (HTuple MLPHandle, HTuple features, HTuple num)
+		public static (HTuple ClassVal, HTuple Confidence) ClassifyClassMlp (HTuple MLPHandle, HTuple features, HTuple num)
 		{
 			HOperatorSet.ClassifyClassMlp(MLPHandle, features, num, out HTuple classVal, out HTuple confidence);
 			return (classVal,confidence);
@@ -1578,12 +1578,12 @@ namespace HalconWrapper
 			HOperatorSet.EvaluateClassMlp(MLPHandle, features, out HTuple result);
 			return result;
 		}
-		public static (HTuple error, HTuple errorLog) TrainClassMlp (HTuple MLPHandle, HTuple maxIterations, HTuple weightTolerance, HTuple errorTolerance)
+		public static (HTuple Error, HTuple ErrorLog) TrainClassMlp (HTuple MLPHandle, HTuple maxIterations, HTuple weightTolerance, HTuple errorTolerance)
 		{
 			HOperatorSet.TrainClassMlp(MLPHandle, maxIterations, weightTolerance, errorTolerance, out HTuple error, out HTuple errorLog);
 			return (error,errorLog);
 		}
-		public static (HTuple informationCont, HTuple cumInformationCont) GetPrepInfoClassMlp (HTuple MLPHandle, HTuple preprocessing)
+		public static (HTuple InformationCont, HTuple CumInformationCont) GetPrepInfoClassMlp (HTuple MLPHandle, HTuple preprocessing)
 		{
 			HOperatorSet.GetPrepInfoClassMlp(MLPHandle, preprocessing, out HTuple informationCont, out HTuple cumInformationCont);
 			return (informationCont,cumInformationCont);
@@ -1593,7 +1593,7 @@ namespace HalconWrapper
 			HOperatorSet.GetSampleNumClassMlp(MLPHandle, out HTuple numSamples);
 			return numSamples;
 		}
-		public static (HTuple features, HTuple target) GetSampleClassMlp (HTuple MLPHandle, HTuple indexSample)
+		public static (HTuple Features, HTuple Target) GetSampleClassMlp (HTuple MLPHandle, HTuple indexSample)
 		{
 			HOperatorSet.GetSampleClassMlp(MLPHandle, indexSample, out HTuple features, out HTuple target);
 			return (features,target);
@@ -1620,7 +1620,7 @@ namespace HalconWrapper
 		{
 			HOperatorSet.SetRegularizationParamsClassMlp(MLPHandle, genParamName, genParamValue);
 		}
-		public static (HTuple numInput, HTuple numHidden, HTuple numOutput, HTuple outputFunction, HTuple preprocessing, HTuple numComponents) GetParamsClassMlp (HTuple MLPHandle)
+		public static (HTuple NumInput, HTuple NumHidden, HTuple NumOutput, HTuple OutputFunction, HTuple Preprocessing, HTuple NumComponents) GetParamsClassMlp (HTuple MLPHandle)
 		{
 			HOperatorSet.GetParamsClassMlp(MLPHandle, out HTuple numInput, out HTuple numHidden, out HTuple numOutput, out HTuple outputFunction, out HTuple preprocessing, out HTuple numComponents);
 			return (numInput,numHidden,numOutput,outputFunction,preprocessing,numComponents);
@@ -1682,7 +1682,7 @@ namespace HalconWrapper
 			HOperatorSet.CreateClassBox(out HTuple classifHandle);
 			return classifHandle;
 		}
-		public static (HTuple classIdx, HTuple boxIdx, HTuple boxLowerBound, HTuple boxHigherBound, HTuple boxNumSamplesTrain, HTuple boxNumSamplesWrong) DescriptClassBox (HTuple classifHandle, HTuple dimensions)
+		public static (HTuple ClassIdx, HTuple BoxIdx, HTuple BoxLowerBound, HTuple BoxHigherBound, HTuple BoxNumSamplesTrain, HTuple BoxNumSamplesWrong) DescriptClassBox (HTuple classifHandle, HTuple dimensions)
 		{
 			HOperatorSet.DescriptClassBox(classifHandle, dimensions, out HTuple classIdx, out HTuple boxIdx, out HTuple boxLowerBound, out HTuple boxHigherBound, out HTuple boxNumSamplesTrain, out HTuple boxNumSamplesWrong);
 			return (classIdx,boxIdx,boxLowerBound,boxHigherBound,boxNumSamplesTrain,boxNumSamplesWrong);
@@ -1711,7 +1711,7 @@ namespace HalconWrapper
 			HOperatorSet.ConvertMapType(map, out HObject mapConverted, newType, imageWidth);
 			return mapConverted;
 		}
-		public static (HTuple pose, HTuple quality) VectorToPose (HTuple worldX, HTuple worldY, HTuple worldZ, HTuple imageRow, HTuple imageColumn, HTuple cameraParam, HTuple method, HTuple qualityType)
+		public static (HTuple Pose, HTuple Quality) VectorToPose (HTuple worldX, HTuple worldY, HTuple worldZ, HTuple imageRow, HTuple imageColumn, HTuple cameraParam, HTuple method, HTuple qualityType)
 		{
 			HOperatorSet.VectorToPose(worldX, worldY, worldZ, imageRow, imageColumn, cameraParam, method, qualityType, out HTuple pose, out HTuple quality);
 			return (pose,quality);
@@ -1721,12 +1721,12 @@ namespace HalconWrapper
 			HOperatorSet.ProjHomMat2dToPose(homography, cameraMatrix, method, out HTuple pose);
 			return pose;
 		}
-		public static (HObject selectedContours, HTuple cameraParam) RadialDistortionSelfCalibration (HObject contours, HTuple width, HTuple height, HTuple inlierThreshold, HTuple randSeed, HTuple distortionModel, HTuple distortionCenter, HTuple principalPointVar)
+		public static (HObject SelectedContours, HTuple CameraParam) RadialDistortionSelfCalibration (HObject contours, HTuple width, HTuple height, HTuple inlierThreshold, HTuple randSeed, HTuple distortionModel, HTuple distortionCenter, HTuple principalPointVar)
 		{
 			HOperatorSet.RadialDistortionSelfCalibration(contours, out HObject selectedContours, width, height, inlierThreshold, randSeed, distortionModel, distortionCenter, principalPointVar, out HTuple cameraParam);
 			return (selectedContours,cameraParam);
 		}
-		public static (HTuple cameraMatrix, HTuple imageWidth, HTuple imageHeight) CamParToCamMat (HTuple cameraParam)
+		public static (HTuple CameraMatrix, HTuple ImageWidth, HTuple ImageHeight) CamParToCamMat (HTuple cameraParam)
 		{
 			HOperatorSet.CamParToCamMat(cameraParam, out HTuple cameraMatrix, out HTuple imageWidth, out HTuple imageHeight);
 			return (cameraMatrix,imageWidth,imageHeight);
@@ -1736,17 +1736,17 @@ namespace HalconWrapper
 			HOperatorSet.CamMatToCamPar(cameraMatrix, kappa, imageWidth, imageHeight, out HTuple cameraParam);
 			return cameraParam;
 		}
-		public static (HTuple cameraMatrices, HTuple kappa, HTuple rotationMatrices, HTuple x, HTuple y, HTuple z, HTuple error) StationaryCameraSelfCalibration (HTuple numImages, HTuple imageWidth, HTuple imageHeight, HTuple referenceImage, HTuple mappingSource, HTuple mappingDest, HTuple homMatrices2D, HTuple rows1, HTuple cols1, HTuple rows2, HTuple cols2, HTuple numCorrespondences, HTuple estimationMethod, HTuple cameraModel, HTuple fixedCameraParams)
+		public static (HTuple CameraMatrices, HTuple Kappa, HTuple RotationMatrices, HTuple X, HTuple Y, HTuple Z, HTuple Error) StationaryCameraSelfCalibration (HTuple numImages, HTuple imageWidth, HTuple imageHeight, HTuple referenceImage, HTuple mappingSource, HTuple mappingDest, HTuple homMatrices2D, HTuple rows1, HTuple cols1, HTuple rows2, HTuple cols2, HTuple numCorrespondences, HTuple estimationMethod, HTuple cameraModel, HTuple fixedCameraParams)
 		{
 			HOperatorSet.StationaryCameraSelfCalibration(numImages, imageWidth, imageHeight, referenceImage, mappingSource, mappingDest, homMatrices2D, rows1, cols1, rows2, cols2, numCorrespondences, estimationMethod, cameraModel, fixedCameraParams, out HTuple cameraMatrices, out HTuple kappa, out HTuple rotationMatrices, out HTuple x, out HTuple y, out HTuple z, out HTuple error);
 			return (cameraMatrices,kappa,rotationMatrices,x,y,z,error);
 		}
-		public static (HTuple pose, HTuple covPose, HTuple error) GetRectanglePose (HObject contour, HTuple cameraParam, HTuple width, HTuple height, HTuple weightingMode, HTuple clippingFactor)
+		public static (HTuple Pose, HTuple CovPose, HTuple Error) GetRectanglePose (HObject contour, HTuple cameraParam, HTuple width, HTuple height, HTuple weightingMode, HTuple clippingFactor)
 		{
 			HOperatorSet.GetRectanglePose(contour, cameraParam, width, height, weightingMode, clippingFactor, out HTuple pose, out HTuple covPose, out HTuple error);
 			return (pose,covPose,error);
 		}
-		public static (HTuple pose1, HTuple pose2) GetCirclePose (HObject contour, HTuple cameraParam, HTuple radius, HTuple outputType)
+		public static (HTuple Pose1, HTuple Pose2) GetCirclePose (HObject contour, HTuple cameraParam, HTuple radius, HTuple outputType)
 		{
 			HOperatorSet.GetCirclePose(contour, cameraParam, radius, outputType, out HTuple pose1, out HTuple pose2);
 			return (pose1,pose2);
@@ -1781,7 +1781,7 @@ namespace HalconWrapper
 			HOperatorSet.ContourToWorldPlaneXld(contours, out HObject contoursTrans, cameraParam, worldPose, scale);
 			return contoursTrans;
 		}
-		public static (HTuple x, HTuple y) ImagePointsToWorldPlane (HTuple cameraParam, HTuple worldPose, HTuple rows, HTuple cols, HTuple scale)
+		public static (HTuple X, HTuple Y) ImagePointsToWorldPlane (HTuple cameraParam, HTuple worldPose, HTuple rows, HTuple cols, HTuple scale)
 		{
 			HOperatorSet.ImagePointsToWorldPlane(cameraParam, worldPose, rows, cols, scale, out HTuple x, out HTuple y);
 			return (x,y);
@@ -1791,12 +1791,12 @@ namespace HalconWrapper
 			HOperatorSet.SetOriginPose(poseIn, DX, DY, DZ, out HTuple poseNewOrigin);
 			return poseNewOrigin;
 		}
-		public static (HTuple cameraPose, HTuple calibrationPose, HTuple quality) HandEyeCalibration (HTuple x, HTuple y, HTuple z, HTuple row, HTuple col, HTuple numPoints, HTuple robotPoses, HTuple cameraParam, HTuple method, HTuple qualityType)
+		public static (HTuple CameraPose, HTuple CalibrationPose, HTuple Quality) HandEyeCalibration (HTuple x, HTuple y, HTuple z, HTuple row, HTuple col, HTuple numPoints, HTuple robotPoses, HTuple cameraParam, HTuple method, HTuple qualityType)
 		{
 			HOperatorSet.HandEyeCalibration(x, y, z, row, col, numPoints, robotPoses, cameraParam, method, qualityType, out HTuple cameraPose, out HTuple calibrationPose, out HTuple quality);
 			return (cameraPose,calibrationPose,quality);
 		}
-		public static (HTuple orderOfTransform, HTuple orderOfRotation, HTuple viewOfTransform) GetPoseType (HTuple pose)
+		public static (HTuple OrderOfTransform, HTuple OrderOfRotation, HTuple ViewOfTransform) GetPoseType (HTuple pose)
 		{
 			HOperatorSet.GetPoseType(pose, out HTuple orderOfTransform, out HTuple orderOfRotation, out HTuple viewOfTransform);
 			return (orderOfTransform,orderOfRotation,viewOfTransform);
@@ -1833,7 +1833,7 @@ namespace HalconWrapper
 			HOperatorSet.EccentricityPointsXld(XLD, out HTuple anisometry);
 			return anisometry;
 		}
-		public static (HTuple ra, HTuple rb, HTuple phi) EllipticAxisPointsXld (HObject XLD)
+		public static (HTuple Ra, HTuple Rb, HTuple Phi) EllipticAxisPointsXld (HObject XLD)
 		{
 			HOperatorSet.EllipticAxisPointsXld(XLD, out HTuple ra, out HTuple rb, out HTuple phi);
 			return (ra,rb,phi);
@@ -1843,12 +1843,12 @@ namespace HalconWrapper
 			HOperatorSet.OrientationPointsXld(XLD, out HTuple phi);
 			return phi;
 		}
-		public static (HTuple m11, HTuple m20, HTuple m02) MomentsPointsXld (HObject XLD)
+		public static (HTuple M11, HTuple M20, HTuple M02) MomentsPointsXld (HObject XLD)
 		{
 			HOperatorSet.MomentsPointsXld(XLD, out HTuple m11, out HTuple m20, out HTuple m02);
 			return (m11,m20,m02);
 		}
-		public static (HTuple area, HTuple row, HTuple column) AreaCenterPointsXld (HObject XLD)
+		public static (HTuple Area, HTuple Row, HTuple Column) AreaCenterPointsXld (HObject XLD)
 		{
 			HOperatorSet.AreaCenterPointsXld(XLD, out HTuple area, out HTuple row, out HTuple column);
 			return (area,row,column);
@@ -1878,7 +1878,7 @@ namespace HalconWrapper
 			HOperatorSet.OrientationXld(XLD, out HTuple phi);
 			return phi;
 		}
-		public static (HTuple anisometry, HTuple bulkiness, HTuple structureFactor) EccentricityXld (HObject XLD)
+		public static (HTuple Anisometry, HTuple Bulkiness, HTuple StructureFactor) EccentricityXld (HObject XLD)
 		{
 			HOperatorSet.EccentricityXld(XLD, out HTuple anisometry, out HTuple bulkiness, out HTuple structureFactor);
 			return (anisometry,bulkiness,structureFactor);
@@ -1888,7 +1888,7 @@ namespace HalconWrapper
 			HOperatorSet.CompactnessXld(XLD, out HTuple compactness);
 			return compactness;
 		}
-		public static (HTuple row1, HTuple column1, HTuple row2, HTuple column2, HTuple diameter) DiameterXld (HObject XLD)
+		public static (HTuple Row1, HTuple Column1, HTuple Row2, HTuple Column2, HTuple Diameter) DiameterXld (HObject XLD)
 		{
 			HOperatorSet.DiameterXld(XLD, out HTuple row1, out HTuple column1, out HTuple row2, out HTuple column2, out HTuple diameter);
 			return (row1,column1,row2,column2,diameter);
@@ -1903,22 +1903,22 @@ namespace HalconWrapper
 			HOperatorSet.CircularityXld(XLD, out HTuple circularity);
 			return circularity;
 		}
-		public static (HTuple ra, HTuple rb, HTuple phi) EllipticAxisXld (HObject XLD)
+		public static (HTuple Ra, HTuple Rb, HTuple Phi) EllipticAxisXld (HObject XLD)
 		{
 			HOperatorSet.EllipticAxisXld(XLD, out HTuple ra, out HTuple rb, out HTuple phi);
 			return (ra,rb,phi);
 		}
-		public static (HTuple row, HTuple column, HTuple phi, HTuple length1, HTuple length2) SmallestRectangle2Xld (HObject XLD)
+		public static (HTuple Row, HTuple Column, HTuple Phi, HTuple Length1, HTuple Length2) SmallestRectangle2Xld (HObject XLD)
 		{
 			HOperatorSet.SmallestRectangle2Xld(XLD, out HTuple row, out HTuple column, out HTuple phi, out HTuple length1, out HTuple length2);
 			return (row,column,phi,length1,length2);
 		}
-		public static (HTuple row1, HTuple column1, HTuple row2, HTuple column2) SmallestRectangle1Xld (HObject XLD)
+		public static (HTuple Row1, HTuple Column1, HTuple Row2, HTuple Column2) SmallestRectangle1Xld (HObject XLD)
 		{
 			HOperatorSet.SmallestRectangle1Xld(XLD, out HTuple row1, out HTuple column1, out HTuple row2, out HTuple column2);
 			return (row1,column1,row2,column2);
 		}
-		public static (HTuple row, HTuple column, HTuple radius) SmallestCircleXld (HObject XLD)
+		public static (HTuple Row, HTuple Column, HTuple Radius) SmallestCircleXld (HObject XLD)
 		{
 			HOperatorSet.SmallestCircleXld(XLD, out HTuple row, out HTuple column, out HTuple radius);
 			return (row,column,radius);
@@ -1938,12 +1938,12 @@ namespace HalconWrapper
 			HOperatorSet.MomentsAnyXld(XLD, mode, pointOrder, area, centerRow, centerCol, p, q, out HTuple m);
 			return m;
 		}
-		public static (HTuple m11, HTuple m20, HTuple m02) MomentsXld (HObject XLD)
+		public static (HTuple M11, HTuple M20, HTuple M02) MomentsXld (HObject XLD)
 		{
 			HOperatorSet.MomentsXld(XLD, out HTuple m11, out HTuple m20, out HTuple m02);
 			return (m11,m20,m02);
 		}
-		public static (HTuple area, HTuple row, HTuple column, HTuple pointOrder) AreaCenterXld (HObject XLD)
+		public static (HTuple Area, HTuple Row, HTuple Column, HTuple PointOrder) AreaCenterXld (HObject XLD)
 		{
 			HOperatorSet.AreaCenterXld(XLD, out HTuple area, out HTuple row, out HTuple column, out HTuple pointOrder);
 			return (area,row,column,pointOrder);
@@ -1953,32 +1953,32 @@ namespace HalconWrapper
 			HOperatorSet.MomentsRegionCentralInvar(regions, out HTuple PSI1, out HTuple PSI2, out HTuple PSI3, out HTuple PSI4);
 			return (PSI1,PSI2,PSI3,PSI4);
 		}
-		public static (HTuple i1, HTuple i2, HTuple i3, HTuple i4) MomentsRegionCentral (HObject regions)
+		public static (HTuple I1, HTuple I2, HTuple I3, HTuple I4) MomentsRegionCentral (HObject regions)
 		{
 			HOperatorSet.MomentsRegionCentral(regions, out HTuple i1, out HTuple i2, out HTuple i3, out HTuple i4);
 			return (i1,i2,i3,i4);
 		}
-		public static (HTuple m21, HTuple m12, HTuple m03, HTuple m30) MomentsRegion3rdInvar (HObject regions)
+		public static (HTuple M21, HTuple M12, HTuple M03, HTuple M30) MomentsRegion3rdInvar (HObject regions)
 		{
 			HOperatorSet.MomentsRegion3rdInvar(regions, out HTuple m21, out HTuple m12, out HTuple m03, out HTuple m30);
 			return (m21,m12,m03,m30);
 		}
-		public static (HTuple m21, HTuple m12, HTuple m03, HTuple m30) MomentsRegion3rd (HObject regions)
+		public static (HTuple M21, HTuple M12, HTuple M03, HTuple M30) MomentsRegion3rd (HObject regions)
 		{
 			HOperatorSet.MomentsRegion3rd(regions, out HTuple m21, out HTuple m12, out HTuple m03, out HTuple m30);
 			return (m21,m12,m03,m30);
 		}
-		public static (HTuple row, HTuple column, HTuple phi, HTuple length1, HTuple length2) SmallestRectangle2 (HObject regions)
+		public static (HTuple Row, HTuple Column, HTuple Phi, HTuple Length1, HTuple Length2) SmallestRectangle2 (HObject regions)
 		{
 			HOperatorSet.SmallestRectangle2(regions, out HTuple row, out HTuple column, out HTuple phi, out HTuple length1, out HTuple length2);
 			return (row,column,phi,length1,length2);
 		}
-		public static (HTuple row1, HTuple column1, HTuple row2, HTuple column2) SmallestRectangle1 (HObject regions)
+		public static (HTuple Row1, HTuple Column1, HTuple Row2, HTuple Column2) SmallestRectangle1 (HObject regions)
 		{
 			HOperatorSet.SmallestRectangle1(regions, out HTuple row1, out HTuple column1, out HTuple row2, out HTuple column2);
 			return (row1,column1,row2,column2);
 		}
-		public static (HTuple row, HTuple column, HTuple radius) SmallestCircle (HObject regions)
+		public static (HTuple Row, HTuple Column, HTuple Radius) SmallestCircle (HObject regions)
 		{
 			HOperatorSet.SmallestCircle(regions, out HTuple row, out HTuple column, out HTuple radius);
 			return (row,column,radius);
@@ -1998,12 +1998,12 @@ namespace HalconWrapper
 			HOperatorSet.SelectShape(regions, out HObject selectedRegions, features, operation, min, max);
 			return selectedRegions;
 		}
-		public static (HTuple numRuns, HTuple KFactor, HTuple LFactor, HTuple meanLength, HTuple bytes) RunlengthFeatures (HObject regions)
+		public static (HTuple NumRuns, HTuple KFactor, HTuple LFactor, HTuple MeanLength, HTuple Bytes) RunlengthFeatures (HObject regions)
 		{
 			HOperatorSet.RunlengthFeatures(regions, out HTuple numRuns, out HTuple KFactor, out HTuple LFactor, out HTuple meanLength, out HTuple bytes);
 			return (numRuns,KFactor,LFactor,meanLength,bytes);
 		}
-		public static (HTuple regionIndex1, HTuple regionIndex2) FindNeighbors (HObject regions1, HObject regions2, HTuple maxDistance)
+		public static (HTuple RegionIndex1, HTuple RegionIndex2) FindNeighbors (HObject regions1, HObject regions2, HTuple maxDistance)
 		{
 			HOperatorSet.FindNeighbors(regions1, regions2, maxDistance, out HTuple regionIndex1, out HTuple regionIndex2);
 			return (regionIndex1,regionIndex2);
@@ -2013,17 +2013,17 @@ namespace HalconWrapper
 			HOperatorSet.MomentsRegion2ndRelInvar(regions, out HTuple PHI1, out HTuple PHI2);
 			return (PHI1,PHI2);
 		}
-		public static (HTuple m11, HTuple m20, HTuple m02) MomentsRegion2ndInvar (HObject regions)
+		public static (HTuple M11, HTuple M20, HTuple M02) MomentsRegion2ndInvar (HObject regions)
 		{
 			HOperatorSet.MomentsRegion2ndInvar(regions, out HTuple m11, out HTuple m20, out HTuple m02);
 			return (m11,m20,m02);
 		}
-		public static (HTuple m11, HTuple m20, HTuple m02, HTuple ia, HTuple ib) MomentsRegion2nd (HObject regions)
+		public static (HTuple M11, HTuple M20, HTuple M02, HTuple Ia, HTuple Ib) MomentsRegion2nd (HObject regions)
 		{
 			HOperatorSet.MomentsRegion2nd(regions, out HTuple m11, out HTuple m20, out HTuple m02, out HTuple ia, out HTuple ib);
 			return (m11,m20,m02,ia,ib);
 		}
-		public static (HTuple minDistance, HTuple row1, HTuple column1, HTuple row2, HTuple column2) DistanceRrMin (HObject regions1, HObject regions2)
+		public static (HTuple MinDistance, HTuple Row1, HTuple Column1, HTuple Row2, HTuple Column2) DistanceRrMin (HObject regions1, HObject regions2)
 		{
 			HOperatorSet.DistanceRrMin(regions1, regions2, out HTuple minDistance, out HTuple row1, out HTuple column1, out HTuple row2, out HTuple column2);
 			return (minDistance,row1,column1,row2,column2);
@@ -2033,7 +2033,7 @@ namespace HalconWrapper
 			HOperatorSet.DistanceRrMinDil(regions1, regions2, out HTuple minDistance);
 			return minDistance;
 		}
-		public static (HTuple row1, HTuple column1, HTuple row2, HTuple column2, HTuple diameter) DiameterRegion (HObject regions)
+		public static (HTuple Row1, HTuple Column1, HTuple Row2, HTuple Column2, HTuple Diameter) DiameterRegion (HObject regions)
 		{
 			HOperatorSet.DiameterRegion(regions, out HTuple row1, out HTuple column1, out HTuple row2, out HTuple column2, out HTuple diameter);
 			return (row1,column1,row2,column2,diameter);
@@ -2058,17 +2058,17 @@ namespace HalconWrapper
 			HOperatorSet.SelectShapeStd(regions, out HObject selectedRegions, shape, percent);
 			return selectedRegions;
 		}
-		public static (HTuple distance, HTuple similarity) HammingDistanceNorm (HObject regions1, HObject regions2, HTuple norm)
+		public static (HTuple Distance, HTuple Similarity) HammingDistanceNorm (HObject regions1, HObject regions2, HTuple norm)
 		{
 			HOperatorSet.HammingDistanceNorm(regions1, regions2, norm, out HTuple distance, out HTuple similarity);
 			return (distance,similarity);
 		}
-		public static (HTuple distance, HTuple similarity) HammingDistance (HObject regions1, HObject regions2)
+		public static (HTuple Distance, HTuple Similarity) HammingDistance (HObject regions1, HObject regions2)
 		{
 			HOperatorSet.HammingDistance(regions1, regions2, out HTuple distance, out HTuple similarity);
 			return (distance,similarity);
 		}
-		public static (HTuple anisometry, HTuple bulkiness, HTuple structureFactor) Eccentricity (HObject regions)
+		public static (HTuple Anisometry, HTuple Bulkiness, HTuple StructureFactor) Eccentricity (HObject regions)
 		{
 			HOperatorSet.Eccentricity(regions, out HTuple anisometry, out HTuple bulkiness, out HTuple structureFactor);
 			return (anisometry,bulkiness,structureFactor);
@@ -2083,17 +2083,17 @@ namespace HalconWrapper
 			HOperatorSet.OrientationRegion(regions, out HTuple phi);
 			return phi;
 		}
-		public static (HTuple ra, HTuple rb, HTuple phi) EllipticAxis (HObject regions)
+		public static (HTuple Ra, HTuple Rb, HTuple Phi) EllipticAxis (HObject regions)
 		{
 			HOperatorSet.EllipticAxis(regions, out HTuple ra, out HTuple rb, out HTuple phi);
 			return (ra,rb,phi);
 		}
-		public static (HTuple regionIndex1, HTuple regionIndex2) SelectRegionSpatial (HObject regions1, HObject regions2, HTuple direction)
+		public static (HTuple RegionIndex1, HTuple RegionIndex2) SelectRegionSpatial (HObject regions1, HObject regions2, HTuple direction)
 		{
 			HOperatorSet.SelectRegionSpatial(regions1, regions2, direction, out HTuple regionIndex1, out HTuple regionIndex2);
 			return (regionIndex1,regionIndex2);
 		}
-		public static (HTuple regionIndex1, HTuple regionIndex2, HTuple relation1, HTuple relation2) SpatialRelation (HObject regions1, HObject regions2, HTuple percent)
+		public static (HTuple RegionIndex1, HTuple RegionIndex2, HTuple Relation1, HTuple Relation2) SpatialRelation (HObject regions1, HObject regions2, HTuple percent)
 		{
 			HOperatorSet.SpatialRelation(regions1, regions2, percent, out HTuple regionIndex1, out HTuple regionIndex2, out HTuple relation1, out HTuple relation2);
 			return (regionIndex1,regionIndex2,relation1,relation2);
@@ -2108,7 +2108,7 @@ namespace HalconWrapper
 			HOperatorSet.Contlength(regions, out HTuple contLength);
 			return contLength;
 		}
-		public static (HTuple numConnected, HTuple numHoles) ConnectAndHoles (HObject regions)
+		public static (HTuple NumConnected, HTuple NumHoles) ConnectAndHoles (HObject regions)
 		{
 			HOperatorSet.ConnectAndHoles(regions, out HTuple numConnected, out HTuple numHoles);
 			return (numConnected,numHoles);
@@ -2133,47 +2133,47 @@ namespace HalconWrapper
 			HOperatorSet.AreaHoles(regions, out HTuple area);
 			return area;
 		}
-		public static (HTuple area, HTuple row, HTuple column) AreaCenter (HObject regions)
+		public static (HTuple Area, HTuple Row, HTuple Column) AreaCenter (HObject regions)
 		{
 			HOperatorSet.AreaCenter(regions, out HTuple area, out HTuple row, out HTuple column);
 			return (area,row,column);
 		}
-		public static (HTuple foreground, HTuple background) RunlengthDistribution (HObject region)
+		public static (HTuple Foreground, HTuple Background) RunlengthDistribution (HObject region)
 		{
 			HOperatorSet.RunlengthDistribution(region, out HTuple foreground, out HTuple background);
 			return (foreground,background);
 		}
-		public static (HTuple distance, HTuple sigma, HTuple roundness, HTuple sides) Roundness (HObject regions)
+		public static (HTuple Distance, HTuple Sigma, HTuple Roundness, HTuple Sides) Roundness (HObject regions)
 		{
 			HOperatorSet.Roundness(regions, out HTuple distance, out HTuple sigma, out HTuple roundness, out HTuple sides);
 			return (distance,sigma,roundness,sides);
 		}
-		public static (HTuple row1, HTuple column1, HTuple row2, HTuple column2) InnerRectangle1 (HObject regions)
+		public static (HTuple Row1, HTuple Column1, HTuple Row2, HTuple Column2) InnerRectangle1 (HObject regions)
 		{
 			HOperatorSet.InnerRectangle1(regions, out HTuple row1, out HTuple column1, out HTuple row2, out HTuple column2);
 			return (row1,column1,row2,column2);
 		}
-		public static (HTuple row, HTuple column, HTuple radius) InnerCircle (HObject regions)
+		public static (HTuple Row, HTuple Column, HTuple Radius) InnerCircle (HObject regions)
 		{
 			HOperatorSet.InnerCircle(regions, out HTuple row, out HTuple column, out HTuple radius);
 			return (row,column,radius);
 		}
-		public static (HTuple rowBeginOut, HTuple colBeginOut, HTuple rowEndOut, HTuple colEndOut) SelectLinesLongest (HTuple rowBeginIn, HTuple colBeginIn, HTuple rowEndIn, HTuple colEndIn, HTuple num)
+		public static (HTuple RowBeginOut, HTuple ColBeginOut, HTuple RowEndOut, HTuple ColEndOut) SelectLinesLongest (HTuple rowBeginIn, HTuple colBeginIn, HTuple rowEndIn, HTuple colEndIn, HTuple num)
 		{
 			HOperatorSet.SelectLinesLongest(rowBeginIn, colBeginIn, rowEndIn, colEndIn, num, out HTuple rowBeginOut, out HTuple colBeginOut, out HTuple rowEndOut, out HTuple colEndOut);
 			return (rowBeginOut,colBeginOut,rowEndOut,colEndOut);
 		}
-		public static (HTuple rowBeginOut, HTuple colBeginOut, HTuple rowEndOut, HTuple colEndOut, HTuple failRowBOut, HTuple failColBOut, HTuple failRowEOut, HTuple failColEOut) PartitionLines (HTuple rowBeginIn, HTuple colBeginIn, HTuple rowEndIn, HTuple colEndIn, HTuple feature, HTuple operation, HTuple min, HTuple max)
+		public static (HTuple RowBeginOut, HTuple ColBeginOut, HTuple RowEndOut, HTuple ColEndOut, HTuple FailRowBOut, HTuple FailColBOut, HTuple FailRowEOut, HTuple FailColEOut) PartitionLines (HTuple rowBeginIn, HTuple colBeginIn, HTuple rowEndIn, HTuple colEndIn, HTuple feature, HTuple operation, HTuple min, HTuple max)
 		{
 			HOperatorSet.PartitionLines(rowBeginIn, colBeginIn, rowEndIn, colEndIn, feature, operation, min, max, out HTuple rowBeginOut, out HTuple colBeginOut, out HTuple rowEndOut, out HTuple colEndOut, out HTuple failRowBOut, out HTuple failColBOut, out HTuple failRowEOut, out HTuple failColEOut);
 			return (rowBeginOut,colBeginOut,rowEndOut,colEndOut,failRowBOut,failColBOut,failRowEOut,failColEOut);
 		}
-		public static (HTuple rowBeginOut, HTuple colBeginOut, HTuple rowEndOut, HTuple colEndOut) SelectLines (HTuple rowBeginIn, HTuple colBeginIn, HTuple rowEndIn, HTuple colEndIn, HTuple feature, HTuple operation, HTuple min, HTuple max)
+		public static (HTuple RowBeginOut, HTuple ColBeginOut, HTuple RowEndOut, HTuple ColEndOut) SelectLines (HTuple rowBeginIn, HTuple colBeginIn, HTuple rowEndIn, HTuple colEndIn, HTuple feature, HTuple operation, HTuple min, HTuple max)
 		{
 			HOperatorSet.SelectLines(rowBeginIn, colBeginIn, rowEndIn, colEndIn, feature, operation, min, max, out HTuple rowBeginOut, out HTuple colBeginOut, out HTuple rowEndOut, out HTuple colEndOut);
 			return (rowBeginOut,colBeginOut,rowEndOut,colEndOut);
 		}
-		public static (HTuple rowCenter, HTuple colCenter, HTuple length, HTuple phi) LinePosition (HTuple rowBegin, HTuple colBegin, HTuple rowEnd, HTuple colEnd)
+		public static (HTuple RowCenter, HTuple ColCenter, HTuple Length, HTuple Phi) LinePosition (HTuple rowBegin, HTuple colBegin, HTuple rowEnd, HTuple colEnd)
 		{
 			HOperatorSet.LinePosition(rowBegin, colBegin, rowEnd, colEnd, out HTuple rowCenter, out HTuple colCenter, out HTuple length, out HTuple phi);
 			return (rowCenter,colCenter,length,phi);
@@ -2183,22 +2183,22 @@ namespace HalconWrapper
 			HOperatorSet.LineOrientation(rowBegin, colBegin, rowEnd, colEnd, out HTuple phi);
 			return phi;
 		}
-		public static (HTuple arcCenterRow, HTuple arcCenterCol, HTuple arcAngle, HTuple arcBeginRow, HTuple arcBeginCol, HTuple lineBeginRow, HTuple lineBeginCol, HTuple lineEndRow, HTuple lineEndCol, HTuple order) ApproxChainSimple (HTuple row, HTuple column)
+		public static (HTuple ArcCenterRow, HTuple ArcCenterCol, HTuple ArcAngle, HTuple ArcBeginRow, HTuple ArcBeginCol, HTuple LineBeginRow, HTuple LineBeginCol, HTuple LineEndRow, HTuple LineEndCol, HTuple Order) ApproxChainSimple (HTuple row, HTuple column)
 		{
 			HOperatorSet.ApproxChainSimple(row, column, out HTuple arcCenterRow, out HTuple arcCenterCol, out HTuple arcAngle, out HTuple arcBeginRow, out HTuple arcBeginCol, out HTuple lineBeginRow, out HTuple lineBeginCol, out HTuple lineEndRow, out HTuple lineEndCol, out HTuple order);
 			return (arcCenterRow,arcCenterCol,arcAngle,arcBeginRow,arcBeginCol,lineBeginRow,lineBeginCol,lineEndRow,lineEndCol,order);
 		}
-		public static (HTuple arcCenterRow, HTuple arcCenterCol, HTuple arcAngle, HTuple arcBeginRow, HTuple arcBeginCol, HTuple lineBeginRow, HTuple lineBeginCol, HTuple lineEndRow, HTuple lineEndCol, HTuple order) ApproxChain (HTuple row, HTuple column, HTuple minWidthCoord, HTuple maxWidthCoord, HTuple threshStart, HTuple threshEnd, HTuple threshStep, HTuple minWidthSmooth, HTuple maxWidthSmooth, HTuple minWidthCurve, HTuple maxWidthCurve, HTuple weight1, HTuple weight2, HTuple weight3)
+		public static (HTuple ArcCenterRow, HTuple ArcCenterCol, HTuple ArcAngle, HTuple ArcBeginRow, HTuple ArcBeginCol, HTuple LineBeginRow, HTuple LineBeginCol, HTuple LineEndRow, HTuple LineEndCol, HTuple Order) ApproxChain (HTuple row, HTuple column, HTuple minWidthCoord, HTuple maxWidthCoord, HTuple threshStart, HTuple threshEnd, HTuple threshStep, HTuple minWidthSmooth, HTuple maxWidthSmooth, HTuple minWidthCurve, HTuple maxWidthCurve, HTuple weight1, HTuple weight2, HTuple weight3)
 		{
 			HOperatorSet.ApproxChain(row, column, minWidthCoord, maxWidthCoord, threshStart, threshEnd, threshStep, minWidthSmooth, maxWidthSmooth, minWidthCurve, maxWidthCurve, weight1, weight2, weight3, out HTuple arcCenterRow, out HTuple arcCenterCol, out HTuple arcAngle, out HTuple arcBeginRow, out HTuple arcBeginCol, out HTuple lineBeginRow, out HTuple lineBeginCol, out HTuple lineEndRow, out HTuple lineEndCol, out HTuple order);
 			return (arcCenterRow,arcCenterCol,arcAngle,arcBeginRow,arcBeginCol,lineBeginRow,lineBeginCol,lineEndRow,lineEndCol,order);
 		}
-		public static (HTuple alpha, HTuple beta, HTuple gamma) FitSurfaceFirstOrder (HObject regions, HObject image, HTuple algorithm, HTuple iterations, HTuple clippingFactor)
+		public static (HTuple Alpha, HTuple Beta, HTuple Gamma) FitSurfaceFirstOrder (HObject regions, HObject image, HTuple algorithm, HTuple iterations, HTuple clippingFactor)
 		{
 			HOperatorSet.FitSurfaceFirstOrder(regions, image, algorithm, iterations, clippingFactor, out HTuple alpha, out HTuple beta, out HTuple gamma);
 			return (alpha,beta,gamma);
 		}
-		public static (HTuple alpha, HTuple beta, HTuple gamma, HTuple delta, HTuple epsilon, HTuple zeta) FitSurfaceSecondOrder (HObject regions, HObject image, HTuple algorithm, HTuple iterations, HTuple clippingFactor)
+		public static (HTuple Alpha, HTuple Beta, HTuple Gamma, HTuple Delta, HTuple Epsilon, HTuple Zeta) FitSurfaceSecondOrder (HObject regions, HObject image, HTuple algorithm, HTuple iterations, HTuple clippingFactor)
 		{
 			HOperatorSet.FitSurfaceSecondOrder(regions, image, algorithm, iterations, clippingFactor, out HTuple alpha, out HTuple beta, out HTuple gamma, out HTuple delta, out HTuple epsilon, out HTuple zeta);
 			return (alpha,beta,gamma,delta,epsilon,zeta);
@@ -2213,12 +2213,12 @@ namespace HalconWrapper
 			HOperatorSet.GenImageSurfaceFirstOrder(out HObject imageSurface, type, alpha, beta, gamma, row, column, width, height);
 			return imageSurface;
 		}
-		public static (HTuple absoluteHisto, HTuple relativeHisto) ShapeHistoPoint (HObject region, HObject image, HTuple feature, HTuple row, HTuple column)
+		public static (HTuple AbsoluteHisto, HTuple RelativeHisto) ShapeHistoPoint (HObject region, HObject image, HTuple feature, HTuple row, HTuple column)
 		{
 			HOperatorSet.ShapeHistoPoint(region, image, feature, row, column, out HTuple absoluteHisto, out HTuple relativeHisto);
 			return (absoluteHisto,relativeHisto);
 		}
-		public static (HTuple absoluteHisto, HTuple relativeHisto) ShapeHistoAll (HObject region, HObject image, HTuple feature)
+		public static (HTuple AbsoluteHisto, HTuple RelativeHisto) ShapeHistoAll (HObject region, HObject image, HTuple feature)
 		{
 			HOperatorSet.ShapeHistoAll(region, image, feature, out HTuple absoluteHisto, out HTuple relativeHisto);
 			return (absoluteHisto,relativeHisto);
@@ -2233,17 +2233,17 @@ namespace HalconWrapper
 			HOperatorSet.SelectGray(regions, image, out HObject selectedRegions, features, operation, min, max);
 			return selectedRegions;
 		}
-		public static (HTuple min, HTuple max, HTuple range) MinMaxGray (HObject regions, HObject image, HTuple percent)
+		public static (HTuple Min, HTuple Max, HTuple Range) MinMaxGray (HObject regions, HObject image, HTuple percent)
 		{
 			HOperatorSet.MinMaxGray(regions, image, percent, out HTuple min, out HTuple max, out HTuple range);
 			return (min,max,range);
 		}
-		public static (HTuple mean, HTuple deviation) Intensity (HObject regions, HObject image)
+		public static (HTuple Mean, HTuple Deviation) Intensity (HObject regions, HObject image)
 		{
 			HOperatorSet.Intensity(regions, image, out HTuple mean, out HTuple deviation);
 			return (mean,deviation);
 		}
-		public static (HTuple histo, HTuple binSize) GrayHistoRange (HObject regions, HObject image, HTuple min, HTuple max, HTuple numBins)
+		public static (HTuple Histo, HTuple BinSize) GrayHistoRange (HObject regions, HObject image, HTuple min, HTuple max, HTuple numBins)
 		{
 			HOperatorSet.GrayHistoRange(regions, image, min, max, numBins, out HTuple histo, out HTuple binSize);
 			return (histo,binSize);
@@ -2258,22 +2258,22 @@ namespace HalconWrapper
 			HOperatorSet.GrayHistoAbs(regions, image, quantization, out HTuple absoluteHisto);
 			return absoluteHisto;
 		}
-		public static (HTuple absoluteHisto, HTuple relativeHisto) GrayHisto (HObject regions, HObject image)
+		public static (HTuple AbsoluteHisto, HTuple RelativeHisto) GrayHisto (HObject regions, HObject image)
 		{
 			HOperatorSet.GrayHisto(regions, image, out HTuple absoluteHisto, out HTuple relativeHisto);
 			return (absoluteHisto,relativeHisto);
 		}
-		public static (HTuple entropy, HTuple anisotropy) EntropyGray (HObject regions, HObject image)
+		public static (HTuple Entropy, HTuple Anisotropy) EntropyGray (HObject regions, HObject image)
 		{
 			HOperatorSet.EntropyGray(regions, image, out HTuple entropy, out HTuple anisotropy);
 			return (entropy,anisotropy);
 		}
-		public static (HTuple energy, HTuple correlation, HTuple homogeneity, HTuple contrast) CoocFeatureMatrix (HObject coocMatrix)
+		public static (HTuple Energy, HTuple Correlation, HTuple Homogeneity, HTuple Contrast) CoocFeatureMatrix (HObject coocMatrix)
 		{
 			HOperatorSet.CoocFeatureMatrix(coocMatrix, out HTuple energy, out HTuple correlation, out HTuple homogeneity, out HTuple contrast);
 			return (energy,correlation,homogeneity,contrast);
 		}
-		public static (HTuple energy, HTuple correlation, HTuple homogeneity, HTuple contrast) CoocFeatureImage (HObject regions, HObject image, HTuple ldGray, HTuple direction)
+		public static (HTuple Energy, HTuple Correlation, HTuple Homogeneity, HTuple Contrast) CoocFeatureImage (HObject regions, HObject image, HTuple ldGray, HTuple direction)
 		{
 			HOperatorSet.CoocFeatureImage(regions, image, ldGray, direction, out HTuple energy, out HTuple correlation, out HTuple homogeneity, out HTuple contrast);
 			return (energy,correlation,homogeneity,contrast);
@@ -2283,7 +2283,7 @@ namespace HalconWrapper
 			HOperatorSet.GenCoocMatrix(regions, image, out HObject matrix, ldGray, direction);
 			return matrix;
 		}
-		public static (HTuple MRow, HTuple MCol, HTuple alpha, HTuple beta, HTuple mean) MomentsGrayPlane (HObject regions, HObject image)
+		public static (HTuple MRow, HTuple MCol, HTuple Alpha, HTuple Beta, HTuple Mean) MomentsGrayPlane (HObject regions, HObject image)
 		{
 			HOperatorSet.MomentsGrayPlane(regions, image, out HTuple MRow, out HTuple MCol, out HTuple alpha, out HTuple beta, out HTuple mean);
 			return (MRow,MCol,alpha,beta,mean);
@@ -2293,17 +2293,17 @@ namespace HalconWrapper
 			HOperatorSet.PlaneDeviation(regions, image, out HTuple deviation);
 			return deviation;
 		}
-		public static (HTuple ra, HTuple rb, HTuple phi) EllipticAxisGray (HObject regions, HObject image)
+		public static (HTuple Ra, HTuple Rb, HTuple Phi) EllipticAxisGray (HObject regions, HObject image)
 		{
 			HOperatorSet.EllipticAxisGray(regions, image, out HTuple ra, out HTuple rb, out HTuple phi);
 			return (ra,rb,phi);
 		}
-		public static (HTuple area, HTuple row, HTuple column) AreaCenterGray (HObject regions, HObject image)
+		public static (HTuple Area, HTuple Row, HTuple Column) AreaCenterGray (HObject regions, HObject image)
 		{
 			HOperatorSet.AreaCenterGray(regions, image, out HTuple area, out HTuple row, out HTuple column);
 			return (area,row,column);
 		}
-		public static (HTuple horProjection, HTuple vertProjection) GrayProjections (HObject region, HObject image, HTuple mode)
+		public static (HTuple HorProjection, HTuple VertProjection) GrayProjections (HObject region, HObject image, HTuple mode)
 		{
 			HOperatorSet.GrayProjections(region, image, mode, out HTuple horProjection, out HTuple vertProjection);
 			return (horProjection,vertProjection);
@@ -2318,7 +2318,7 @@ namespace HalconWrapper
 			HOperatorSet.GetDataCode2dResults(dataCodeHandle, candidateHandle, resultNames, out HTuple resultValues);
 			return resultValues;
 		}
-		public static (HObject symbolXLDs, HTuple resultHandles, HTuple decodedDataStrings) FindDataCode2d (HObject image, HTuple dataCodeHandle, HTuple genParamName, HTuple genParamValue)
+		public static (HObject SymbolXLDs, HTuple ResultHandles, HTuple DecodedDataStrings) FindDataCode2d (HObject image, HTuple dataCodeHandle, HTuple genParamName, HTuple genParamValue)
 		{
 			HOperatorSet.FindDataCode2d(image, out HObject symbolXLDs, dataCodeHandle, genParamName, genParamValue, out HTuple resultHandles, out HTuple decodedDataStrings);
 			return (symbolXLDs,resultHandles,decodedDataStrings);
@@ -2505,7 +2505,7 @@ namespace HalconWrapper
 			HOperatorSet.ScaleImageMax(image, out HObject imageScaleMax);
 			return imageScaleMax;
 		}
-		public static (HObject imageEdgeAmp, HObject imageEdgeDir) RobinsonDir (HObject image)
+		public static (HObject ImageEdgeAmp, HObject ImageEdgeDir) RobinsonDir (HObject image)
 		{
 			HOperatorSet.RobinsonDir(image, out HObject imageEdgeAmp, out HObject imageEdgeDir);
 			return (imageEdgeAmp,imageEdgeDir);
@@ -2515,7 +2515,7 @@ namespace HalconWrapper
 			HOperatorSet.RobinsonAmp(image, out HObject imageEdgeAmp);
 			return imageEdgeAmp;
 		}
-		public static (HObject imageEdgeAmp, HObject imageEdgeDir) KirschDir (HObject image)
+		public static (HObject ImageEdgeAmp, HObject ImageEdgeDir) KirschDir (HObject image)
 		{
 			HOperatorSet.KirschDir(image, out HObject imageEdgeAmp, out HObject imageEdgeDir);
 			return (imageEdgeAmp,imageEdgeDir);
@@ -2525,7 +2525,7 @@ namespace HalconWrapper
 			HOperatorSet.KirschAmp(image, out HObject imageEdgeAmp);
 			return imageEdgeAmp;
 		}
-		public static (HObject imageEdgeAmp, HObject imageEdgeDir) FreiDir (HObject image)
+		public static (HObject ImageEdgeAmp, HObject ImageEdgeDir) FreiDir (HObject image)
 		{
 			HOperatorSet.FreiDir(image, out HObject imageEdgeAmp, out HObject imageEdgeDir);
 			return (imageEdgeAmp,imageEdgeDir);
@@ -2535,7 +2535,7 @@ namespace HalconWrapper
 			HOperatorSet.FreiAmp(image, out HObject imageEdgeAmp);
 			return imageEdgeAmp;
 		}
-		public static (HObject imageEdgeAmp, HObject imageEdgeDir) PrewittDir (HObject image)
+		public static (HObject ImageEdgeAmp, HObject ImageEdgeDir) PrewittDir (HObject image)
 		{
 			HOperatorSet.PrewittDir(image, out HObject imageEdgeAmp, out HObject imageEdgeDir);
 			return (imageEdgeAmp,imageEdgeDir);
@@ -2550,7 +2550,7 @@ namespace HalconWrapper
 			HOperatorSet.SobelAmp(image, out HObject edgeAmplitude, filterType, size);
 			return edgeAmplitude;
 		}
-		public static (HObject edgeAmplitude, HObject edgeDirection) SobelDir (HObject image, HTuple filterType, HTuple size)
+		public static (HObject EdgeAmplitude, HObject EdgeDirection) SobelDir (HObject image, HTuple filterType, HTuple size)
 		{
 			HOperatorSet.SobelDir(image, out HObject edgeAmplitude, out HObject edgeDirection, filterType, size);
 			return (edgeAmplitude,edgeDirection);
@@ -2570,7 +2570,7 @@ namespace HalconWrapper
 			HOperatorSet.HighpassImage(image, out HObject highpass, width, height);
 			return highpass;
 		}
-		public static (HTuple size, HTuple coeffs) InfoEdges (HTuple filter, HTuple mode, HTuple alpha)
+		public static (HTuple Size, HTuple Coeffs) InfoEdges (HTuple filter, HTuple mode, HTuple alpha)
 		{
 			HOperatorSet.InfoEdges(filter, mode, alpha, out HTuple size, out HTuple coeffs);
 			return (size,coeffs);
@@ -2580,7 +2580,7 @@ namespace HalconWrapper
 			HOperatorSet.EdgesColorSubPix(image, out HObject edges, filter, alpha, low, high);
 			return edges;
 		}
-		public static (HObject imaAmp, HObject imaDir) EdgesColor (HObject image, HTuple filter, HTuple alpha, HTuple NMS, HTuple low, HTuple high)
+		public static (HObject ImaAmp, HObject ImaDir) EdgesColor (HObject image, HTuple filter, HTuple alpha, HTuple NMS, HTuple low, HTuple high)
 		{
 			HOperatorSet.EdgesColor(image, out HObject imaAmp, out HObject imaDir, filter, alpha, NMS, low, high);
 			return (imaAmp,imaDir);
@@ -2590,7 +2590,7 @@ namespace HalconWrapper
 			HOperatorSet.EdgesSubPix(image, out HObject edges, filter, alpha, low, high);
 			return edges;
 		}
-		public static (HObject imaAmp, HObject imaDir) EdgesImage (HObject image, HTuple filter, HTuple alpha, HTuple NMS, HTuple low, HTuple high)
+		public static (HObject ImaAmp, HObject ImaDir) EdgesImage (HObject image, HTuple filter, HTuple alpha, HTuple NMS, HTuple low, HTuple high)
 		{
 			HOperatorSet.EdgesImage(image, out HObject imaAmp, out HObject imaDir, filter, alpha, NMS, low, high);
 			return (imaAmp,imaDir);
@@ -2620,7 +2620,7 @@ namespace HalconWrapper
 			HOperatorSet.CloseEdges(edges, edgeImage, out HObject regionResult, minAmplitude);
 			return regionResult;
 		}
-		public static (HTuple beginRow, HTuple beginCol, HTuple endRow, HTuple endCol) DetectEdgeSegments (HObject image, HTuple sobelSize, HTuple minAmplitude, HTuple maxDistance, HTuple minLength)
+		public static (HTuple BeginRow, HTuple BeginCol, HTuple EndRow, HTuple EndCol) DetectEdgeSegments (HObject image, HTuple sobelSize, HTuple minAmplitude, HTuple maxDistance, HTuple minLength)
 		{
 			HOperatorSet.DetectEdgeSegments(image, sobelSize, minAmplitude, maxDistance, minLength, out HTuple beginRow, out HTuple beginCol, out HTuple endRow, out HTuple endCol);
 			return (beginRow,beginCol,endRow,endCol);
@@ -2633,7 +2633,7 @@ namespace HalconWrapper
 		{
 			HOperatorSet.ClearColorTransLut(colorTransLUTHandle);
 		}
-		public static (HObject imageResult1, HObject imageResult2, HObject imageResult3) ApplyColorTransLut (HObject image1, HObject image2, HObject image3, HTuple colorTransLUTHandle)
+		public static (HObject ImageResult1, HObject ImageResult2, HObject ImageResult3) ApplyColorTransLut (HObject image1, HObject image2, HObject image3, HTuple colorTransLUTHandle)
 		{
 			HOperatorSet.ApplyColorTransLut(image1, image2, image3, out HObject imageResult1, out HObject imageResult2, out HObject imageResult3, colorTransLUTHandle);
 			return (imageResult1,imageResult2,imageResult3);
@@ -2658,12 +2658,12 @@ namespace HalconWrapper
 			HOperatorSet.Rgb3ToGray(imageRed, imageGreen, imageBlue, out HObject imageGray);
 			return imageGray;
 		}
-		public static (HObject imageResult1, HObject imageResult2, HObject imageResult3) TransFromRgb (HObject imageRed, HObject imageGreen, HObject imageBlue, HTuple colorSpace)
+		public static (HObject ImageResult1, HObject ImageResult2, HObject ImageResult3) TransFromRgb (HObject imageRed, HObject imageGreen, HObject imageBlue, HTuple colorSpace)
 		{
 			HOperatorSet.TransFromRgb(imageRed, imageGreen, imageBlue, out HObject imageResult1, out HObject imageResult2, out HObject imageResult3, colorSpace);
 			return (imageResult1,imageResult2,imageResult3);
 		}
-		public static (HObject imageRed, HObject imageGreen, HObject imageBlue) TransToRgb (HObject imageInput1, HObject imageInput2, HObject imageInput3, HTuple colorSpace)
+		public static (HObject ImageRed, HObject ImageGreen, HObject ImageBlue) TransToRgb (HObject imageInput1, HObject imageInput2, HObject imageInput3, HTuple colorSpace)
 		{
 			HOperatorSet.TransToRgb(imageInput1, imageInput2, imageInput3, out HObject imageRed, out HObject imageGreen, out HObject imageBlue, colorSpace);
 			return (imageRed,imageGreen,imageBlue);
@@ -2823,7 +2823,7 @@ namespace HalconWrapper
 			HOperatorSet.AdjustMosaicImages(images, out HObject correctedImages, from, to, referenceImage, homMatrices2D, estimationMethod, estimateParameters, OECFModel);
 			return correctedImages;
 		}
-		public static (HObject front, HObject rear, HObject left, HObject right, HObject top, HObject bottom) GenCubeMapMosaic (HObject images, HTuple cameraMatrices, HTuple rotationMatrices, HTuple cubeMapDimension, HTuple stackingOrder, HTuple interpolation)
+		public static (HObject Front, HObject Rear, HObject Left, HObject Right, HObject Top, HObject Bottom) GenCubeMapMosaic (HObject images, HTuple cameraMatrices, HTuple rotationMatrices, HTuple cubeMapDimension, HTuple stackingOrder, HTuple interpolation)
 		{
 			HOperatorSet.GenCubeMapMosaic(images, out HObject front, out HObject rear, out HObject left, out HObject right, out HObject top, out HObject bottom, cameraMatrices, rotationMatrices, cubeMapDimension, stackingOrder, interpolation);
 			return (front,rear,left,right,top,bottom);
@@ -2833,12 +2833,12 @@ namespace HalconWrapper
 			HOperatorSet.GenSphericalMosaic(images, out HObject mosaicImage, cameraMatrices, rotationMatrices, latMin, latMax, longMin, longMax, latLongStep, stackingOrder, interpolation);
 			return mosaicImage;
 		}
-		public static (HObject mosaicImage, HTuple transMat2D) GenBundleAdjustedMosaic (HObject images, HTuple homMatrices2D, HTuple stackingOrder, HTuple transformDomain)
+		public static (HObject MosaicImage, HTuple TransMat2D) GenBundleAdjustedMosaic (HObject images, HTuple homMatrices2D, HTuple stackingOrder, HTuple transformDomain)
 		{
 			HOperatorSet.GenBundleAdjustedMosaic(images, out HObject mosaicImage, homMatrices2D, stackingOrder, transformDomain, out HTuple transMat2D);
 			return (mosaicImage,transMat2D);
 		}
-		public static (HObject mosaicImage, HTuple mosaicMatrices2D) GenProjectiveMosaic (HObject images, HTuple startImage, HTuple mappingSource, HTuple mappingDest, HTuple homMatrices2D, HTuple stackingOrder, HTuple transformDomain)
+		public static (HObject MosaicImage, HTuple MosaicMatrices2D) GenProjectiveMosaic (HObject images, HTuple startImage, HTuple mappingSource, HTuple mappingDest, HTuple homMatrices2D, HTuple stackingOrder, HTuple transformDomain)
 		{
 			HOperatorSet.GenProjectiveMosaic(images, out HObject mosaicImage, startImage, mappingSource, mappingDest, homMatrices2D, stackingOrder, transformDomain, out HTuple mosaicMatrices2D);
 			return (mosaicImage,mosaicMatrices2D);
@@ -2913,7 +2913,7 @@ namespace HalconWrapper
 			HOperatorSet.SerializeXld(XLD, out HTuple serializedItemHandle);
 			return serializedItemHandle;
 		}
-		public static (HObject polygons, HTuple dxfStatus) ReadPolygonXldDxf (HTuple fileName, HTuple genParamName, HTuple genParamValue)
+		public static (HObject Polygons, HTuple DxfStatus) ReadPolygonXldDxf (HTuple fileName, HTuple genParamName, HTuple genParamValue)
 		{
 			HOperatorSet.ReadPolygonXldDxf(out HObject polygons, fileName, genParamName, genParamValue, out HTuple dxfStatus);
 			return (polygons,dxfStatus);
@@ -2922,7 +2922,7 @@ namespace HalconWrapper
 		{
 			HOperatorSet.WritePolygonXldDxf(polygons, fileName);
 		}
-		public static (HObject contours, HTuple dxfStatus) ReadContourXldDxf (HTuple fileName, HTuple genParamName, HTuple genParamValue)
+		public static (HObject Contours, HTuple DxfStatus) ReadContourXldDxf (HTuple fileName, HTuple genParamName, HTuple genParamValue)
 		{
 			HOperatorSet.ReadContourXldDxf(out HObject contours, fileName, genParamName, genParamValue, out HTuple dxfStatus);
 			return (contours,dxfStatus);
@@ -3037,12 +3037,12 @@ namespace HalconWrapper
 		{
 			HOperatorSet.FwriteString(fileHandle, stringVal);
 		}
-		public static (HTuple outLine, HTuple isEOF) FreadLine (HTuple fileHandle)
+		public static (HTuple OutLine, HTuple IsEOF) FreadLine (HTuple fileHandle)
 		{
 			HOperatorSet.FreadLine(fileHandle, out HTuple outLine, out HTuple isEOF);
 			return (outLine,isEOF);
 		}
-		public static (HTuple outString, HTuple isEOF) FreadString (HTuple fileHandle)
+		public static (HTuple OutString, HTuple IsEOF) FreadString (HTuple fileHandle)
 		{
 			HOperatorSet.FreadString(fileHandle, out HTuple outString, out HTuple isEOF);
 			return (outString,isEOF);
@@ -3107,7 +3107,7 @@ namespace HalconWrapper
 			HOperatorSet.MeanImage(image, out HObject imageMean, maskWidth, maskHeight);
 			return imageMean;
 		}
-		public static (HTuple size, HTuple coeffs) InfoSmooth (HTuple filter, HTuple alpha)
+		public static (HTuple Size, HTuple Coeffs) InfoSmooth (HTuple filter, HTuple alpha)
 		{
 			HOperatorSet.InfoSmooth(filter, alpha, out HTuple size, out HTuple coeffs);
 			return (size,coeffs);
@@ -3157,7 +3157,7 @@ namespace HalconWrapper
 			HOperatorSet.MeanSp(image, out HObject imageSPMean, maskWidth, maskHeight, minThresh, maxThresh);
 			return imageSPMean;
 		}
-		public static (HTuple row, HTuple column) PointsSojka (HObject image, HTuple maskSize, HTuple sigmaW, HTuple sigmaD, HTuple minGrad, HTuple minApparentness, HTuple minAngle, HTuple subpix)
+		public static (HTuple Row, HTuple Column) PointsSojka (HObject image, HTuple maskSize, HTuple sigmaW, HTuple sigmaD, HTuple minGrad, HTuple minApparentness, HTuple minAngle, HTuple subpix)
 		{
 			HOperatorSet.PointsSojka(image, maskSize, sigmaW, sigmaD, minGrad, minApparentness, minAngle, subpix, out HTuple row, out HTuple column);
 			return (row,column);
@@ -3167,42 +3167,42 @@ namespace HalconWrapper
 			HOperatorSet.DotsImage(image, out HObject dotImage, diameter, filterType, pixelShift);
 			return dotImage;
 		}
-		public static (HTuple row, HTuple column) LocalMinSubPix (HObject image, HTuple filter, HTuple sigma, HTuple threshold)
+		public static (HTuple Row, HTuple Column) LocalMinSubPix (HObject image, HTuple filter, HTuple sigma, HTuple threshold)
 		{
 			HOperatorSet.LocalMinSubPix(image, filter, sigma, threshold, out HTuple row, out HTuple column);
 			return (row,column);
 		}
-		public static (HTuple row, HTuple column) LocalMaxSubPix (HObject image, HTuple filter, HTuple sigma, HTuple threshold)
+		public static (HTuple Row, HTuple Column) LocalMaxSubPix (HObject image, HTuple filter, HTuple sigma, HTuple threshold)
 		{
 			HOperatorSet.LocalMaxSubPix(image, filter, sigma, threshold, out HTuple row, out HTuple column);
 			return (row,column);
 		}
-		public static (HTuple row, HTuple column) SaddlePointsSubPix (HObject image, HTuple filter, HTuple sigma, HTuple threshold)
+		public static (HTuple Row, HTuple Column) SaddlePointsSubPix (HObject image, HTuple filter, HTuple sigma, HTuple threshold)
 		{
 			HOperatorSet.SaddlePointsSubPix(image, filter, sigma, threshold, out HTuple row, out HTuple column);
 			return (row,column);
 		}
-		public static (HTuple rowMin, HTuple columnMin, HTuple rowMax, HTuple columnMax, HTuple rowSaddle, HTuple columnSaddle) CriticalPointsSubPix (HObject image, HTuple filter, HTuple sigma, HTuple threshold)
+		public static (HTuple RowMin, HTuple ColumnMin, HTuple RowMax, HTuple ColumnMax, HTuple RowSaddle, HTuple ColumnSaddle) CriticalPointsSubPix (HObject image, HTuple filter, HTuple sigma, HTuple threshold)
 		{
 			HOperatorSet.CriticalPointsSubPix(image, filter, sigma, threshold, out HTuple rowMin, out HTuple columnMin, out HTuple rowMax, out HTuple columnMax, out HTuple rowSaddle, out HTuple columnSaddle);
 			return (rowMin,columnMin,rowMax,columnMax,rowSaddle,columnSaddle);
 		}
-		public static (HTuple row, HTuple column) PointsHarris (HObject image, HTuple sigmaGrad, HTuple sigmaSmooth, HTuple alpha, HTuple threshold)
+		public static (HTuple Row, HTuple Column) PointsHarris (HObject image, HTuple sigmaGrad, HTuple sigmaSmooth, HTuple alpha, HTuple threshold)
 		{
 			HOperatorSet.PointsHarris(image, sigmaGrad, sigmaSmooth, alpha, threshold, out HTuple row, out HTuple column);
 			return (row,column);
 		}
-		public static (HTuple row, HTuple column) PointsHarrisBinomial (HObject image, HTuple maskSizeGrad, HTuple maskSizeSmooth, HTuple alpha, HTuple threshold, HTuple subpix)
+		public static (HTuple Row, HTuple Column) PointsHarrisBinomial (HObject image, HTuple maskSizeGrad, HTuple maskSizeSmooth, HTuple alpha, HTuple threshold, HTuple subpix)
 		{
 			HOperatorSet.PointsHarrisBinomial(image, maskSizeGrad, maskSizeSmooth, alpha, threshold, subpix, out HTuple row, out HTuple column);
 			return (row,column);
 		}
-		public static (HTuple row, HTuple column) PointsLepetit (HObject image, HTuple radius, HTuple checkNeighbor, HTuple minCheckNeighborDiff, HTuple minScore, HTuple subpix)
+		public static (HTuple Row, HTuple Column) PointsLepetit (HObject image, HTuple radius, HTuple checkNeighbor, HTuple minCheckNeighborDiff, HTuple minScore, HTuple subpix)
 		{
 			HOperatorSet.PointsLepetit(image, radius, checkNeighbor, minCheckNeighborDiff, minScore, subpix, out HTuple row, out HTuple column);
 			return (row,column);
 		}
-		public static (HTuple rowJunctions, HTuple columnJunctions, HTuple coRRJunctions, HTuple coRCJunctions, HTuple coCCJunctions, HTuple rowArea, HTuple columnArea, HTuple coRRArea, HTuple coRCArea, HTuple coCCArea) PointsFoerstner (HObject image, HTuple sigmaGrad, HTuple sigmaInt, HTuple sigmaPoints, HTuple threshInhom, HTuple threshShape, HTuple smoothing, HTuple eliminateDoublets)
+		public static (HTuple RowJunctions, HTuple ColumnJunctions, HTuple CoRRJunctions, HTuple CoRCJunctions, HTuple CoCCJunctions, HTuple RowArea, HTuple ColumnArea, HTuple CoRRArea, HTuple CoRCArea, HTuple CoCCArea) PointsFoerstner (HObject image, HTuple sigmaGrad, HTuple sigmaInt, HTuple sigmaPoints, HTuple threshInhom, HTuple threshShape, HTuple smoothing, HTuple eliminateDoublets)
 		{
 			HOperatorSet.PointsFoerstner(image, sigmaGrad, sigmaInt, sigmaPoints, threshInhom, threshShape, smoothing, eliminateDoublets, out HTuple rowJunctions, out HTuple columnJunctions, out HTuple coRRJunctions, out HTuple coRCJunctions, out HTuple coCCJunctions, out HTuple rowArea, out HTuple columnArea, out HTuple coRRArea, out HTuple coRCArea, out HTuple coCCArea);
 			return (rowJunctions,columnJunctions,coRRJunctions,coRCJunctions,coCCJunctions,rowArea,columnArea,coRRArea,coRCArea,coCCArea);
@@ -3287,12 +3287,12 @@ namespace HalconWrapper
 			HOperatorSet.LinearTransColor(image, out HObject imageTrans, transMat);
 			return imageTrans;
 		}
-		public static (HTuple trans, HTuple transInv, HTuple mean, HTuple cov, HTuple infoPerComp) GenPrincipalCompTrans (HObject multichannelImage)
+		public static (HTuple Trans, HTuple TransInv, HTuple Mean, HTuple Cov, HTuple InfoPerComp) GenPrincipalCompTrans (HObject multichannelImage)
 		{
 			HOperatorSet.GenPrincipalCompTrans(multichannelImage, out HTuple trans, out HTuple transInv, out HTuple mean, out HTuple cov, out HTuple infoPerComp);
 			return (trans,transInv,mean,cov,infoPerComp);
 		}
-		public static (HObject PCAImage, HTuple infoPerComp) PrincipalComp (HObject multichannelImage)
+		public static (HObject PCAImage, HTuple InfoPerComp) PrincipalComp (HObject multichannelImage)
 		{
 			HOperatorSet.PrincipalComp(multichannelImage, out HObject PCAImage, out HTuple infoPerComp);
 			return (PCAImage,infoPerComp);
@@ -3377,7 +3377,7 @@ namespace HalconWrapper
 			HOperatorSet.RealToVectorField(row, col, out HObject vectorField, type);
 			return vectorField;
 		}
-		public static (HObject row, HObject col) VectorFieldToReal (HObject vectorField)
+		public static (HObject Row, HObject Col) VectorFieldToReal (HObject vectorField)
 		{
 			HOperatorSet.VectorFieldToReal(vectorField, out HObject row, out HObject col);
 			return (row,col);
@@ -3387,7 +3387,7 @@ namespace HalconWrapper
 			HOperatorSet.RealToComplex(imageReal, imageImaginary, out HObject imageComplex);
 			return imageComplex;
 		}
-		public static (HObject imageReal, HObject imageImaginary) ComplexToReal (HObject imageComplex)
+		public static (HObject ImageReal, HObject ImageImaginary) ComplexToReal (HObject imageComplex)
 		{
 			HOperatorSet.ComplexToReal(imageComplex, out HObject imageReal, out HObject imageImaginary);
 			return (imageReal,imageImaginary);
@@ -3412,7 +3412,7 @@ namespace HalconWrapper
 			HOperatorSet.SelectGrayvaluesFromChannels(multichannelImage, indexImage, out HObject selected);
 			return selected;
 		}
-		public static (HObject depth, HObject confidence) DepthFromFocus (HObject multiFocusImage, HTuple filter, HTuple selection)
+		public static (HObject Depth, HObject Confidence) DepthFromFocus (HObject multiFocusImage, HTuple filter, HTuple selection)
 		{
 			HOperatorSet.DepthFromFocus(multiFocusImage, out HObject depth, out HObject confidence, filter, selection);
 			return (depth,confidence);
@@ -3422,7 +3422,7 @@ namespace HalconWrapper
 			HOperatorSet.SceneFlowCalib(imageRect1T1, imageRect2T1, imageRect1T2, imageRect2T2, disparity, smoothingFlow, smoothingDisparity, genParamName, genParamValue, camParamRect1, camParamRect2, relPoseRect, out HTuple objectModel3D);
 			return objectModel3D;
 		}
-		public static (HObject opticalFlow, HObject disparityChange) SceneFlowUncalib (HObject imageRect1T1, HObject imageRect2T1, HObject imageRect1T2, HObject imageRect2T2, HObject disparity, HTuple smoothingFlow, HTuple smoothingDisparity, HTuple genParamName, HTuple genParamValue)
+		public static (HObject OpticalFlow, HObject DisparityChange) SceneFlowUncalib (HObject imageRect1T1, HObject imageRect2T1, HObject imageRect1T2, HObject imageRect2T2, HObject disparity, HTuple smoothingFlow, HTuple smoothingDisparity, HTuple genParamName, HTuple genParamValue)
 		{
 			HOperatorSet.SceneFlowUncalib(imageRect1T1, imageRect2T1, imageRect1T2, imageRect2T2, disparity, out HObject opticalFlow, out HObject disparityChange, smoothingFlow, smoothingDisparity, genParamName, genParamValue);
 			return (opticalFlow,disparityChange);
@@ -3506,12 +3506,12 @@ namespace HalconWrapper
 			HOperatorSet.FastMatchMg(image, out HObject matches, templateID, maxError, numLevel);
 			return matches;
 		}
-		public static (HTuple row, HTuple column, HTuple error) BestMatchPreMg (HObject imagePyramid, HTuple templateID, HTuple maxError, HTuple subPixel, HTuple numLevels, HTuple whichLevels)
+		public static (HTuple Row, HTuple Column, HTuple Error) BestMatchPreMg (HObject imagePyramid, HTuple templateID, HTuple maxError, HTuple subPixel, HTuple numLevels, HTuple whichLevels)
 		{
 			HOperatorSet.BestMatchPreMg(imagePyramid, templateID, maxError, subPixel, numLevels, whichLevels, out HTuple row, out HTuple column, out HTuple error);
 			return (row,column,error);
 		}
-		public static (HTuple row, HTuple column, HTuple error) BestMatchMg (HObject image, HTuple templateID, HTuple maxError, HTuple subPixel, HTuple numLevels, HTuple whichLevels)
+		public static (HTuple Row, HTuple Column, HTuple Error) BestMatchMg (HObject image, HTuple templateID, HTuple maxError, HTuple subPixel, HTuple numLevels, HTuple whichLevels)
 		{
 			HOperatorSet.BestMatchMg(image, templateID, maxError, subPixel, numLevels, whichLevels, out HTuple row, out HTuple column, out HTuple error);
 			return (row,column,error);
@@ -3521,17 +3521,17 @@ namespace HalconWrapper
 			HOperatorSet.FastMatch(image, out HObject matches, templateID, maxError);
 			return matches;
 		}
-		public static (HTuple row, HTuple column, HTuple angle, HTuple error) BestMatchRotMg (HObject image, HTuple templateID, HTuple angleStart, HTuple angleExtend, HTuple maxError, HTuple subPixel, HTuple numLevels)
+		public static (HTuple Row, HTuple Column, HTuple Angle, HTuple Error) BestMatchRotMg (HObject image, HTuple templateID, HTuple angleStart, HTuple angleExtend, HTuple maxError, HTuple subPixel, HTuple numLevels)
 		{
 			HOperatorSet.BestMatchRotMg(image, templateID, angleStart, angleExtend, maxError, subPixel, numLevels, out HTuple row, out HTuple column, out HTuple angle, out HTuple error);
 			return (row,column,angle,error);
 		}
-		public static (HTuple row, HTuple column, HTuple angle, HTuple error) BestMatchRot (HObject image, HTuple templateID, HTuple angleStart, HTuple angleExtend, HTuple maxError, HTuple subPixel)
+		public static (HTuple Row, HTuple Column, HTuple Angle, HTuple Error) BestMatchRot (HObject image, HTuple templateID, HTuple angleStart, HTuple angleExtend, HTuple maxError, HTuple subPixel)
 		{
 			HOperatorSet.BestMatchRot(image, templateID, angleStart, angleExtend, maxError, subPixel, out HTuple row, out HTuple column, out HTuple angle, out HTuple error);
 			return (row,column,angle,error);
 		}
-		public static (HTuple row, HTuple column, HTuple error) BestMatch (HObject image, HTuple templateID, HTuple maxError, HTuple subPixel)
+		public static (HTuple Row, HTuple Column, HTuple Error) BestMatch (HObject image, HTuple templateID, HTuple maxError, HTuple subPixel)
 		{
 			HOperatorSet.BestMatch(image, templateID, maxError, subPixel, out HTuple row, out HTuple column, out HTuple error);
 			return (row,column,error);
@@ -3656,7 +3656,7 @@ namespace HalconWrapper
 			HOperatorSet.EnergyGabor(imageGabor, imageHilbert, out HObject energy);
 			return energy;
 		}
-		public static (HObject imageResultGabor, HObject imageResultHilbert) ConvolGabor (HObject imageFFT, HObject gaborFilter)
+		public static (HObject ImageResultGabor, HObject ImageResultHilbert) ConvolGabor (HObject imageFFT, HObject gaborFilter)
 		{
 			HOperatorSet.ConvolGabor(imageFFT, gaborFilter, out HObject imageResultGabor, out HObject imageResultHilbert);
 			return (imageResultGabor,imageResultHilbert);
@@ -3685,22 +3685,22 @@ namespace HalconWrapper
 		{
 			HOperatorSet.DeserializeFftOptimizationData(serializedItemHandle);
 		}
-		public static (HTuple row, HTuple column, HTuple button) GetMpositionSubPix (HTuple windowHandle)
+		public static (HTuple Row, HTuple Column, HTuple Button) GetMpositionSubPix (HTuple windowHandle)
 		{
 			HOperatorSet.GetMpositionSubPix(windowHandle, out HTuple row, out HTuple column, out HTuple button);
 			return (row,column,button);
 		}
-		public static (HTuple row, HTuple column, HTuple button) GetMposition (HTuple windowHandle)
+		public static (HTuple Row, HTuple Column, HTuple Button) GetMposition (HTuple windowHandle)
 		{
 			HOperatorSet.GetMposition(windowHandle, out HTuple row, out HTuple column, out HTuple button);
 			return (row,column,button);
 		}
-		public static (HTuple row, HTuple column, HTuple button) GetMbuttonSubPix (HTuple windowHandle)
+		public static (HTuple Row, HTuple Column, HTuple Button) GetMbuttonSubPix (HTuple windowHandle)
 		{
 			HOperatorSet.GetMbuttonSubPix(windowHandle, out HTuple row, out HTuple column, out HTuple button);
 			return (row,column,button);
 		}
-		public static (HTuple row, HTuple column, HTuple button) GetMbutton (HTuple windowHandle)
+		public static (HTuple Row, HTuple Column, HTuple Button) GetMbutton (HTuple windowHandle)
 		{
 			HOperatorSet.GetMbutton(windowHandle, out HTuple row, out HTuple column, out HTuple button);
 			return (row,column,button);
@@ -3718,7 +3718,7 @@ namespace HalconWrapper
 			HOperatorSet.QueryLut(windowHandle, out HTuple lookUpTable);
 			return lookUpTable;
 		}
-		public static (HTuple hue, HTuple saturation, HTuple intensity) GetLutStyle (HTuple windowHandle)
+		public static (HTuple Hue, HTuple Saturation, HTuple Intensity) GetLutStyle (HTuple windowHandle)
 		{
 			HOperatorSet.GetLutStyle(windowHandle, out HTuple hue, out HTuple saturation, out HTuple intensity);
 			return (hue,saturation,intensity);
@@ -3862,22 +3862,22 @@ namespace HalconWrapper
 			HOperatorSet.DragRegion1(sourceRegion, out HObject destinationRegion, windowHandle);
 			return destinationRegion;
 		}
-		public static (HObject contOut, HTuple controlRows, HTuple controlCols, HTuple knots, HTuple rows, HTuple cols, HTuple tangents) DrawNurbsInterpMod (HTuple windowHandle, HTuple rotate, HTuple move, HTuple scale, HTuple keepRatio, HTuple edit, HTuple degree, HTuple rowsIn, HTuple colsIn, HTuple tangentsIn)
+		public static (HObject ContOut, HTuple ControlRows, HTuple ControlCols, HTuple Knots, HTuple Rows, HTuple Cols, HTuple Tangents) DrawNurbsInterpMod (HTuple windowHandle, HTuple rotate, HTuple move, HTuple scale, HTuple keepRatio, HTuple edit, HTuple degree, HTuple rowsIn, HTuple colsIn, HTuple tangentsIn)
 		{
 			HOperatorSet.DrawNurbsInterpMod(out HObject contOut, windowHandle, rotate, move, scale, keepRatio, edit, degree, rowsIn, colsIn, tangentsIn, out HTuple controlRows, out HTuple controlCols, out HTuple knots, out HTuple rows, out HTuple cols, out HTuple tangents);
 			return (contOut,controlRows,controlCols,knots,rows,cols,tangents);
 		}
-		public static (HObject contOut, HTuple controlRows, HTuple controlCols, HTuple knots, HTuple rows, HTuple cols, HTuple tangents) DrawNurbsInterp (HTuple windowHandle, HTuple rotate, HTuple move, HTuple scale, HTuple keepRatio, HTuple degree)
+		public static (HObject ContOut, HTuple ControlRows, HTuple ControlCols, HTuple Knots, HTuple Rows, HTuple Cols, HTuple Tangents) DrawNurbsInterp (HTuple windowHandle, HTuple rotate, HTuple move, HTuple scale, HTuple keepRatio, HTuple degree)
 		{
 			HOperatorSet.DrawNurbsInterp(out HObject contOut, windowHandle, rotate, move, scale, keepRatio, degree, out HTuple controlRows, out HTuple controlCols, out HTuple knots, out HTuple rows, out HTuple cols, out HTuple tangents);
 			return (contOut,controlRows,controlCols,knots,rows,cols,tangents);
 		}
-		public static (HObject contOut, HTuple rows, HTuple cols, HTuple weights) DrawNurbsMod (HTuple windowHandle, HTuple rotate, HTuple move, HTuple scale, HTuple keepRatio, HTuple edit, HTuple degree, HTuple rowsIn, HTuple colsIn, HTuple weightsIn)
+		public static (HObject ContOut, HTuple Rows, HTuple Cols, HTuple Weights) DrawNurbsMod (HTuple windowHandle, HTuple rotate, HTuple move, HTuple scale, HTuple keepRatio, HTuple edit, HTuple degree, HTuple rowsIn, HTuple colsIn, HTuple weightsIn)
 		{
 			HOperatorSet.DrawNurbsMod(out HObject contOut, windowHandle, rotate, move, scale, keepRatio, edit, degree, rowsIn, colsIn, weightsIn, out HTuple rows, out HTuple cols, out HTuple weights);
 			return (contOut,rows,cols,weights);
 		}
-		public static (HObject contOut, HTuple rows, HTuple cols, HTuple weights) DrawNurbs (HTuple windowHandle, HTuple rotate, HTuple move, HTuple scale, HTuple keepRatio, HTuple degree)
+		public static (HObject ContOut, HTuple Rows, HTuple Cols, HTuple Weights) DrawNurbs (HTuple windowHandle, HTuple rotate, HTuple move, HTuple scale, HTuple keepRatio, HTuple degree)
 		{
 			HOperatorSet.DrawNurbs(out HObject contOut, windowHandle, rotate, move, scale, keepRatio, degree, out HTuple rows, out HTuple cols, out HTuple weights);
 			return (contOut,rows,cols,weights);
@@ -3892,62 +3892,62 @@ namespace HalconWrapper
 			HOperatorSet.DrawXld(out HObject contOut, windowHandle, rotate, move, scale, keepRatio);
 			return contOut;
 		}
-		public static (HTuple row, HTuple column, HTuple phi, HTuple length1, HTuple length2) DrawRectangle2Mod (HTuple windowHandle, HTuple rowIn, HTuple columnIn, HTuple phiIn, HTuple length1In, HTuple length2In)
+		public static (HTuple Row, HTuple Column, HTuple Phi, HTuple Length1, HTuple Length2) DrawRectangle2Mod (HTuple windowHandle, HTuple rowIn, HTuple columnIn, HTuple phiIn, HTuple length1In, HTuple length2In)
 		{
 			HOperatorSet.DrawRectangle2Mod(windowHandle, rowIn, columnIn, phiIn, length1In, length2In, out HTuple row, out HTuple column, out HTuple phi, out HTuple length1, out HTuple length2);
 			return (row,column,phi,length1,length2);
 		}
-		public static (HTuple row, HTuple column, HTuple phi, HTuple length1, HTuple length2) DrawRectangle2 (HTuple windowHandle)
+		public static (HTuple Row, HTuple Column, HTuple Phi, HTuple Length1, HTuple Length2) DrawRectangle2 (HTuple windowHandle)
 		{
 			HOperatorSet.DrawRectangle2(windowHandle, out HTuple row, out HTuple column, out HTuple phi, out HTuple length1, out HTuple length2);
 			return (row,column,phi,length1,length2);
 		}
-		public static (HTuple row1, HTuple column1, HTuple row2, HTuple column2) DrawRectangle1Mod (HTuple windowHandle, HTuple row1In, HTuple column1In, HTuple row2In, HTuple column2In)
+		public static (HTuple Row1, HTuple Column1, HTuple Row2, HTuple Column2) DrawRectangle1Mod (HTuple windowHandle, HTuple row1In, HTuple column1In, HTuple row2In, HTuple column2In)
 		{
 			HOperatorSet.DrawRectangle1Mod(windowHandle, row1In, column1In, row2In, column2In, out HTuple row1, out HTuple column1, out HTuple row2, out HTuple column2);
 			return (row1,column1,row2,column2);
 		}
-		public static (HTuple row1, HTuple column1, HTuple row2, HTuple column2) DrawRectangle1 (HTuple windowHandle)
+		public static (HTuple Row1, HTuple Column1, HTuple Row2, HTuple Column2) DrawRectangle1 (HTuple windowHandle)
 		{
 			HOperatorSet.DrawRectangle1(windowHandle, out HTuple row1, out HTuple column1, out HTuple row2, out HTuple column2);
 			return (row1,column1,row2,column2);
 		}
-		public static (HTuple row, HTuple column) DrawPointMod (HTuple windowHandle, HTuple rowIn, HTuple columnIn)
+		public static (HTuple Row, HTuple Column) DrawPointMod (HTuple windowHandle, HTuple rowIn, HTuple columnIn)
 		{
 			HOperatorSet.DrawPointMod(windowHandle, rowIn, columnIn, out HTuple row, out HTuple column);
 			return (row,column);
 		}
-		public static (HTuple row, HTuple column) DrawPoint (HTuple windowHandle)
+		public static (HTuple Row, HTuple Column) DrawPoint (HTuple windowHandle)
 		{
 			HOperatorSet.DrawPoint(windowHandle, out HTuple row, out HTuple column);
 			return (row,column);
 		}
-		public static (HTuple row1, HTuple column1, HTuple row2, HTuple column2) DrawLineMod (HTuple windowHandle, HTuple row1In, HTuple column1In, HTuple row2In, HTuple column2In)
+		public static (HTuple Row1, HTuple Column1, HTuple Row2, HTuple Column2) DrawLineMod (HTuple windowHandle, HTuple row1In, HTuple column1In, HTuple row2In, HTuple column2In)
 		{
 			HOperatorSet.DrawLineMod(windowHandle, row1In, column1In, row2In, column2In, out HTuple row1, out HTuple column1, out HTuple row2, out HTuple column2);
 			return (row1,column1,row2,column2);
 		}
-		public static (HTuple row1, HTuple column1, HTuple row2, HTuple column2) DrawLine (HTuple windowHandle)
+		public static (HTuple Row1, HTuple Column1, HTuple Row2, HTuple Column2) DrawLine (HTuple windowHandle)
 		{
 			HOperatorSet.DrawLine(windowHandle, out HTuple row1, out HTuple column1, out HTuple row2, out HTuple column2);
 			return (row1,column1,row2,column2);
 		}
-		public static (HTuple row, HTuple column, HTuple phi, HTuple radius1, HTuple radius2) DrawEllipseMod (HTuple windowHandle, HTuple rowIn, HTuple columnIn, HTuple phiIn, HTuple radius1In, HTuple radius2In)
+		public static (HTuple Row, HTuple Column, HTuple Phi, HTuple Radius1, HTuple Radius2) DrawEllipseMod (HTuple windowHandle, HTuple rowIn, HTuple columnIn, HTuple phiIn, HTuple radius1In, HTuple radius2In)
 		{
 			HOperatorSet.DrawEllipseMod(windowHandle, rowIn, columnIn, phiIn, radius1In, radius2In, out HTuple row, out HTuple column, out HTuple phi, out HTuple radius1, out HTuple radius2);
 			return (row,column,phi,radius1,radius2);
 		}
-		public static (HTuple row, HTuple column, HTuple phi, HTuple radius1, HTuple radius2) DrawEllipse (HTuple windowHandle)
+		public static (HTuple Row, HTuple Column, HTuple Phi, HTuple Radius1, HTuple Radius2) DrawEllipse (HTuple windowHandle)
 		{
 			HOperatorSet.DrawEllipse(windowHandle, out HTuple row, out HTuple column, out HTuple phi, out HTuple radius1, out HTuple radius2);
 			return (row,column,phi,radius1,radius2);
 		}
-		public static (HTuple row, HTuple column, HTuple radius) DrawCircleMod (HTuple windowHandle, HTuple rowIn, HTuple columnIn, HTuple radiusIn)
+		public static (HTuple Row, HTuple Column, HTuple Radius) DrawCircleMod (HTuple windowHandle, HTuple rowIn, HTuple columnIn, HTuple radiusIn)
 		{
 			HOperatorSet.DrawCircleMod(windowHandle, rowIn, columnIn, radiusIn, out HTuple row, out HTuple column, out HTuple radius);
 			return (row,column,radius);
 		}
-		public static (HTuple row, HTuple column, HTuple radius) DrawCircle (HTuple windowHandle)
+		public static (HTuple Row, HTuple Column, HTuple Radius) DrawCircle (HTuple windowHandle)
 		{
 			HOperatorSet.DrawCircle(windowHandle, out HTuple row, out HTuple column, out HTuple radius);
 			return (row,column,radius);
@@ -3962,67 +3962,67 @@ namespace HalconWrapper
 			HOperatorSet.DrawPolygon(out HObject polygonRegion, windowHandle);
 			return polygonRegion;
 		}
-		public static (HTuple rowProj, HTuple colProj) ProjectionPl (HTuple row, HTuple column, HTuple row1, HTuple column1, HTuple row2, HTuple column2)
+		public static (HTuple RowProj, HTuple ColProj) ProjectionPl (HTuple row, HTuple column, HTuple row1, HTuple column1, HTuple row2, HTuple column2)
 		{
 			HOperatorSet.ProjectionPl(row, column, row1, column1, row2, column2, out HTuple rowProj, out HTuple colProj);
 			return (rowProj,colProj);
 		}
-		public static (HTuple rowPoint, HTuple colPoint) GetPointsEllipse (HTuple angle, HTuple row, HTuple column, HTuple phi, HTuple radius1, HTuple radius2)
+		public static (HTuple RowPoint, HTuple ColPoint) GetPointsEllipse (HTuple angle, HTuple row, HTuple column, HTuple phi, HTuple radius1, HTuple radius2)
 		{
 			HOperatorSet.GetPointsEllipse(angle, row, column, phi, radius1, radius2, out HTuple rowPoint, out HTuple colPoint);
 			return (rowPoint,colPoint);
 		}
-		public static (HTuple row, HTuple column, HTuple isParallel) IntersectionLl (HTuple rowA1, HTuple columnA1, HTuple rowA2, HTuple columnA2, HTuple rowB1, HTuple columnB1, HTuple rowB2, HTuple columnB2)
+		public static (HTuple Row, HTuple Column, HTuple IsParallel) IntersectionLl (HTuple rowA1, HTuple columnA1, HTuple rowA2, HTuple columnA2, HTuple rowB1, HTuple columnB1, HTuple rowB2, HTuple columnB2)
 		{
 			HOperatorSet.IntersectionLl(rowA1, columnA1, rowA2, columnA2, rowB1, columnB1, rowB2, columnB2, out HTuple row, out HTuple column, out HTuple isParallel);
 			return (row,column,isParallel);
 		}
-		public static (HTuple row, HTuple column, HTuple isOverlapping) IntersectionContoursXld (HObject contour1, HObject contour2, HTuple intersectionType)
+		public static (HTuple Row, HTuple Column, HTuple IsOverlapping) IntersectionContoursXld (HObject contour1, HObject contour2, HTuple intersectionType)
 		{
 			HOperatorSet.IntersectionContoursXld(contour1, contour2, intersectionType, out HTuple row, out HTuple column, out HTuple isOverlapping);
 			return (row,column,isOverlapping);
 		}
-		public static (HTuple row, HTuple column) IntersectionCircleContourXld (HObject contour, HTuple circleRow, HTuple circleColumn, HTuple circleRadius, HTuple circleStartPhi, HTuple circleEndPhi, HTuple circlePointOrder)
+		public static (HTuple Row, HTuple Column) IntersectionCircleContourXld (HObject contour, HTuple circleRow, HTuple circleColumn, HTuple circleRadius, HTuple circleStartPhi, HTuple circleEndPhi, HTuple circlePointOrder)
 		{
 			HOperatorSet.IntersectionCircleContourXld(contour, circleRow, circleColumn, circleRadius, circleStartPhi, circleEndPhi, circlePointOrder, out HTuple row, out HTuple column);
 			return (row,column);
 		}
-		public static (HTuple row, HTuple column, HTuple isOverlapping) IntersectionCircles (HTuple circle1Row, HTuple circle1Column, HTuple circle1Radius, HTuple circle1StartPhi, HTuple circle1EndPhi, HTuple circle1PointOrder, HTuple circle2Row, HTuple circle2Column, HTuple circle2Radius, HTuple circle2StartPhi, HTuple circle2EndPhi, HTuple circle2PointOrder)
+		public static (HTuple Row, HTuple Column, HTuple IsOverlapping) IntersectionCircles (HTuple circle1Row, HTuple circle1Column, HTuple circle1Radius, HTuple circle1StartPhi, HTuple circle1EndPhi, HTuple circle1PointOrder, HTuple circle2Row, HTuple circle2Column, HTuple circle2Radius, HTuple circle2StartPhi, HTuple circle2EndPhi, HTuple circle2PointOrder)
 		{
 			HOperatorSet.IntersectionCircles(circle1Row, circle1Column, circle1Radius, circle1StartPhi, circle1EndPhi, circle1PointOrder, circle2Row, circle2Column, circle2Radius, circle2StartPhi, circle2EndPhi, circle2PointOrder, out HTuple row, out HTuple column, out HTuple isOverlapping);
 			return (row,column,isOverlapping);
 		}
-		public static (HTuple row, HTuple column, HTuple isOverlapping) IntersectionLineContourXld (HObject contour, HTuple lineRow1, HTuple lineColumn1, HTuple lineRow2, HTuple lineColumn2)
+		public static (HTuple Row, HTuple Column, HTuple IsOverlapping) IntersectionLineContourXld (HObject contour, HTuple lineRow1, HTuple lineColumn1, HTuple lineRow2, HTuple lineColumn2)
 		{
 			HOperatorSet.IntersectionLineContourXld(contour, lineRow1, lineColumn1, lineRow2, lineColumn2, out HTuple row, out HTuple column, out HTuple isOverlapping);
 			return (row,column,isOverlapping);
 		}
-		public static (HTuple row, HTuple column) IntersectionLineCircle (HTuple lineRow1, HTuple lineColumn1, HTuple lineRow2, HTuple lineColumn2, HTuple circleRow, HTuple circleColumn, HTuple circleRadius, HTuple circleStartPhi, HTuple circleEndPhi, HTuple circlePointOrder)
+		public static (HTuple Row, HTuple Column) IntersectionLineCircle (HTuple lineRow1, HTuple lineColumn1, HTuple lineRow2, HTuple lineColumn2, HTuple circleRow, HTuple circleColumn, HTuple circleRadius, HTuple circleStartPhi, HTuple circleEndPhi, HTuple circlePointOrder)
 		{
 			HOperatorSet.IntersectionLineCircle(lineRow1, lineColumn1, lineRow2, lineColumn2, circleRow, circleColumn, circleRadius, circleStartPhi, circleEndPhi, circlePointOrder, out HTuple row, out HTuple column);
 			return (row,column);
 		}
-		public static (HTuple row, HTuple column, HTuple isOverlapping) IntersectionLines (HTuple line1Row1, HTuple line1Column1, HTuple line1Row2, HTuple line1Column2, HTuple line2Row1, HTuple line2Column1, HTuple line2Row2, HTuple line2Column2)
+		public static (HTuple Row, HTuple Column, HTuple IsOverlapping) IntersectionLines (HTuple line1Row1, HTuple line1Column1, HTuple line1Row2, HTuple line1Column2, HTuple line2Row1, HTuple line2Column1, HTuple line2Row2, HTuple line2Column2)
 		{
 			HOperatorSet.IntersectionLines(line1Row1, line1Column1, line1Row2, line1Column2, line2Row1, line2Column1, line2Row2, line2Column2, out HTuple row, out HTuple column, out HTuple isOverlapping);
 			return (row,column,isOverlapping);
 		}
-		public static (HTuple row, HTuple column, HTuple isOverlapping) IntersectionSegmentContourXld (HObject contour, HTuple segmentRow1, HTuple segmentColumn1, HTuple segmentRow2, HTuple segmentColumn2)
+		public static (HTuple Row, HTuple Column, HTuple IsOverlapping) IntersectionSegmentContourXld (HObject contour, HTuple segmentRow1, HTuple segmentColumn1, HTuple segmentRow2, HTuple segmentColumn2)
 		{
 			HOperatorSet.IntersectionSegmentContourXld(contour, segmentRow1, segmentColumn1, segmentRow2, segmentColumn2, out HTuple row, out HTuple column, out HTuple isOverlapping);
 			return (row,column,isOverlapping);
 		}
-		public static (HTuple row, HTuple column) IntersectionSegmentCircle (HTuple segmentRow1, HTuple segmentColumn1, HTuple segmentRow2, HTuple segmentColumn2, HTuple circleRow, HTuple circleColumn, HTuple circleRadius, HTuple circleStartPhi, HTuple circleEndPhi, HTuple circlePointOrder)
+		public static (HTuple Row, HTuple Column) IntersectionSegmentCircle (HTuple segmentRow1, HTuple segmentColumn1, HTuple segmentRow2, HTuple segmentColumn2, HTuple circleRow, HTuple circleColumn, HTuple circleRadius, HTuple circleStartPhi, HTuple circleEndPhi, HTuple circlePointOrder)
 		{
 			HOperatorSet.IntersectionSegmentCircle(segmentRow1, segmentColumn1, segmentRow2, segmentColumn2, circleRow, circleColumn, circleRadius, circleStartPhi, circleEndPhi, circlePointOrder, out HTuple row, out HTuple column);
 			return (row,column);
 		}
-		public static (HTuple row, HTuple column, HTuple isOverlapping) IntersectionSegmentLine (HTuple segmentRow1, HTuple segmentColumn1, HTuple segmentRow2, HTuple segmentColumn2, HTuple lineRow1, HTuple lineColumn1, HTuple lineRow2, HTuple lineColumn2)
+		public static (HTuple Row, HTuple Column, HTuple IsOverlapping) IntersectionSegmentLine (HTuple segmentRow1, HTuple segmentColumn1, HTuple segmentRow2, HTuple segmentColumn2, HTuple lineRow1, HTuple lineColumn1, HTuple lineRow2, HTuple lineColumn2)
 		{
 			HOperatorSet.IntersectionSegmentLine(segmentRow1, segmentColumn1, segmentRow2, segmentColumn2, lineRow1, lineColumn1, lineRow2, lineColumn2, out HTuple row, out HTuple column, out HTuple isOverlapping);
 			return (row,column,isOverlapping);
 		}
-		public static (HTuple row, HTuple column, HTuple isOverlapping) IntersectionSegments (HTuple segment1Row1, HTuple segment1Column1, HTuple segment1Row2, HTuple segment1Column2, HTuple segment2Row1, HTuple segment2Column1, HTuple segment2Row2, HTuple segment2Column2)
+		public static (HTuple Row, HTuple Column, HTuple IsOverlapping) IntersectionSegments (HTuple segment1Row1, HTuple segment1Column1, HTuple segment1Row2, HTuple segment1Column2, HTuple segment2Row1, HTuple segment2Column1, HTuple segment2Row2, HTuple segment2Column2)
 		{
 			HOperatorSet.IntersectionSegments(segment1Row1, segment1Column1, segment1Row2, segment1Column2, segment2Row1, segment2Column1, segment2Row2, segment2Column2, out HTuple row, out HTuple column, out HTuple isOverlapping);
 			return (row,column,isOverlapping);
@@ -4084,37 +4084,37 @@ namespace HalconWrapper
 			HOperatorSet.DistanceCcMin(contour1, contour2, mode, out HTuple distanceMin);
 			return distanceMin;
 		}
-		public static (HTuple distanceMin, HTuple distanceMax) DistanceCc (HObject contour1, HObject contour2, HTuple mode)
+		public static (HTuple DistanceMin, HTuple DistanceMax) DistanceCc (HObject contour1, HObject contour2, HTuple mode)
 		{
 			HOperatorSet.DistanceCc(contour1, contour2, mode, out HTuple distanceMin, out HTuple distanceMax);
 			return (distanceMin,distanceMax);
 		}
-		public static (HTuple distanceMin, HTuple distanceMax) DistanceSc (HObject contour, HTuple row1, HTuple column1, HTuple row2, HTuple column2)
+		public static (HTuple DistanceMin, HTuple DistanceMax) DistanceSc (HObject contour, HTuple row1, HTuple column1, HTuple row2, HTuple column2)
 		{
 			HOperatorSet.DistanceSc(contour, row1, column1, row2, column2, out HTuple distanceMin, out HTuple distanceMax);
 			return (distanceMin,distanceMax);
 		}
-		public static (HTuple distanceMin, HTuple distanceMax) DistanceLc (HObject contour, HTuple row1, HTuple column1, HTuple row2, HTuple column2)
+		public static (HTuple DistanceMin, HTuple DistanceMax) DistanceLc (HObject contour, HTuple row1, HTuple column1, HTuple row2, HTuple column2)
 		{
 			HOperatorSet.DistanceLc(contour, row1, column1, row2, column2, out HTuple distanceMin, out HTuple distanceMax);
 			return (distanceMin,distanceMax);
 		}
-		public static (HTuple distanceMin, HTuple distanceMax) DistancePc (HObject contour, HTuple row, HTuple column)
+		public static (HTuple DistanceMin, HTuple DistanceMax) DistancePc (HObject contour, HTuple row, HTuple column)
 		{
 			HOperatorSet.DistancePc(contour, row, column, out HTuple distanceMin, out HTuple distanceMax);
 			return (distanceMin,distanceMax);
 		}
-		public static (HTuple distanceMin, HTuple distanceMax) DistanceSr (HObject region, HTuple row1, HTuple column1, HTuple row2, HTuple column2)
+		public static (HTuple DistanceMin, HTuple DistanceMax) DistanceSr (HObject region, HTuple row1, HTuple column1, HTuple row2, HTuple column2)
 		{
 			HOperatorSet.DistanceSr(region, row1, column1, row2, column2, out HTuple distanceMin, out HTuple distanceMax);
 			return (distanceMin,distanceMax);
 		}
-		public static (HTuple distanceMin, HTuple distanceMax) DistanceLr (HObject region, HTuple row1, HTuple column1, HTuple row2, HTuple column2)
+		public static (HTuple DistanceMin, HTuple DistanceMax) DistanceLr (HObject region, HTuple row1, HTuple column1, HTuple row2, HTuple column2)
 		{
 			HOperatorSet.DistanceLr(region, row1, column1, row2, column2, out HTuple distanceMin, out HTuple distanceMax);
 			return (distanceMin,distanceMax);
 		}
-		public static (HTuple distanceMin, HTuple distanceMax) DistancePr (HObject region, HTuple row, HTuple column)
+		public static (HTuple DistanceMin, HTuple DistanceMax) DistancePr (HObject region, HTuple row, HTuple column)
 		{
 			HOperatorSet.DistancePr(region, row, column, out HTuple distanceMin, out HTuple distanceMax);
 			return (distanceMin,distanceMax);
@@ -4129,17 +4129,17 @@ namespace HalconWrapper
 			HOperatorSet.AngleLl(rowA1, columnA1, rowA2, columnA2, rowB1, columnB1, rowB2, columnB2, out HTuple angle);
 			return angle;
 		}
-		public static (HTuple distanceMin, HTuple distanceMax) DistanceSl (HTuple rowA1, HTuple columnA1, HTuple rowA2, HTuple columnA2, HTuple rowB1, HTuple columnB1, HTuple rowB2, HTuple columnB2)
+		public static (HTuple DistanceMin, HTuple DistanceMax) DistanceSl (HTuple rowA1, HTuple columnA1, HTuple rowA2, HTuple columnA2, HTuple rowB1, HTuple columnB1, HTuple rowB2, HTuple columnB2)
 		{
 			HOperatorSet.DistanceSl(rowA1, columnA1, rowA2, columnA2, rowB1, columnB1, rowB2, columnB2, out HTuple distanceMin, out HTuple distanceMax);
 			return (distanceMin,distanceMax);
 		}
-		public static (HTuple distanceMin, HTuple distanceMax) DistanceSs (HTuple rowA1, HTuple columnA1, HTuple rowA2, HTuple columnA2, HTuple rowB1, HTuple columnB1, HTuple rowB2, HTuple columnB2)
+		public static (HTuple DistanceMin, HTuple DistanceMax) DistanceSs (HTuple rowA1, HTuple columnA1, HTuple rowA2, HTuple columnA2, HTuple rowB1, HTuple columnB1, HTuple rowB2, HTuple columnB2)
 		{
 			HOperatorSet.DistanceSs(rowA1, columnA1, rowA2, columnA2, rowB1, columnB1, rowB2, columnB2, out HTuple distanceMin, out HTuple distanceMax);
 			return (distanceMin,distanceMax);
 		}
-		public static (HTuple distanceMin, HTuple distanceMax) DistancePs (HTuple row, HTuple column, HTuple row1, HTuple column1, HTuple row2, HTuple column2)
+		public static (HTuple DistanceMin, HTuple DistanceMax) DistancePs (HTuple row, HTuple column, HTuple row1, HTuple column1, HTuple row2, HTuple column2)
 		{
 			HOperatorSet.DistancePs(row, column, row1, column1, row2, column2, out HTuple distanceMin, out HTuple distanceMax);
 			return (distanceMin,distanceMax);
@@ -4169,7 +4169,7 @@ namespace HalconWrapper
 			HOperatorSet.DerivateFunct1d(function, mode, out HTuple derivative);
 			return derivative;
 		}
-		public static (HTuple min, HTuple max) LocalMinMaxFunct1d (HTuple function, HTuple mode, HTuple interpolation)
+		public static (HTuple Min, HTuple Max) LocalMinMaxFunct1d (HTuple function, HTuple mode, HTuple interpolation)
 		{
 			HOperatorSet.LocalMinMaxFunct1d(function, mode, interpolation, out HTuple min, out HTuple max);
 			return (min,max);
@@ -4199,7 +4199,7 @@ namespace HalconWrapper
 			HOperatorSet.GetYValueFunct1d(function, x, border, out HTuple y);
 			return y;
 		}
-		public static (HTuple x, HTuple y) GetPairFunct1d (HTuple function, HTuple index)
+		public static (HTuple X, HTuple Y) GetPairFunct1d (HTuple function, HTuple index)
 		{
 			HOperatorSet.GetPairFunct1d(function, index, out HTuple x, out HTuple y);
 			return (x,y);
@@ -4234,7 +4234,7 @@ namespace HalconWrapper
 			HOperatorSet.TransformFunct1d(function, paramsVal, out HTuple transformedFunction);
 			return transformedFunction;
 		}
-		public static (HTuple paramsVal, HTuple chiSquare, HTuple covar) MatchFunct1dTrans (HTuple function1, HTuple function2, HTuple border, HTuple paramsConst, HTuple useParams)
+		public static (HTuple ParamsVal, HTuple ChiSquare, HTuple Covar) MatchFunct1dTrans (HTuple function1, HTuple function2, HTuple border, HTuple paramsConst, HTuple useParams)
 		{
 			HOperatorSet.MatchFunct1dTrans(function1, function2, border, paramsConst, useParams, out HTuple paramsVal, out HTuple chiSquare, out HTuple covar);
 			return (paramsVal,chiSquare,covar);
@@ -4249,7 +4249,7 @@ namespace HalconWrapper
 			HOperatorSet.SmoothFunct1dGauss(function, sigma, out HTuple smoothedFunction);
 			return smoothedFunction;
 		}
-		public static (HTuple positive, HTuple negative) IntegrateFunct1d (HTuple function)
+		public static (HTuple Positive, HTuple Negative) IntegrateFunct1d (HTuple function)
 		{
 			HOperatorSet.IntegrateFunct1d(function, out HTuple positive, out HTuple negative);
 			return (positive,negative);
@@ -4313,7 +4313,7 @@ namespace HalconWrapper
 			HOperatorSet.HoughLineTransDir(imageDir, out HObject houghImage, directionUncertainty, angleResolution);
 			return houghImage;
 		}
-		public static (HTuple angle, HTuple dist) HoughLines (HObject regionIn, HTuple angleResolution, HTuple threshold, HTuple angleGap, HTuple distGap)
+		public static (HTuple Angle, HTuple Dist) HoughLines (HObject regionIn, HTuple angleResolution, HTuple threshold, HTuple angleGap, HTuple distGap)
 		{
 			HOperatorSet.HoughLines(regionIn, angleResolution, threshold, angleGap, distGap, out HTuple angle, out HTuple dist);
 			return (angle,dist);
@@ -4323,7 +4323,7 @@ namespace HalconWrapper
 			HOperatorSet.HoughLineTrans(region, out HObject houghImage, angleResolution);
 			return houghImage;
 		}
-		public static (HObject regionLines, HTuple angleOut, HTuple distOut) SelectMatchingLines (HObject regionIn, HTuple angleIn, HTuple distIn, HTuple lineWidth, HTuple thresh)
+		public static (HObject RegionLines, HTuple AngleOut, HTuple DistOut) SelectMatchingLines (HObject regionIn, HTuple angleIn, HTuple distIn, HTuple lineWidth, HTuple thresh)
 		{
 			HOperatorSet.SelectMatchingLines(regionIn, out HObject regionLines, angleIn, distIn, lineWidth, thresh, out HTuple angleOut, out HTuple distOut);
 			return (regionLines,angleOut,distOut);
@@ -4342,7 +4342,7 @@ namespace HalconWrapper
 			HOperatorSet.ConnectGridPoints(image, out HObject connectingLines, row, column, sigma, maxDist);
 			return connectingLines;
 		}
-		public static (HObject map, HObject meshes) GenGridRectificationMap (HObject image, HObject connectingLines, HTuple gridSpacing, HTuple rotation, HTuple row, HTuple column, HTuple mapType)
+		public static (HObject Map, HObject Meshes) GenGridRectificationMap (HObject image, HObject connectingLines, HTuple gridSpacing, HTuple rotation, HTuple row, HTuple column, HTuple mapType)
 		{
 			HOperatorSet.GenGridRectificationMap(image, connectingLines, out HObject map, out HObject meshes, gridSpacing, rotation, row, column, mapType);
 			return (map,meshes);
@@ -4381,7 +4381,7 @@ namespace HalconWrapper
 		{
 			HOperatorSet.UpdateWindowPose(windowHandle, lastRow, lastCol, currentRow, currentCol, mode);
 		}
-		public static (HTuple imageRow, HTuple imageColumn, HTuple height) UnprojectCoordinates (HObject image, HTuple windowHandle, HTuple row, HTuple column)
+		public static (HTuple ImageRow, HTuple ImageColumn, HTuple Height) UnprojectCoordinates (HObject image, HTuple windowHandle, HTuple row, HTuple column)
 		{
 			HOperatorSet.UnprojectCoordinates(image, windowHandle, row, column, out HTuple imageRow, out HTuple imageColumn, out HTuple height);
 			return (imageRow,imageColumn,height);
@@ -4445,12 +4445,12 @@ namespace HalconWrapper
 			HOperatorSet.GetWindowType(windowHandle, out HTuple windowType);
 			return windowType;
 		}
-		public static (HTuple imageRed, HTuple imageGreen, HTuple imageBlue, HTuple width, HTuple height) GetWindowPointer3 (HTuple windowHandle)
+		public static (HTuple ImageRed, HTuple ImageGreen, HTuple ImageBlue, HTuple Width, HTuple Height) GetWindowPointer3 (HTuple windowHandle)
 		{
 			HOperatorSet.GetWindowPointer3(windowHandle, out HTuple imageRed, out HTuple imageGreen, out HTuple imageBlue, out HTuple width, out HTuple height);
 			return (imageRed,imageGreen,imageBlue,width,height);
 		}
-		public static (HTuple row, HTuple column, HTuple width, HTuple height) GetWindowExtents (HTuple windowHandle)
+		public static (HTuple Row, HTuple Column, HTuple Width, HTuple Height) GetWindowExtents (HTuple windowHandle)
 		{
 			HOperatorSet.GetWindowExtents(windowHandle, out HTuple row, out HTuple column, out HTuple width, out HTuple height);
 			return (row,column,width,height);
@@ -4497,7 +4497,7 @@ namespace HalconWrapper
 			HOperatorSet.ReadString(windowHandle, inString, length, out HTuple outString);
 			return outString;
 		}
-		public static (HTuple charVal, HTuple code) ReadChar (HTuple windowHandle)
+		public static (HTuple CharVal, HTuple Code) ReadChar (HTuple windowHandle)
 		{
 			HOperatorSet.ReadChar(windowHandle, out HTuple charVal, out HTuple code);
 			return (charVal,code);
@@ -4511,17 +4511,17 @@ namespace HalconWrapper
 			HOperatorSet.GetTshape(windowHandle, out HTuple textCursor);
 			return textCursor;
 		}
-		public static (HTuple row, HTuple column) GetTposition (HTuple windowHandle)
+		public static (HTuple Row, HTuple Column) GetTposition (HTuple windowHandle)
 		{
 			HOperatorSet.GetTposition(windowHandle, out HTuple row, out HTuple column);
 			return (row,column);
 		}
-		public static (HTuple maxAscent, HTuple maxDescent, HTuple maxWidth, HTuple maxHeight) GetFontExtents (HTuple windowHandle)
+		public static (HTuple MaxAscent, HTuple MaxDescent, HTuple MaxWidth, HTuple MaxHeight) GetFontExtents (HTuple windowHandle)
 		{
 			HOperatorSet.GetFontExtents(windowHandle, out HTuple maxAscent, out HTuple maxDescent, out HTuple maxWidth, out HTuple maxHeight);
 			return (maxAscent,maxDescent,maxWidth,maxHeight);
 		}
-		public static (HTuple ascent, HTuple descent, HTuple width, HTuple height) GetStringExtents (HTuple windowHandle, HTuple values)
+		public static (HTuple Ascent, HTuple Descent, HTuple Width, HTuple Height) GetStringExtents (HTuple windowHandle, HTuple values)
 		{
 			HOperatorSet.GetStringExtents(windowHandle, values, out HTuple ascent, out HTuple descent, out HTuple width, out HTuple height);
 			return (ascent,descent,width,height);
@@ -4697,7 +4697,7 @@ namespace HalconWrapper
 			HOperatorSet.GetShape(windowHandle, out HTuple displayShape);
 			return displayShape;
 		}
-		public static (HTuple red, HTuple green, HTuple blue) GetRgb (HTuple windowHandle)
+		public static (HTuple Red, HTuple Green, HTuple Blue) GetRgb (HTuple windowHandle)
 		{
 			HOperatorSet.GetRgb(windowHandle, out HTuple red, out HTuple green, out HTuple blue);
 			return (red,green,blue);
@@ -4712,7 +4712,7 @@ namespace HalconWrapper
 			HOperatorSet.GetPartStyle(windowHandle, out HTuple style);
 			return style;
 		}
-		public static (HTuple row1, HTuple column1, HTuple row2, HTuple column2) GetPart (HTuple windowHandle)
+		public static (HTuple Row1, HTuple Column1, HTuple Row2, HTuple Column2) GetPart (HTuple windowHandle)
 		{
 			HOperatorSet.GetPart(windowHandle, out HTuple row1, out HTuple column1, out HTuple row2, out HTuple column2);
 			return (row1,column1,row2,column2);
@@ -4742,7 +4742,7 @@ namespace HalconWrapper
 			HOperatorSet.GetInsert(windowHandle, out HTuple mode);
 			return mode;
 		}
-		public static (HTuple hue, HTuple saturation, HTuple intensity) GetHsi (HTuple windowHandle)
+		public static (HTuple Hue, HTuple Saturation, HTuple Intensity) GetHsi (HTuple windowHandle)
 		{
 			HOperatorSet.GetHsi(windowHandle, out HTuple hue, out HTuple saturation, out HTuple intensity);
 			return (hue,saturation,intensity);
@@ -4767,7 +4767,7 @@ namespace HalconWrapper
 			HOperatorSet.QueryPaint(windowHandle, out HTuple mode);
 			return mode;
 		}
-		public static (HTuple min, HTuple max) QueryLineWidth ()
+		public static (HTuple Min, HTuple Max) QueryLineWidth ()
 		{
 			HOperatorSet.QueryLineWidth(out HTuple min, out HTuple max);
 			return (min,max);
@@ -4889,12 +4889,12 @@ namespace HalconWrapper
 		{
 			HOperatorSet.WriteDeformableSurfaceModel(deformableSurfaceModel, fileName);
 		}
-		public static (HTuple score, HTuple deformableSurfaceMatchingResult) RefineDeformableSurfaceModel (HTuple deformableSurfaceModel, HTuple objectModel3D, HTuple relSamplingDistance, HTuple initialDeformationObjectModel3D, HTuple genParamName, HTuple genParamValue)
+		public static (HTuple Score, HTuple DeformableSurfaceMatchingResult) RefineDeformableSurfaceModel (HTuple deformableSurfaceModel, HTuple objectModel3D, HTuple relSamplingDistance, HTuple initialDeformationObjectModel3D, HTuple genParamName, HTuple genParamValue)
 		{
 			HOperatorSet.RefineDeformableSurfaceModel(deformableSurfaceModel, objectModel3D, relSamplingDistance, initialDeformationObjectModel3D, genParamName, genParamValue, out HTuple score, out HTuple deformableSurfaceMatchingResult);
 			return (score,deformableSurfaceMatchingResult);
 		}
-		public static (HTuple score, HTuple deformableSurfaceMatchingResult) FindDeformableSurfaceModel (HTuple deformableSurfaceModel, HTuple objectModel3D, HTuple relSamplingDistance, HTuple minScore, HTuple genParamName, HTuple genParamValue)
+		public static (HTuple Score, HTuple DeformableSurfaceMatchingResult) FindDeformableSurfaceModel (HTuple deformableSurfaceModel, HTuple objectModel3D, HTuple relSamplingDistance, HTuple minScore, HTuple genParamName, HTuple genParamValue)
 		{
 			HOperatorSet.FindDeformableSurfaceModel(deformableSurfaceModel, objectModel3D, relSamplingDistance, minScore, genParamName, genParamValue, out HTuple score, out HTuple deformableSurfaceMatchingResult);
 			return (score,deformableSurfaceMatchingResult);
@@ -4958,12 +4958,12 @@ namespace HalconWrapper
 		{
 			HOperatorSet.WriteSurfaceModel(surfaceModelID, fileName);
 		}
-		public static (HTuple pose, HTuple score, HTuple surfaceMatchingResultID) RefineSurfaceModelPose (HTuple surfaceModelID, HTuple objectModel3D, HTuple initialPose, HTuple minScore, HTuple returnResultHandle, HTuple genParamName, HTuple genParamValue)
+		public static (HTuple Pose, HTuple Score, HTuple SurfaceMatchingResultID) RefineSurfaceModelPose (HTuple surfaceModelID, HTuple objectModel3D, HTuple initialPose, HTuple minScore, HTuple returnResultHandle, HTuple genParamName, HTuple genParamValue)
 		{
 			HOperatorSet.RefineSurfaceModelPose(surfaceModelID, objectModel3D, initialPose, minScore, returnResultHandle, genParamName, genParamValue, out HTuple pose, out HTuple score, out HTuple surfaceMatchingResultID);
 			return (pose,score,surfaceMatchingResultID);
 		}
-		public static (HTuple pose, HTuple score, HTuple surfaceMatchingResultID) FindSurfaceModel (HTuple surfaceModelID, HTuple objectModel3D, HTuple relSamplingDistance, HTuple keyPointFraction, HTuple minScore, HTuple returnResultHandle, HTuple genParamName, HTuple genParamValue)
+		public static (HTuple Pose, HTuple Score, HTuple SurfaceMatchingResultID) FindSurfaceModel (HTuple surfaceModelID, HTuple objectModel3D, HTuple relSamplingDistance, HTuple keyPointFraction, HTuple minScore, HTuple returnResultHandle, HTuple genParamName, HTuple genParamValue)
 		{
 			HOperatorSet.FindSurfaceModel(surfaceModelID, objectModel3D, relSamplingDistance, keyPointFraction, minScore, returnResultHandle, genParamName, genParamValue, out HTuple pose, out HTuple score, out HTuple surfaceMatchingResultID);
 			return (pose,score,surfaceMatchingResultID);
@@ -4983,12 +4983,12 @@ namespace HalconWrapper
 			HOperatorSet.CreateCamPoseLookAtPoint(camPosX, camPosY, camPosZ, lookAtX, lookAtY, lookAtZ, refPlaneNormal, camRoll, out HTuple camPose);
 			return camPose;
 		}
-		public static (HTuple x, HTuple y, HTuple z) ConvertPoint3dSpherToCart (HTuple longitude, HTuple latitude, HTuple radius, HTuple equatPlaneNormal, HTuple zeroMeridian)
+		public static (HTuple X, HTuple Y, HTuple Z) ConvertPoint3dSpherToCart (HTuple longitude, HTuple latitude, HTuple radius, HTuple equatPlaneNormal, HTuple zeroMeridian)
 		{
 			HOperatorSet.ConvertPoint3dSpherToCart(longitude, latitude, radius, equatPlaneNormal, zeroMeridian, out HTuple x, out HTuple y, out HTuple z);
 			return (x,y,z);
 		}
-		public static (HTuple longitude, HTuple latitude, HTuple radius) ConvertPoint3dCartToSpher (HTuple x, HTuple y, HTuple z, HTuple equatPlaneNormal, HTuple zeroMeridian)
+		public static (HTuple Longitude, HTuple Latitude, HTuple Radius) ConvertPoint3dCartToSpher (HTuple x, HTuple y, HTuple z, HTuple equatPlaneNormal, HTuple zeroMeridian)
 		{
 			HOperatorSet.ConvertPoint3dCartToSpher(x, y, z, equatPlaneNormal, zeroMeridian, out HTuple longitude, out HTuple latitude, out HTuple radius);
 			return (longitude,latitude,radius);
@@ -5030,7 +5030,7 @@ namespace HalconWrapper
 			HOperatorSet.ProjectShapeModel3d(out HObject modelContours, shapeModel3DID, camParam, pose, hiddenSurfaceRemoval, minFaceAngle);
 			return modelContours;
 		}
-		public static (HObject modelContours, HTuple viewPose) GetShapeModel3dContours (HTuple shapeModel3DID, HTuple level, HTuple view)
+		public static (HObject ModelContours, HTuple ViewPose) GetShapeModel3dContours (HTuple shapeModel3DID, HTuple level, HTuple view)
 		{
 			HOperatorSet.GetShapeModel3dContours(out HObject modelContours, shapeModel3DID, level, view, out HTuple viewPose);
 			return (modelContours,viewPose);
@@ -5040,7 +5040,7 @@ namespace HalconWrapper
 			HOperatorSet.GetShapeModel3dParams(shapeModel3DID, genParamName, out HTuple genParamValue);
 			return genParamValue;
 		}
-		public static (HTuple pose, HTuple covPose, HTuple score) FindShapeModel3d (HObject image, HTuple shapeModel3DID, HTuple minScore, HTuple greediness, HTuple numLevels, HTuple genParamName, HTuple genParamValue)
+		public static (HTuple Pose, HTuple CovPose, HTuple Score) FindShapeModel3d (HObject image, HTuple shapeModel3DID, HTuple minScore, HTuple greediness, HTuple numLevels, HTuple genParamName, HTuple genParamValue)
 		{
 			HOperatorSet.FindShapeModel3d(image, shapeModel3DID, minScore, greediness, numLevels, genParamName, genParamValue, out HTuple pose, out HTuple covPose, out HTuple score);
 			return (pose,covPose,score);
@@ -5083,12 +5083,12 @@ namespace HalconWrapper
 			HOperatorSet.SampleObjectModel3d(objectModel3D, method, sampleDistance, genParamName, genParamValue, out HTuple sampledObjectModel3D);
 			return sampledObjectModel3D;
 		}
-		public static (HTuple homMats3DOut, HTuple scores) RegisterObjectModel3dGlobal (HTuple objectModels3D, HTuple homMats3D, HTuple from, HTuple to, HTuple genParamName, HTuple genParamValue)
+		public static (HTuple HomMats3DOut, HTuple Scores) RegisterObjectModel3dGlobal (HTuple objectModels3D, HTuple homMats3D, HTuple from, HTuple to, HTuple genParamName, HTuple genParamValue)
 		{
 			HOperatorSet.RegisterObjectModel3dGlobal(objectModels3D, homMats3D, from, to, genParamName, genParamValue, out HTuple homMats3DOut, out HTuple scores);
 			return (homMats3DOut,scores);
 		}
-		public static (HTuple pose, HTuple score) RegisterObjectModel3dPair (HTuple objectModel3D1, HTuple objectModel3D2, HTuple method, HTuple genParamName, HTuple genParamValue)
+		public static (HTuple Pose, HTuple Score) RegisterObjectModel3dPair (HTuple objectModel3D1, HTuple objectModel3D2, HTuple method, HTuple genParamName, HTuple genParamValue)
 		{
 			HOperatorSet.RegisterObjectModel3dPair(objectModel3D1, objectModel3D2, method, genParamName, genParamValue, out HTuple pose, out HTuple score);
 			return (pose,score);
@@ -5123,12 +5123,12 @@ namespace HalconWrapper
 			HOperatorSet.GenCylinderObjectModel3d(pose, radius, minExtent, maxExtent, out HTuple objectModel3D);
 			return objectModel3D;
 		}
-		public static (HTuple pose, HTuple length1, HTuple length2, HTuple length3) SmallestBoundingBoxObjectModel3d (HTuple objectModel3D, HTuple type)
+		public static (HTuple Pose, HTuple Length1, HTuple Length2, HTuple Length3) SmallestBoundingBoxObjectModel3d (HTuple objectModel3D, HTuple type)
 		{
 			HOperatorSet.SmallestBoundingBoxObjectModel3d(objectModel3D, type, out HTuple pose, out HTuple length1, out HTuple length2, out HTuple length3);
 			return (pose,length1,length2,length3);
 		}
-		public static (HTuple centerPoint, HTuple radius) SmallestSphereObjectModel3d (HTuple objectModel3D)
+		public static (HTuple CenterPoint, HTuple Radius) SmallestSphereObjectModel3d (HTuple objectModel3D)
 		{
 			HOperatorSet.SmallestSphereObjectModel3d(objectModel3D, out HTuple centerPoint, out HTuple radius);
 			return (centerPoint,radius);
@@ -5206,7 +5206,7 @@ namespace HalconWrapper
 		{
 			HOperatorSet.PrepareObjectModel3d(objectModel3D, purpose, overwriteData, genParamName, genParamValue);
 		}
-		public static (HObject x, HObject y, HObject z) ObjectModel3dToXyz (HTuple objectModel3D, HTuple type, HTuple camParam, HTuple pose)
+		public static (HObject X, HObject Y, HObject Z) ObjectModel3dToXyz (HTuple objectModel3D, HTuple type, HTuple camParam, HTuple pose)
 		{
 			HOperatorSet.ObjectModel3dToXyz(out HObject x, out HObject y, out HObject z, objectModel3D, type, camParam, pose);
 			return (x,y,z);
@@ -5263,22 +5263,22 @@ namespace HalconWrapper
 		{
 			HOperatorSet.WriteObjectModel3d(objectModel3D, fileType, fileName, genParamName, genParamValue);
 		}
-		public static (HTuple objectModel3D, HTuple status) ReadObjectModel3d (HTuple fileName, HTuple scale, HTuple genParamName, HTuple genParamValue)
+		public static (HTuple ObjectModel3D, HTuple Status) ReadObjectModel3d (HTuple fileName, HTuple scale, HTuple genParamName, HTuple genParamValue)
 		{
 			HOperatorSet.ReadObjectModel3d(fileName, scale, genParamName, genParamValue, out HTuple objectModel3D, out HTuple status);
 			return (objectModel3D,status);
 		}
-		public static (HTuple dimension, HTuple model, HTuple measurement, HTuple prediction) ReadKalman (HTuple fileName)
+		public static (HTuple Dimension, HTuple Model, HTuple Measurement, HTuple Prediction) ReadKalman (HTuple fileName)
 		{
 			HOperatorSet.ReadKalman(fileName, out HTuple dimension, out HTuple model, out HTuple measurement, out HTuple prediction);
 			return (dimension,model,measurement,prediction);
 		}
-		public static (HTuple dimensionOut, HTuple modelOut, HTuple measurementOut) UpdateKalman (HTuple fileName, HTuple dimensionIn, HTuple modelIn, HTuple measurementIn)
+		public static (HTuple DimensionOut, HTuple ModelOut, HTuple MeasurementOut) UpdateKalman (HTuple fileName, HTuple dimensionIn, HTuple modelIn, HTuple measurementIn)
 		{
 			HOperatorSet.UpdateKalman(fileName, dimensionIn, modelIn, measurementIn, out HTuple dimensionOut, out HTuple modelOut, out HTuple measurementOut);
 			return (dimensionOut,modelOut,measurementOut);
 		}
-		public static (HTuple predictionOut, HTuple estimate) FilterKalman (HTuple dimension, HTuple model, HTuple measurement, HTuple predictionIn)
+		public static (HTuple PredictionOut, HTuple Estimate) FilterKalman (HTuple dimension, HTuple model, HTuple measurement, HTuple predictionIn)
 		{
 			HOperatorSet.FilterKalman(dimension, model, measurement, predictionIn, out HTuple predictionOut, out HTuple estimate);
 			return (predictionOut,estimate);
@@ -5298,17 +5298,17 @@ namespace HalconWrapper
 			HOperatorSet.GetOperatorName(pattern, out HTuple operatorNames);
 			return operatorNames;
 		}
-		public static (HTuple inpCtrlParType, HTuple outpCtrlParType) GetParamTypes (HTuple operatorName)
+		public static (HTuple InpCtrlParType, HTuple OutpCtrlParType) GetParamTypes (HTuple operatorName)
 		{
 			HOperatorSet.GetParamTypes(operatorName, out HTuple inpCtrlParType, out HTuple outpCtrlParType);
 			return (inpCtrlParType,outpCtrlParType);
 		}
-		public static (HTuple CName, HTuple inpObjPar, HTuple outpObjPar, HTuple inpCtrlPar, HTuple outpCtrlPar, HTuple type) GetParamNum (HTuple operatorName)
+		public static (HTuple CName, HTuple InpObjPar, HTuple OutpObjPar, HTuple InpCtrlPar, HTuple OutpCtrlPar, HTuple Type) GetParamNum (HTuple operatorName)
 		{
 			HOperatorSet.GetParamNum(operatorName, out HTuple CName, out HTuple inpObjPar, out HTuple outpObjPar, out HTuple inpCtrlPar, out HTuple outpCtrlPar, out HTuple type);
 			return (CName,inpObjPar,outpObjPar,inpCtrlPar,outpCtrlPar,type);
 		}
-		public static (HTuple inpObjPar, HTuple outpObjPar, HTuple inpCtrlPar, HTuple outpCtrlPar) GetParamNames (HTuple operatorName)
+		public static (HTuple InpObjPar, HTuple OutpObjPar, HTuple InpCtrlPar, HTuple OutpCtrlPar) GetParamNames (HTuple operatorName)
 		{
 			HOperatorSet.GetParamNames(operatorName, out HTuple inpObjPar, out HTuple outpObjPar, out HTuple inpCtrlPar, out HTuple outpCtrlPar);
 			return (inpObjPar,outpObjPar,inpCtrlPar,outpCtrlPar);
@@ -5378,32 +5378,32 @@ namespace HalconWrapper
 			HOperatorSet.Compose2(image1, image2, out HObject multiChannelImage);
 			return multiChannelImage;
 		}
-		public static (HObject image1, HObject image2, HObject image3, HObject image4, HObject image5, HObject image6, HObject image7) Decompose7 (HObject multiChannelImage)
+		public static (HObject Image1, HObject Image2, HObject Image3, HObject Image4, HObject Image5, HObject Image6, HObject Image7) Decompose7 (HObject multiChannelImage)
 		{
 			HOperatorSet.Decompose7(multiChannelImage, out HObject image1, out HObject image2, out HObject image3, out HObject image4, out HObject image5, out HObject image6, out HObject image7);
 			return (image1,image2,image3,image4,image5,image6,image7);
 		}
-		public static (HObject image1, HObject image2, HObject image3, HObject image4, HObject image5, HObject image6) Decompose6 (HObject multiChannelImage)
+		public static (HObject Image1, HObject Image2, HObject Image3, HObject Image4, HObject Image5, HObject Image6) Decompose6 (HObject multiChannelImage)
 		{
 			HOperatorSet.Decompose6(multiChannelImage, out HObject image1, out HObject image2, out HObject image3, out HObject image4, out HObject image5, out HObject image6);
 			return (image1,image2,image3,image4,image5,image6);
 		}
-		public static (HObject image1, HObject image2, HObject image3, HObject image4, HObject image5) Decompose5 (HObject multiChannelImage)
+		public static (HObject Image1, HObject Image2, HObject Image3, HObject Image4, HObject Image5) Decompose5 (HObject multiChannelImage)
 		{
 			HOperatorSet.Decompose5(multiChannelImage, out HObject image1, out HObject image2, out HObject image3, out HObject image4, out HObject image5);
 			return (image1,image2,image3,image4,image5);
 		}
-		public static (HObject image1, HObject image2, HObject image3, HObject image4) Decompose4 (HObject multiChannelImage)
+		public static (HObject Image1, HObject Image2, HObject Image3, HObject Image4) Decompose4 (HObject multiChannelImage)
 		{
 			HOperatorSet.Decompose4(multiChannelImage, out HObject image1, out HObject image2, out HObject image3, out HObject image4);
 			return (image1,image2,image3,image4);
 		}
-		public static (HObject image1, HObject image2, HObject image3) Decompose3 (HObject multiChannelImage)
+		public static (HObject Image1, HObject Image2, HObject Image3) Decompose3 (HObject multiChannelImage)
 		{
 			HOperatorSet.Decompose3(multiChannelImage, out HObject image1, out HObject image2, out HObject image3);
 			return (image1,image2,image3);
 		}
-		public static (HObject image1, HObject image2) Decompose2 (HObject multiChannelImage)
+		public static (HObject Image1, HObject Image2) Decompose2 (HObject multiChannelImage)
 		{
 			HOperatorSet.Decompose2(multiChannelImage, out HObject image1, out HObject image2);
 			return (image1,image2);
@@ -5498,7 +5498,7 @@ namespace HalconWrapper
 			HOperatorSet.HoughCircleTrans(region, out HObject houghImage, radius);
 			return houghImage;
 		}
-		public static (HObject houghImage, HObject lines, HTuple angle, HTuple dist) HoughLinesDir (HObject imageDir, HTuple directionUncertainty, HTuple angleResolution, HTuple smoothing, HTuple filterSize, HTuple threshold, HTuple angleGap, HTuple distGap, HTuple genLines)
+		public static (HObject HoughImage, HObject Lines, HTuple Angle, HTuple Dist) HoughLinesDir (HObject imageDir, HTuple directionUncertainty, HTuple angleResolution, HTuple smoothing, HTuple filterSize, HTuple threshold, HTuple angleGap, HTuple distGap, HTuple genLines)
 		{
 			HOperatorSet.HoughLinesDir(imageDir, out HObject houghImage, out HObject lines, directionUncertainty, angleResolution, smoothing, filterSize, threshold, angleGap, distGap, genLines, out HTuple angle, out HTuple dist);
 			return (houghImage,lines,angle,dist);
@@ -5539,7 +5539,7 @@ namespace HalconWrapper
 		{
 			HOperatorSet.WriteSampleIdentifier(sampleIdentifier, fileName);
 		}
-		public static (HTuple objectIdx, HTuple rating) ApplySampleIdentifier (HObject image, HTuple sampleIdentifier, HTuple numResults, HTuple ratingThreshold, HTuple genParamName, HTuple genParamValue)
+		public static (HTuple ObjectIdx, HTuple Rating) ApplySampleIdentifier (HObject image, HTuple sampleIdentifier, HTuple numResults, HTuple ratingThreshold, HTuple genParamName, HTuple genParamValue)
 		{
 			HOperatorSet.ApplySampleIdentifier(image, sampleIdentifier, numResults, ratingThreshold, genParamName, genParamValue, out HTuple objectIdx, out HTuple rating);
 			return (objectIdx,rating);
@@ -5625,17 +5625,17 @@ namespace HalconWrapper
 			HOperatorSet.GetShapeModelContours(out HObject modelContours, modelID, level);
 			return modelContours;
 		}
-		public static (HTuple parameterName, HTuple parameterValue) DetermineShapeModelParams (HObject template, HTuple numLevels, HTuple angleStart, HTuple angleExtent, HTuple scaleMin, HTuple scaleMax, HTuple optimization, HTuple metric, HTuple contrast, HTuple minContrast, HTuple parameters)
+		public static (HTuple ParameterName, HTuple ParameterValue) DetermineShapeModelParams (HObject template, HTuple numLevels, HTuple angleStart, HTuple angleExtent, HTuple scaleMin, HTuple scaleMax, HTuple optimization, HTuple metric, HTuple contrast, HTuple minContrast, HTuple parameters)
 		{
 			HOperatorSet.DetermineShapeModelParams(template, numLevels, angleStart, angleExtent, scaleMin, scaleMax, optimization, metric, contrast, minContrast, parameters, out HTuple parameterName, out HTuple parameterValue);
 			return (parameterName,parameterValue);
 		}
-		public static (HTuple numLevels, HTuple angleStart, HTuple angleExtent, HTuple angleStep, HTuple scaleMin, HTuple scaleMax, HTuple scaleStep, HTuple metric, HTuple minContrast) GetShapeModelParams (HTuple modelID)
+		public static (HTuple NumLevels, HTuple AngleStart, HTuple AngleExtent, HTuple AngleStep, HTuple ScaleMin, HTuple ScaleMax, HTuple ScaleStep, HTuple Metric, HTuple MinContrast) GetShapeModelParams (HTuple modelID)
 		{
 			HOperatorSet.GetShapeModelParams(modelID, out HTuple numLevels, out HTuple angleStart, out HTuple angleExtent, out HTuple angleStep, out HTuple scaleMin, out HTuple scaleMax, out HTuple scaleStep, out HTuple metric, out HTuple minContrast);
 			return (numLevels,angleStart,angleExtent,angleStep,scaleMin,scaleMax,scaleStep,metric,minContrast);
 		}
-		public static (HTuple row, HTuple column) GetShapeModelOrigin (HTuple modelID)
+		public static (HTuple Row, HTuple Column) GetShapeModelOrigin (HTuple modelID)
 		{
 			HOperatorSet.GetShapeModelOrigin(modelID, out HTuple row, out HTuple column);
 			return (row,column);
@@ -5644,32 +5644,32 @@ namespace HalconWrapper
 		{
 			HOperatorSet.SetShapeModelOrigin(modelID, row, column);
 		}
-		public static (HTuple row, HTuple column, HTuple angle, HTuple scaleR, HTuple scaleC, HTuple score, HTuple model) FindAnisoShapeModels (HObject image, HTuple modelIDs, HTuple angleStart, HTuple angleExtent, HTuple scaleRMin, HTuple scaleRMax, HTuple scaleCMin, HTuple scaleCMax, HTuple minScore, HTuple numMatches, HTuple maxOverlap, HTuple subPixel, HTuple numLevels, HTuple greediness)
+		public static (HTuple Row, HTuple Column, HTuple Angle, HTuple ScaleR, HTuple ScaleC, HTuple Score, HTuple Model) FindAnisoShapeModels (HObject image, HTuple modelIDs, HTuple angleStart, HTuple angleExtent, HTuple scaleRMin, HTuple scaleRMax, HTuple scaleCMin, HTuple scaleCMax, HTuple minScore, HTuple numMatches, HTuple maxOverlap, HTuple subPixel, HTuple numLevels, HTuple greediness)
 		{
 			HOperatorSet.FindAnisoShapeModels(image, modelIDs, angleStart, angleExtent, scaleRMin, scaleRMax, scaleCMin, scaleCMax, minScore, numMatches, maxOverlap, subPixel, numLevels, greediness, out HTuple row, out HTuple column, out HTuple angle, out HTuple scaleR, out HTuple scaleC, out HTuple score, out HTuple model);
 			return (row,column,angle,scaleR,scaleC,score,model);
 		}
-		public static (HTuple row, HTuple column, HTuple angle, HTuple scale, HTuple score, HTuple model) FindScaledShapeModels (HObject image, HTuple modelIDs, HTuple angleStart, HTuple angleExtent, HTuple scaleMin, HTuple scaleMax, HTuple minScore, HTuple numMatches, HTuple maxOverlap, HTuple subPixel, HTuple numLevels, HTuple greediness)
+		public static (HTuple Row, HTuple Column, HTuple Angle, HTuple Scale, HTuple Score, HTuple Model) FindScaledShapeModels (HObject image, HTuple modelIDs, HTuple angleStart, HTuple angleExtent, HTuple scaleMin, HTuple scaleMax, HTuple minScore, HTuple numMatches, HTuple maxOverlap, HTuple subPixel, HTuple numLevels, HTuple greediness)
 		{
 			HOperatorSet.FindScaledShapeModels(image, modelIDs, angleStart, angleExtent, scaleMin, scaleMax, minScore, numMatches, maxOverlap, subPixel, numLevels, greediness, out HTuple row, out HTuple column, out HTuple angle, out HTuple scale, out HTuple score, out HTuple model);
 			return (row,column,angle,scale,score,model);
 		}
-		public static (HTuple row, HTuple column, HTuple angle, HTuple score, HTuple model) FindShapeModels (HObject image, HTuple modelIDs, HTuple angleStart, HTuple angleExtent, HTuple minScore, HTuple numMatches, HTuple maxOverlap, HTuple subPixel, HTuple numLevels, HTuple greediness)
+		public static (HTuple Row, HTuple Column, HTuple Angle, HTuple Score, HTuple Model) FindShapeModels (HObject image, HTuple modelIDs, HTuple angleStart, HTuple angleExtent, HTuple minScore, HTuple numMatches, HTuple maxOverlap, HTuple subPixel, HTuple numLevels, HTuple greediness)
 		{
 			HOperatorSet.FindShapeModels(image, modelIDs, angleStart, angleExtent, minScore, numMatches, maxOverlap, subPixel, numLevels, greediness, out HTuple row, out HTuple column, out HTuple angle, out HTuple score, out HTuple model);
 			return (row,column,angle,score,model);
 		}
-		public static (HTuple row, HTuple column, HTuple angle, HTuple scaleR, HTuple scaleC, HTuple score) FindAnisoShapeModel (HObject image, HTuple modelID, HTuple angleStart, HTuple angleExtent, HTuple scaleRMin, HTuple scaleRMax, HTuple scaleCMin, HTuple scaleCMax, HTuple minScore, HTuple numMatches, HTuple maxOverlap, HTuple subPixel, HTuple numLevels, HTuple greediness)
+		public static (HTuple Row, HTuple Column, HTuple Angle, HTuple ScaleR, HTuple ScaleC, HTuple Score) FindAnisoShapeModel (HObject image, HTuple modelID, HTuple angleStart, HTuple angleExtent, HTuple scaleRMin, HTuple scaleRMax, HTuple scaleCMin, HTuple scaleCMax, HTuple minScore, HTuple numMatches, HTuple maxOverlap, HTuple subPixel, HTuple numLevels, HTuple greediness)
 		{
 			HOperatorSet.FindAnisoShapeModel(image, modelID, angleStart, angleExtent, scaleRMin, scaleRMax, scaleCMin, scaleCMax, minScore, numMatches, maxOverlap, subPixel, numLevels, greediness, out HTuple row, out HTuple column, out HTuple angle, out HTuple scaleR, out HTuple scaleC, out HTuple score);
 			return (row,column,angle,scaleR,scaleC,score);
 		}
-		public static (HTuple row, HTuple column, HTuple angle, HTuple scale, HTuple score) FindScaledShapeModel (HObject image, HTuple modelID, HTuple angleStart, HTuple angleExtent, HTuple scaleMin, HTuple scaleMax, HTuple minScore, HTuple numMatches, HTuple maxOverlap, HTuple subPixel, HTuple numLevels, HTuple greediness)
+		public static (HTuple Row, HTuple Column, HTuple Angle, HTuple Scale, HTuple Score) FindScaledShapeModel (HObject image, HTuple modelID, HTuple angleStart, HTuple angleExtent, HTuple scaleMin, HTuple scaleMax, HTuple minScore, HTuple numMatches, HTuple maxOverlap, HTuple subPixel, HTuple numLevels, HTuple greediness)
 		{
 			HOperatorSet.FindScaledShapeModel(image, modelID, angleStart, angleExtent, scaleMin, scaleMax, minScore, numMatches, maxOverlap, subPixel, numLevels, greediness, out HTuple row, out HTuple column, out HTuple angle, out HTuple scale, out HTuple score);
 			return (row,column,angle,scale,score);
 		}
-		public static (HTuple row, HTuple column, HTuple angle, HTuple score) FindShapeModel (HObject image, HTuple modelID, HTuple angleStart, HTuple angleExtent, HTuple minScore, HTuple numMatches, HTuple maxOverlap, HTuple subPixel, HTuple numLevels, HTuple greediness)
+		public static (HTuple Row, HTuple Column, HTuple Angle, HTuple Score) FindShapeModel (HObject image, HTuple modelID, HTuple angleStart, HTuple angleExtent, HTuple minScore, HTuple numMatches, HTuple maxOverlap, HTuple subPixel, HTuple numLevels, HTuple greediness)
 		{
 			HOperatorSet.FindShapeModel(image, modelID, angleStart, angleExtent, minScore, numMatches, maxOverlap, subPixel, numLevels, greediness, out HTuple row, out HTuple column, out HTuple angle, out HTuple score);
 			return (row,column,angle,score);
@@ -5712,7 +5712,7 @@ namespace HalconWrapper
 			HOperatorSet.CreateShapeModel(template, numLevels, angleStart, angleExtent, angleStep, optimization, metric, contrast, minContrast, out HTuple modelID);
 			return modelID;
 		}
-		public static (HObject modelImages, HObject modelRegions) InspectShapeModel (HObject image, HTuple numLevels, HTuple contrast)
+		public static (HObject ModelImages, HObject ModelRegions) InspectShapeModel (HObject image, HTuple numLevels, HTuple contrast)
 		{
 			HOperatorSet.InspectShapeModel(image, out HObject modelImages, out HObject modelRegions, numLevels, contrast);
 			return (modelImages,modelRegions);
@@ -5744,22 +5744,22 @@ namespace HalconWrapper
 		{
 			HOperatorSet.WriteDescriptorModel(modelID, fileName);
 		}
-		public static (HTuple pose, HTuple score) FindCalibDescriptorModel (HObject image, HTuple modelID, HTuple detectorParamName, HTuple detectorParamValue, HTuple descriptorParamName, HTuple descriptorParamValue, HTuple minScore, HTuple numMatches, HTuple camParam, HTuple scoreType)
+		public static (HTuple Pose, HTuple Score) FindCalibDescriptorModel (HObject image, HTuple modelID, HTuple detectorParamName, HTuple detectorParamValue, HTuple descriptorParamName, HTuple descriptorParamValue, HTuple minScore, HTuple numMatches, HTuple camParam, HTuple scoreType)
 		{
 			HOperatorSet.FindCalibDescriptorModel(image, modelID, detectorParamName, detectorParamValue, descriptorParamName, descriptorParamValue, minScore, numMatches, camParam, scoreType, out HTuple pose, out HTuple score);
 			return (pose,score);
 		}
-		public static (HTuple homMat2D, HTuple score) FindUncalibDescriptorModel (HObject image, HTuple modelID, HTuple detectorParamName, HTuple detectorParamValue, HTuple descriptorParamName, HTuple descriptorParamValue, HTuple minScore, HTuple numMatches, HTuple scoreType)
+		public static (HTuple HomMat2D, HTuple Score) FindUncalibDescriptorModel (HObject image, HTuple modelID, HTuple detectorParamName, HTuple detectorParamValue, HTuple descriptorParamName, HTuple descriptorParamValue, HTuple minScore, HTuple numMatches, HTuple scoreType)
 		{
 			HOperatorSet.FindUncalibDescriptorModel(image, modelID, detectorParamName, detectorParamValue, descriptorParamName, descriptorParamValue, minScore, numMatches, scoreType, out HTuple homMat2D, out HTuple score);
 			return (homMat2D,score);
 		}
-		public static (HTuple row, HTuple column) GetDescriptorModelPoints (HTuple modelID, HTuple set, HTuple subset)
+		public static (HTuple Row, HTuple Column) GetDescriptorModelPoints (HTuple modelID, HTuple set, HTuple subset)
 		{
 			HOperatorSet.GetDescriptorModelPoints(modelID, set, subset, out HTuple row, out HTuple column);
 			return (row,column);
 		}
-		public static (HTuple detectorType, HTuple detectorParamName, HTuple detectorParamValue, HTuple descriptorParamName, HTuple descriptorParamValue) GetDescriptorModelParams (HTuple modelID)
+		public static (HTuple DetectorType, HTuple DetectorParamName, HTuple DetectorParamValue, HTuple DescriptorParamName, HTuple DescriptorParamValue) GetDescriptorModelParams (HTuple modelID)
 		{
 			HOperatorSet.GetDescriptorModelParams(modelID, out HTuple detectorType, out HTuple detectorParamName, out HTuple detectorParamValue, out HTuple descriptorParamName, out HTuple descriptorParamValue);
 			return (detectorType,detectorParamName,detectorParamValue,descriptorParamName,descriptorParamValue);
@@ -5779,7 +5779,7 @@ namespace HalconWrapper
 			HOperatorSet.GetDescriptorModelResults(modelID, objectID, resultNames, out HTuple results);
 			return results;
 		}
-		public static (HTuple row, HTuple column) GetDescriptorModelOrigin (HTuple modelID)
+		public static (HTuple Row, HTuple Column) GetDescriptorModelOrigin (HTuple modelID)
 		{
 			HOperatorSet.GetDescriptorModelOrigin(modelID, out HTuple row, out HTuple column);
 			return (row,column);
@@ -5788,7 +5788,7 @@ namespace HalconWrapper
 		{
 			HOperatorSet.SetDescriptorModelOrigin(modelID, row, column);
 		}
-		public static (HTuple row, HTuple column) GetDeformableModelOrigin (HTuple modelID)
+		public static (HTuple Row, HTuple Column) GetDeformableModelOrigin (HTuple modelID)
 		{
 			HOperatorSet.GetDeformableModelOrigin(modelID, out HTuple row, out HTuple column);
 			return (row,column);
@@ -5811,7 +5811,7 @@ namespace HalconWrapper
 			HOperatorSet.GetDeformableModelContours(out HObject modelContours, modelID, level);
 			return modelContours;
 		}
-		public static (HTuple parameterName, HTuple parameterValue) DetermineDeformableModelParams (HObject template, HTuple numLevels, HTuple angleStart, HTuple angleExtent, HTuple scaleMin, HTuple scaleMax, HTuple optimization, HTuple metric, HTuple contrast, HTuple minContrast, HTuple genParamName, HTuple genParamValue, HTuple parameters)
+		public static (HTuple ParameterName, HTuple ParameterValue) DetermineDeformableModelParams (HObject template, HTuple numLevels, HTuple angleStart, HTuple angleExtent, HTuple scaleMin, HTuple scaleMax, HTuple optimization, HTuple metric, HTuple contrast, HTuple minContrast, HTuple genParamName, HTuple genParamValue, HTuple parameters)
 		{
 			HOperatorSet.DetermineDeformableModelParams(template, numLevels, angleStart, angleExtent, scaleMin, scaleMax, optimization, metric, contrast, minContrast, genParamName, genParamValue, parameters, out HTuple parameterName, out HTuple parameterValue);
 			return (parameterName,parameterValue);
@@ -5843,17 +5843,17 @@ namespace HalconWrapper
 		{
 			HOperatorSet.ClearDeformableModel(modelID);
 		}
-		public static (HObject imageRectified, HObject vectorField, HObject deformedContours, HTuple score, HTuple row, HTuple column) FindLocalDeformableModel (HObject image, HTuple modelID, HTuple angleStart, HTuple angleExtent, HTuple scaleRMin, HTuple scaleRMax, HTuple scaleCMin, HTuple scaleCMax, HTuple minScore, HTuple numMatches, HTuple maxOverlap, HTuple numLevels, HTuple greediness, HTuple resultType, HTuple genParamName, HTuple genParamValue)
+		public static (HObject ImageRectified, HObject VectorField, HObject DeformedContours, HTuple Score, HTuple Row, HTuple Column) FindLocalDeformableModel (HObject image, HTuple modelID, HTuple angleStart, HTuple angleExtent, HTuple scaleRMin, HTuple scaleRMax, HTuple scaleCMin, HTuple scaleCMax, HTuple minScore, HTuple numMatches, HTuple maxOverlap, HTuple numLevels, HTuple greediness, HTuple resultType, HTuple genParamName, HTuple genParamValue)
 		{
 			HOperatorSet.FindLocalDeformableModel(image, out HObject imageRectified, out HObject vectorField, out HObject deformedContours, modelID, angleStart, angleExtent, scaleRMin, scaleRMax, scaleCMin, scaleCMax, minScore, numMatches, maxOverlap, numLevels, greediness, resultType, genParamName, genParamValue, out HTuple score, out HTuple row, out HTuple column);
 			return (imageRectified,vectorField,deformedContours,score,row,column);
 		}
-		public static (HTuple pose, HTuple covPose, HTuple score) FindPlanarCalibDeformableModel (HObject image, HTuple modelID, HTuple angleStart, HTuple angleExtent, HTuple scaleRMin, HTuple scaleRMax, HTuple scaleCMin, HTuple scaleCMax, HTuple minScore, HTuple numMatches, HTuple maxOverlap, HTuple numLevels, HTuple greediness, HTuple genParamName, HTuple genParamValue)
+		public static (HTuple Pose, HTuple CovPose, HTuple Score) FindPlanarCalibDeformableModel (HObject image, HTuple modelID, HTuple angleStart, HTuple angleExtent, HTuple scaleRMin, HTuple scaleRMax, HTuple scaleCMin, HTuple scaleCMax, HTuple minScore, HTuple numMatches, HTuple maxOverlap, HTuple numLevels, HTuple greediness, HTuple genParamName, HTuple genParamValue)
 		{
 			HOperatorSet.FindPlanarCalibDeformableModel(image, modelID, angleStart, angleExtent, scaleRMin, scaleRMax, scaleCMin, scaleCMax, minScore, numMatches, maxOverlap, numLevels, greediness, genParamName, genParamValue, out HTuple pose, out HTuple covPose, out HTuple score);
 			return (pose,covPose,score);
 		}
-		public static (HTuple homMat2D, HTuple score) FindPlanarUncalibDeformableModel (HObject image, HTuple modelID, HTuple angleStart, HTuple angleExtent, HTuple scaleRMin, HTuple scaleRMax, HTuple scaleCMin, HTuple scaleCMax, HTuple minScore, HTuple numMatches, HTuple maxOverlap, HTuple numLevels, HTuple greediness, HTuple genParamName, HTuple genParamValue)
+		public static (HTuple HomMat2D, HTuple Score) FindPlanarUncalibDeformableModel (HObject image, HTuple modelID, HTuple angleStart, HTuple angleExtent, HTuple scaleRMin, HTuple scaleRMax, HTuple scaleCMin, HTuple scaleCMax, HTuple minScore, HTuple numMatches, HTuple maxOverlap, HTuple numLevels, HTuple greediness, HTuple genParamName, HTuple genParamValue)
 		{
 			HOperatorSet.FindPlanarUncalibDeformableModel(image, modelID, angleStart, angleExtent, scaleRMin, scaleRMax, scaleCMin, scaleCMax, minScore, numMatches, maxOverlap, numLevels, greediness, genParamName, genParamValue, out HTuple homMat2D, out HTuple score);
 			return (homMat2D,score);
@@ -5927,17 +5927,17 @@ namespace HalconWrapper
 		{
 			HOperatorSet.WriteNccModel(modelID, fileName);
 		}
-		public static (HTuple parameterName, HTuple parameterValue) DetermineNccModelParams (HObject template, HTuple numLevels, HTuple angleStart, HTuple angleExtent, HTuple metric, HTuple parameters)
+		public static (HTuple ParameterName, HTuple ParameterValue) DetermineNccModelParams (HObject template, HTuple numLevels, HTuple angleStart, HTuple angleExtent, HTuple metric, HTuple parameters)
 		{
 			HOperatorSet.DetermineNccModelParams(template, numLevels, angleStart, angleExtent, metric, parameters, out HTuple parameterName, out HTuple parameterValue);
 			return (parameterName,parameterValue);
 		}
-		public static (HTuple numLevels, HTuple angleStart, HTuple angleExtent, HTuple angleStep, HTuple metric) GetNccModelParams (HTuple modelID)
+		public static (HTuple NumLevels, HTuple AngleStart, HTuple AngleExtent, HTuple AngleStep, HTuple Metric) GetNccModelParams (HTuple modelID)
 		{
 			HOperatorSet.GetNccModelParams(modelID, out HTuple numLevels, out HTuple angleStart, out HTuple angleExtent, out HTuple angleStep, out HTuple metric);
 			return (numLevels,angleStart,angleExtent,angleStep,metric);
 		}
-		public static (HTuple row, HTuple column) GetNccModelOrigin (HTuple modelID)
+		public static (HTuple Row, HTuple Column) GetNccModelOrigin (HTuple modelID)
 		{
 			HOperatorSet.GetNccModelOrigin(modelID, out HTuple row, out HTuple column);
 			return (row,column);
@@ -5946,7 +5946,7 @@ namespace HalconWrapper
 		{
 			HOperatorSet.SetNccModelOrigin(modelID, row, column);
 		}
-		public static (HTuple row, HTuple column, HTuple angle, HTuple score) FindNccModel (HObject image, HTuple modelID, HTuple angleStart, HTuple angleExtent, HTuple minScore, HTuple numMatches, HTuple maxOverlap, HTuple subPixel, HTuple numLevels)
+		public static (HTuple Row, HTuple Column, HTuple Angle, HTuple Score) FindNccModel (HObject image, HTuple modelID, HTuple angleStart, HTuple angleExtent, HTuple minScore, HTuple numMatches, HTuple maxOverlap, HTuple subPixel, HTuple numLevels)
 		{
 			HOperatorSet.FindNccModel(image, modelID, angleStart, angleExtent, minScore, numMatches, maxOverlap, subPixel, numLevels, out HTuple row, out HTuple column, out HTuple angle, out HTuple score);
 			return (row,column,angle,score);
@@ -5960,12 +5960,12 @@ namespace HalconWrapper
 			HOperatorSet.CreateNccModel(template, numLevels, angleStart, angleExtent, angleStep, metric, out HTuple modelID);
 			return modelID;
 		}
-		public static (HObject foundComponents, HTuple rowCompInst, HTuple columnCompInst, HTuple angleCompInst, HTuple scoreCompInst) GetFoundComponentModel (HTuple componentModelID, HTuple modelStart, HTuple modelEnd, HTuple rowComp, HTuple columnComp, HTuple angleComp, HTuple scoreComp, HTuple modelComp, HTuple modelMatch, HTuple markOrientation)
+		public static (HObject FoundComponents, HTuple RowCompInst, HTuple ColumnCompInst, HTuple AngleCompInst, HTuple ScoreCompInst) GetFoundComponentModel (HTuple componentModelID, HTuple modelStart, HTuple modelEnd, HTuple rowComp, HTuple columnComp, HTuple angleComp, HTuple scoreComp, HTuple modelComp, HTuple modelMatch, HTuple markOrientation)
 		{
 			HOperatorSet.GetFoundComponentModel(out HObject foundComponents, componentModelID, modelStart, modelEnd, rowComp, columnComp, angleComp, scoreComp, modelComp, modelMatch, markOrientation, out HTuple rowCompInst, out HTuple columnCompInst, out HTuple angleCompInst, out HTuple scoreCompInst);
 			return (foundComponents,rowCompInst,columnCompInst,angleCompInst,scoreCompInst);
 		}
-		public static (HTuple modelStart, HTuple modelEnd, HTuple score, HTuple rowComp, HTuple columnComp, HTuple angleComp, HTuple scoreComp, HTuple modelComp) FindComponentModel (HObject image, HTuple componentModelID, HTuple rootComponent, HTuple angleStartRoot, HTuple angleExtentRoot, HTuple minScore, HTuple numMatches, HTuple maxOverlap, HTuple ifRootNotFound, HTuple ifComponentNotFound, HTuple posePrediction, HTuple minScoreComp, HTuple subPixelComp, HTuple numLevelsComp, HTuple greedinessComp)
+		public static (HTuple ModelStart, HTuple ModelEnd, HTuple Score, HTuple RowComp, HTuple ColumnComp, HTuple AngleComp, HTuple ScoreComp, HTuple ModelComp) FindComponentModel (HObject image, HTuple componentModelID, HTuple rootComponent, HTuple angleStartRoot, HTuple angleExtentRoot, HTuple minScore, HTuple numMatches, HTuple maxOverlap, HTuple ifRootNotFound, HTuple ifComponentNotFound, HTuple posePrediction, HTuple minScoreComp, HTuple subPixelComp, HTuple numLevelsComp, HTuple greedinessComp)
 		{
 			HOperatorSet.FindComponentModel(image, componentModelID, rootComponent, angleStartRoot, angleExtentRoot, minScore, numMatches, maxOverlap, ifRootNotFound, ifComponentNotFound, posePrediction, minScoreComp, subPixelComp, numLevelsComp, greedinessComp, out HTuple modelStart, out HTuple modelEnd, out HTuple score, out HTuple rowComp, out HTuple columnComp, out HTuple angleComp, out HTuple scoreComp, out HTuple modelComp);
 			return (modelStart,modelEnd,score,rowComp,columnComp,angleComp,scoreComp,modelComp);
@@ -5978,12 +5978,12 @@ namespace HalconWrapper
 		{
 			HOperatorSet.ClearComponentModel(componentModelID);
 		}
-		public static (HObject tree, HObject relations, HTuple startNode, HTuple endNode, HTuple row, HTuple column, HTuple phi, HTuple length1, HTuple length2, HTuple angleStart, HTuple angleExtent) GetComponentModelTree (HTuple componentModelID, HTuple rootComponent, HTuple image)
+		public static (HObject Tree, HObject Relations, HTuple StartNode, HTuple EndNode, HTuple Row, HTuple Column, HTuple Phi, HTuple Length1, HTuple Length2, HTuple AngleStart, HTuple AngleExtent) GetComponentModelTree (HTuple componentModelID, HTuple rootComponent, HTuple image)
 		{
 			HOperatorSet.GetComponentModelTree(out HObject tree, out HObject relations, componentModelID, rootComponent, image, out HTuple startNode, out HTuple endNode, out HTuple row, out HTuple column, out HTuple phi, out HTuple length1, out HTuple length2, out HTuple angleStart, out HTuple angleExtent);
 			return (tree,relations,startNode,endNode,row,column,phi,length1,length2,angleStart,angleExtent);
 		}
-		public static (HTuple minScoreComp, HTuple rootRanking, HTuple shapeModelIDs) GetComponentModelParams (HTuple componentModelID)
+		public static (HTuple MinScoreComp, HTuple RootRanking, HTuple ShapeModelIDs) GetComponentModelParams (HTuple componentModelID)
 		{
 			HOperatorSet.GetComponentModelParams(componentModelID, out HTuple minScoreComp, out HTuple rootRanking, out HTuple shapeModelIDs);
 			return (minScoreComp,rootRanking,shapeModelIDs);
@@ -6007,12 +6007,12 @@ namespace HalconWrapper
 		{
 			HOperatorSet.WriteComponentModel(componentModelID, fileName);
 		}
-		public static (HTuple componentModelID, HTuple rootRanking) CreateComponentModel (HObject modelImage, HObject componentRegions, HTuple variationRow, HTuple variationColumn, HTuple variationAngle, HTuple angleStart, HTuple angleExtent, HTuple contrastLowComp, HTuple contrastHighComp, HTuple minSizeComp, HTuple minContrastComp, HTuple minScoreComp, HTuple numLevelsComp, HTuple angleStepComp, HTuple optimizationComp, HTuple metricComp, HTuple pregenerationComp)
+		public static (HTuple ComponentModelID, HTuple RootRanking) CreateComponentModel (HObject modelImage, HObject componentRegions, HTuple variationRow, HTuple variationColumn, HTuple variationAngle, HTuple angleStart, HTuple angleExtent, HTuple contrastLowComp, HTuple contrastHighComp, HTuple minSizeComp, HTuple minContrastComp, HTuple minScoreComp, HTuple numLevelsComp, HTuple angleStepComp, HTuple optimizationComp, HTuple metricComp, HTuple pregenerationComp)
 		{
 			HOperatorSet.CreateComponentModel(modelImage, componentRegions, variationRow, variationColumn, variationAngle, angleStart, angleExtent, contrastLowComp, contrastHighComp, minSizeComp, minContrastComp, minScoreComp, numLevelsComp, angleStepComp, optimizationComp, metricComp, pregenerationComp, out HTuple componentModelID, out HTuple rootRanking);
 			return (componentModelID,rootRanking);
 		}
-		public static (HTuple componentModelID, HTuple rootRanking) CreateTrainedComponentModel (HTuple componentTrainingID, HTuple angleStart, HTuple angleExtent, HTuple minContrastComp, HTuple minScoreComp, HTuple numLevelsComp, HTuple angleStepComp, HTuple optimizationComp, HTuple metricComp, HTuple pregenerationComp)
+		public static (HTuple ComponentModelID, HTuple RootRanking) CreateTrainedComponentModel (HTuple componentTrainingID, HTuple angleStart, HTuple angleExtent, HTuple minContrastComp, HTuple minScoreComp, HTuple numLevelsComp, HTuple angleStepComp, HTuple optimizationComp, HTuple metricComp, HTuple pregenerationComp)
 		{
 			HOperatorSet.CreateTrainedComponentModel(componentTrainingID, angleStart, angleExtent, minContrastComp, minScoreComp, numLevelsComp, angleStepComp, optimizationComp, metricComp, pregenerationComp, out HTuple componentModelID, out HTuple rootRanking);
 			return (componentModelID,rootRanking);
@@ -6025,12 +6025,12 @@ namespace HalconWrapper
 		{
 			HOperatorSet.ClearTrainingComponents(componentTrainingID);
 		}
-		public static (HObject relations, HTuple row, HTuple column, HTuple phi, HTuple length1, HTuple length2, HTuple angleStart, HTuple angleExtent) GetComponentRelations (HTuple componentTrainingID, HTuple referenceComponent, HTuple image)
+		public static (HObject Relations, HTuple Row, HTuple Column, HTuple Phi, HTuple Length1, HTuple Length2, HTuple AngleStart, HTuple AngleExtent) GetComponentRelations (HTuple componentTrainingID, HTuple referenceComponent, HTuple image)
 		{
 			HOperatorSet.GetComponentRelations(out HObject relations, componentTrainingID, referenceComponent, image, out HTuple row, out HTuple column, out HTuple phi, out HTuple length1, out HTuple length2, out HTuple angleStart, out HTuple angleExtent);
 			return (relations,row,column,phi,length1,length2,angleStart,angleExtent);
 		}
-		public static (HObject trainingComponents, HTuple row, HTuple column, HTuple angle, HTuple score) GetTrainingComponents (HTuple componentTrainingID, HTuple components, HTuple image, HTuple markOrientation)
+		public static (HObject TrainingComponents, HTuple Row, HTuple Column, HTuple Angle, HTuple Score) GetTrainingComponents (HTuple componentTrainingID, HTuple components, HTuple image, HTuple markOrientation)
 		{
 			HOperatorSet.GetTrainingComponents(out HObject trainingComponents, componentTrainingID, components, image, markOrientation, out HTuple row, out HTuple column, out HTuple angle, out HTuple score);
 			return (trainingComponents,row,column,angle,score);
@@ -6068,7 +6068,7 @@ namespace HalconWrapper
 			HOperatorSet.InspectClusteredComponents(out HObject modelComponents, componentTrainingID, ambiguityCriterion, maxContourOverlap, clusterThreshold);
 			return modelComponents;
 		}
-		public static (HObject modelComponents, HTuple componentTrainingID) TrainModelComponents (HObject modelImage, HObject initialComponents, HObject trainingImages, HTuple contrastLow, HTuple contrastHigh, HTuple minSize, HTuple minScore, HTuple searchRowTol, HTuple searchColumnTol, HTuple searchAngleTol, HTuple trainingEmphasis, HTuple ambiguityCriterion, HTuple maxContourOverlap, HTuple clusterThreshold)
+		public static (HObject ModelComponents, HTuple ComponentTrainingID) TrainModelComponents (HObject modelImage, HObject initialComponents, HObject trainingImages, HTuple contrastLow, HTuple contrastHigh, HTuple minSize, HTuple minScore, HTuple searchRowTol, HTuple searchColumnTol, HTuple searchAngleTol, HTuple trainingEmphasis, HTuple ambiguityCriterion, HTuple maxContourOverlap, HTuple clusterThreshold)
 		{
 			HOperatorSet.TrainModelComponents(modelImage, initialComponents, trainingImages, out HObject modelComponents, contrastLow, contrastHigh, minSize, minScore, searchRowTol, searchColumnTol, searchAngleTol, trainingEmphasis, ambiguityCriterion, maxContourOverlap, clusterThreshold, out HTuple componentTrainingID);
 			return (modelComponents,componentTrainingID);
@@ -6272,7 +6272,7 @@ namespace HalconWrapper
 			HOperatorSet.GetMetrologyObjectResult(metrologyHandle, index, instance, genParamName, genParamValue, out HTuple parameter);
 			return parameter;
 		}
-		public static (HObject contours, HTuple row, HTuple column) GetMetrologyObjectMeasures (HTuple metrologyHandle, HTuple index, HTuple transition)
+		public static (HObject Contours, HTuple Row, HTuple Column) GetMetrologyObjectMeasures (HTuple metrologyHandle, HTuple index, HTuple transition)
 		{
 			HOperatorSet.GetMetrologyObjectMeasures(out HObject contours, metrologyHandle, index, transition, out HTuple row, out HTuple column);
 			return (contours,row,column);
@@ -6372,7 +6372,7 @@ namespace HalconWrapper
 			HOperatorSet.ReadMeasure(fileName, out HTuple measureHandle);
 			return measureHandle;
 		}
-		public static (HTuple rowThresh, HTuple columnThresh, HTuple distance) MeasureThresh (HObject image, HTuple measureHandle, HTuple sigma, HTuple threshold, HTuple select)
+		public static (HTuple RowThresh, HTuple ColumnThresh, HTuple Distance) MeasureThresh (HObject image, HTuple measureHandle, HTuple sigma, HTuple threshold, HTuple select)
 		{
 			HOperatorSet.MeasureThresh(image, measureHandle, sigma, threshold, select, out HTuple rowThresh, out HTuple columnThresh, out HTuple distance);
 			return (rowThresh,columnThresh,distance);
@@ -6402,27 +6402,27 @@ namespace HalconWrapper
 		{
 			HOperatorSet.SetFuzzyMeasure(measureHandle, setType, function);
 		}
-		public static (HTuple rowEdgeFirst, HTuple columnEdgeFirst, HTuple amplitudeFirst, HTuple rowEdgeSecond, HTuple columnEdgeSecond, HTuple amplitudeSecond, HTuple rowPairCenter, HTuple columnPairCenter, HTuple fuzzyScore, HTuple intraDistance) FuzzyMeasurePairing (HObject image, HTuple measureHandle, HTuple sigma, HTuple ampThresh, HTuple fuzzyThresh, HTuple transition, HTuple pairing, HTuple numPairs)
+		public static (HTuple RowEdgeFirst, HTuple ColumnEdgeFirst, HTuple AmplitudeFirst, HTuple RowEdgeSecond, HTuple ColumnEdgeSecond, HTuple AmplitudeSecond, HTuple RowPairCenter, HTuple ColumnPairCenter, HTuple FuzzyScore, HTuple IntraDistance) FuzzyMeasurePairing (HObject image, HTuple measureHandle, HTuple sigma, HTuple ampThresh, HTuple fuzzyThresh, HTuple transition, HTuple pairing, HTuple numPairs)
 		{
 			HOperatorSet.FuzzyMeasurePairing(image, measureHandle, sigma, ampThresh, fuzzyThresh, transition, pairing, numPairs, out HTuple rowEdgeFirst, out HTuple columnEdgeFirst, out HTuple amplitudeFirst, out HTuple rowEdgeSecond, out HTuple columnEdgeSecond, out HTuple amplitudeSecond, out HTuple rowPairCenter, out HTuple columnPairCenter, out HTuple fuzzyScore, out HTuple intraDistance);
 			return (rowEdgeFirst,columnEdgeFirst,amplitudeFirst,rowEdgeSecond,columnEdgeSecond,amplitudeSecond,rowPairCenter,columnPairCenter,fuzzyScore,intraDistance);
 		}
-		public static (HTuple rowEdgeFirst, HTuple columnEdgeFirst, HTuple amplitudeFirst, HTuple rowEdgeSecond, HTuple columnEdgeSecond, HTuple amplitudeSecond, HTuple rowEdgeCenter, HTuple columnEdgeCenter, HTuple fuzzyScore, HTuple intraDistance, HTuple interDistance) FuzzyMeasurePairs (HObject image, HTuple measureHandle, HTuple sigma, HTuple ampThresh, HTuple fuzzyThresh, HTuple transition)
+		public static (HTuple RowEdgeFirst, HTuple ColumnEdgeFirst, HTuple AmplitudeFirst, HTuple RowEdgeSecond, HTuple ColumnEdgeSecond, HTuple AmplitudeSecond, HTuple RowEdgeCenter, HTuple ColumnEdgeCenter, HTuple FuzzyScore, HTuple IntraDistance, HTuple InterDistance) FuzzyMeasurePairs (HObject image, HTuple measureHandle, HTuple sigma, HTuple ampThresh, HTuple fuzzyThresh, HTuple transition)
 		{
 			HOperatorSet.FuzzyMeasurePairs(image, measureHandle, sigma, ampThresh, fuzzyThresh, transition, out HTuple rowEdgeFirst, out HTuple columnEdgeFirst, out HTuple amplitudeFirst, out HTuple rowEdgeSecond, out HTuple columnEdgeSecond, out HTuple amplitudeSecond, out HTuple rowEdgeCenter, out HTuple columnEdgeCenter, out HTuple fuzzyScore, out HTuple intraDistance, out HTuple interDistance);
 			return (rowEdgeFirst,columnEdgeFirst,amplitudeFirst,rowEdgeSecond,columnEdgeSecond,amplitudeSecond,rowEdgeCenter,columnEdgeCenter,fuzzyScore,intraDistance,interDistance);
 		}
-		public static (HTuple rowEdge, HTuple columnEdge, HTuple amplitude, HTuple fuzzyScore, HTuple distance) FuzzyMeasurePos (HObject image, HTuple measureHandle, HTuple sigma, HTuple ampThresh, HTuple fuzzyThresh, HTuple transition)
+		public static (HTuple RowEdge, HTuple ColumnEdge, HTuple Amplitude, HTuple FuzzyScore, HTuple Distance) FuzzyMeasurePos (HObject image, HTuple measureHandle, HTuple sigma, HTuple ampThresh, HTuple fuzzyThresh, HTuple transition)
 		{
 			HOperatorSet.FuzzyMeasurePos(image, measureHandle, sigma, ampThresh, fuzzyThresh, transition, out HTuple rowEdge, out HTuple columnEdge, out HTuple amplitude, out HTuple fuzzyScore, out HTuple distance);
 			return (rowEdge,columnEdge,amplitude,fuzzyScore,distance);
 		}
-		public static (HTuple rowEdgeFirst, HTuple columnEdgeFirst, HTuple amplitudeFirst, HTuple rowEdgeSecond, HTuple columnEdgeSecond, HTuple amplitudeSecond, HTuple intraDistance, HTuple interDistance) MeasurePairs (HObject image, HTuple measureHandle, HTuple sigma, HTuple threshold, HTuple transition, HTuple select)
+		public static (HTuple RowEdgeFirst, HTuple ColumnEdgeFirst, HTuple AmplitudeFirst, HTuple RowEdgeSecond, HTuple ColumnEdgeSecond, HTuple AmplitudeSecond, HTuple IntraDistance, HTuple InterDistance) MeasurePairs (HObject image, HTuple measureHandle, HTuple sigma, HTuple threshold, HTuple transition, HTuple select)
 		{
 			HOperatorSet.MeasurePairs(image, measureHandle, sigma, threshold, transition, select, out HTuple rowEdgeFirst, out HTuple columnEdgeFirst, out HTuple amplitudeFirst, out HTuple rowEdgeSecond, out HTuple columnEdgeSecond, out HTuple amplitudeSecond, out HTuple intraDistance, out HTuple interDistance);
 			return (rowEdgeFirst,columnEdgeFirst,amplitudeFirst,rowEdgeSecond,columnEdgeSecond,amplitudeSecond,intraDistance,interDistance);
 		}
-		public static (HTuple rowEdge, HTuple columnEdge, HTuple amplitude, HTuple distance) MeasurePos (HObject image, HTuple measureHandle, HTuple sigma, HTuple threshold, HTuple transition, HTuple select)
+		public static (HTuple RowEdge, HTuple ColumnEdge, HTuple Amplitude, HTuple Distance) MeasurePos (HObject image, HTuple measureHandle, HTuple sigma, HTuple threshold, HTuple transition, HTuple select)
 		{
 			HOperatorSet.MeasurePos(image, measureHandle, sigma, threshold, transition, select, out HTuple rowEdge, out HTuple columnEdge, out HTuple amplitude, out HTuple distance);
 			return (rowEdge,columnEdge,amplitude,distance);
@@ -6460,37 +6460,37 @@ namespace HalconWrapper
 		{
 			HOperatorSet.WriteMatrix(matrixID, fileFormat, fileName);
 		}
-		public static (HTuple matrixOrthogonalID, HTuple matrixTriangularID) OrthogonalDecomposeMatrix (HTuple matrixID, HTuple decompositionType, HTuple outputMatricesType, HTuple computeOrthogonal)
+		public static (HTuple MatrixOrthogonalID, HTuple MatrixTriangularID) OrthogonalDecomposeMatrix (HTuple matrixID, HTuple decompositionType, HTuple outputMatricesType, HTuple computeOrthogonal)
 		{
 			HOperatorSet.OrthogonalDecomposeMatrix(matrixID, decompositionType, outputMatricesType, computeOrthogonal, out HTuple matrixOrthogonalID, out HTuple matrixTriangularID);
 			return (matrixOrthogonalID,matrixTriangularID);
 		}
-		public static (HTuple matrix1ID, HTuple matrix2ID) DecomposeMatrix (HTuple matrixID, HTuple matrixType)
+		public static (HTuple Matrix1ID, HTuple Matrix2ID) DecomposeMatrix (HTuple matrixID, HTuple matrixType)
 		{
 			HOperatorSet.DecomposeMatrix(matrixID, matrixType, out HTuple matrix1ID, out HTuple matrix2ID);
 			return (matrix1ID,matrix2ID);
 		}
-		public static (HTuple matrixUID, HTuple matrixSID, HTuple matrixVID) SvdMatrix (HTuple matrixID, HTuple SVDType, HTuple computeSingularVectors)
+		public static (HTuple MatrixUID, HTuple MatrixSID, HTuple MatrixVID) SvdMatrix (HTuple matrixID, HTuple SVDType, HTuple computeSingularVectors)
 		{
 			HOperatorSet.SvdMatrix(matrixID, SVDType, computeSingularVectors, out HTuple matrixUID, out HTuple matrixSID, out HTuple matrixVID);
 			return (matrixUID,matrixSID,matrixVID);
 		}
-		public static (HTuple eigenvaluesRealID, HTuple eigenvaluesImagID, HTuple eigenvectorsRealID, HTuple eigenvectorsImagID) GeneralizedEigenvaluesGeneralMatrix (HTuple matrixAID, HTuple matrixBID, HTuple computeEigenvectors)
+		public static (HTuple EigenvaluesRealID, HTuple EigenvaluesImagID, HTuple EigenvectorsRealID, HTuple EigenvectorsImagID) GeneralizedEigenvaluesGeneralMatrix (HTuple matrixAID, HTuple matrixBID, HTuple computeEigenvectors)
 		{
 			HOperatorSet.GeneralizedEigenvaluesGeneralMatrix(matrixAID, matrixBID, computeEigenvectors, out HTuple eigenvaluesRealID, out HTuple eigenvaluesImagID, out HTuple eigenvectorsRealID, out HTuple eigenvectorsImagID);
 			return (eigenvaluesRealID,eigenvaluesImagID,eigenvectorsRealID,eigenvectorsImagID);
 		}
-		public static (HTuple eigenvaluesID, HTuple eigenvectorsID) GeneralizedEigenvaluesSymmetricMatrix (HTuple matrixAID, HTuple matrixBID, HTuple computeEigenvectors)
+		public static (HTuple EigenvaluesID, HTuple EigenvectorsID) GeneralizedEigenvaluesSymmetricMatrix (HTuple matrixAID, HTuple matrixBID, HTuple computeEigenvectors)
 		{
 			HOperatorSet.GeneralizedEigenvaluesSymmetricMatrix(matrixAID, matrixBID, computeEigenvectors, out HTuple eigenvaluesID, out HTuple eigenvectorsID);
 			return (eigenvaluesID,eigenvectorsID);
 		}
-		public static (HTuple eigenvaluesRealID, HTuple eigenvaluesImagID, HTuple eigenvectorsRealID, HTuple eigenvectorsImagID) EigenvaluesGeneralMatrix (HTuple matrixID, HTuple computeEigenvectors)
+		public static (HTuple EigenvaluesRealID, HTuple EigenvaluesImagID, HTuple EigenvectorsRealID, HTuple EigenvectorsImagID) EigenvaluesGeneralMatrix (HTuple matrixID, HTuple computeEigenvectors)
 		{
 			HOperatorSet.EigenvaluesGeneralMatrix(matrixID, computeEigenvectors, out HTuple eigenvaluesRealID, out HTuple eigenvaluesImagID, out HTuple eigenvectorsRealID, out HTuple eigenvectorsImagID);
 			return (eigenvaluesRealID,eigenvaluesImagID,eigenvectorsRealID,eigenvectorsImagID);
 		}
-		public static (HTuple eigenvaluesID, HTuple eigenvectorsID) EigenvaluesSymmetricMatrix (HTuple matrixID, HTuple computeEigenvectors)
+		public static (HTuple EigenvaluesID, HTuple EigenvectorsID) EigenvaluesSymmetricMatrix (HTuple matrixID, HTuple computeEigenvectors)
 		{
 			HOperatorSet.EigenvaluesSymmetricMatrix(matrixID, computeEigenvectors, out HTuple eigenvaluesID, out HTuple eigenvectorsID);
 			return (eigenvaluesID,eigenvectorsID);
@@ -6647,7 +6647,7 @@ namespace HalconWrapper
 			HOperatorSet.MultMatrix(matrixAID, matrixBID, multType, out HTuple matrixMultID);
 			return matrixMultID;
 		}
-		public static (HTuple rows, HTuple columns) GetSizeMatrix (HTuple matrixID)
+		public static (HTuple Rows, HTuple Columns) GetSizeMatrix (HTuple matrixID)
 		{
 			HOperatorSet.GetSizeMatrix(matrixID, out HTuple rows, out HTuple columns);
 			return (rows,columns);
@@ -6734,7 +6734,7 @@ namespace HalconWrapper
 			HOperatorSet.CreateOcvProj(patternNames, out HTuple OCVHandle);
 			return OCVHandle;
 		}
-		public static (HTuple classVal, HTuple confidence, HTuple word, HTuple score) DoOcrWordKnn (HObject character, HObject image, HTuple OCRHandle, HTuple expression, HTuple numAlternatives, HTuple numCorrections)
+		public static (HTuple ClassVal, HTuple Confidence, HTuple Word, HTuple Score) DoOcrWordKnn (HObject character, HObject image, HTuple OCRHandle, HTuple expression, HTuple numAlternatives, HTuple numCorrections)
 		{
 			HOperatorSet.DoOcrWordKnn(character, image, OCRHandle, expression, numAlternatives, numCorrections, out HTuple classVal, out HTuple confidence, out HTuple word, out HTuple score);
 			return (classVal,confidence,word,score);
@@ -6780,42 +6780,42 @@ namespace HalconWrapper
 			HOperatorSet.GetFeaturesOcrClassKnn(character, OCRHandle, transform, out HTuple features);
 			return features;
 		}
-		public static (HTuple widthCharacter, HTuple heightCharacter, HTuple interpolation, HTuple features, HTuple characters, HTuple preprocessing, HTuple numTrees) GetParamsOcrClassKnn (HTuple OCRHandle)
+		public static (HTuple WidthCharacter, HTuple HeightCharacter, HTuple Interpolation, HTuple Features, HTuple Characters, HTuple Preprocessing, HTuple NumTrees) GetParamsOcrClassKnn (HTuple OCRHandle)
 		{
 			HOperatorSet.GetParamsOcrClassKnn(OCRHandle, out HTuple widthCharacter, out HTuple heightCharacter, out HTuple interpolation, out HTuple features, out HTuple characters, out HTuple preprocessing, out HTuple numTrees);
 			return (widthCharacter,heightCharacter,interpolation,features,characters,preprocessing,numTrees);
 		}
-		public static (HTuple classVal, HTuple confidence) DoOcrMultiClassKnn (HObject character, HObject image, HTuple OCRHandle)
+		public static (HTuple ClassVal, HTuple Confidence) DoOcrMultiClassKnn (HObject character, HObject image, HTuple OCRHandle)
 		{
 			HOperatorSet.DoOcrMultiClassKnn(character, image, OCRHandle, out HTuple classVal, out HTuple confidence);
 			return (classVal,confidence);
 		}
-		public static (HTuple classVal, HTuple confidence) DoOcrSingleClassKnn (HObject character, HObject image, HTuple OCRHandle, HTuple numClasses, HTuple numNeighbors)
+		public static (HTuple ClassVal, HTuple Confidence) DoOcrSingleClassKnn (HObject character, HObject image, HTuple OCRHandle, HTuple numClasses, HTuple numNeighbors)
 		{
 			HOperatorSet.DoOcrSingleClassKnn(character, image, OCRHandle, numClasses, numNeighbors, out HTuple classVal, out HTuple confidence);
 			return (classVal,confidence);
 		}
-		public static (HTuple OCRHandle, HTuple featureSet, HTuple score) SelectFeatureSetTrainfKnn (HTuple trainingFile, HTuple featureList, HTuple selectionMethod, HTuple width, HTuple height, HTuple genParamName, HTuple genParamValue)
+		public static (HTuple OCRHandle, HTuple FeatureSet, HTuple Score) SelectFeatureSetTrainfKnn (HTuple trainingFile, HTuple featureList, HTuple selectionMethod, HTuple width, HTuple height, HTuple genParamName, HTuple genParamValue)
 		{
 			HOperatorSet.SelectFeatureSetTrainfKnn(trainingFile, featureList, selectionMethod, width, height, genParamName, genParamValue, out HTuple OCRHandle, out HTuple featureSet, out HTuple score);
 			return (OCRHandle,featureSet,score);
 		}
-		public static (HTuple OCRHandle, HTuple featureSet, HTuple score) SelectFeatureSetTrainfMlpProtected (HTuple trainingFile, HTuple password, HTuple featureList, HTuple selectionMethod, HTuple width, HTuple height, HTuple genParamName, HTuple genParamValue)
+		public static (HTuple OCRHandle, HTuple FeatureSet, HTuple Score) SelectFeatureSetTrainfMlpProtected (HTuple trainingFile, HTuple password, HTuple featureList, HTuple selectionMethod, HTuple width, HTuple height, HTuple genParamName, HTuple genParamValue)
 		{
 			HOperatorSet.SelectFeatureSetTrainfMlpProtected(trainingFile, password, featureList, selectionMethod, width, height, genParamName, genParamValue, out HTuple OCRHandle, out HTuple featureSet, out HTuple score);
 			return (OCRHandle,featureSet,score);
 		}
-		public static (HTuple OCRHandle, HTuple featureSet, HTuple score) SelectFeatureSetTrainfMlp (HTuple trainingFile, HTuple featureList, HTuple selectionMethod, HTuple width, HTuple height, HTuple genParamName, HTuple genParamValue)
+		public static (HTuple OCRHandle, HTuple FeatureSet, HTuple Score) SelectFeatureSetTrainfMlp (HTuple trainingFile, HTuple featureList, HTuple selectionMethod, HTuple width, HTuple height, HTuple genParamName, HTuple genParamValue)
 		{
 			HOperatorSet.SelectFeatureSetTrainfMlp(trainingFile, featureList, selectionMethod, width, height, genParamName, genParamValue, out HTuple OCRHandle, out HTuple featureSet, out HTuple score);
 			return (OCRHandle,featureSet,score);
 		}
-		public static (HTuple OCRHandle, HTuple featureSet, HTuple score) SelectFeatureSetTrainfSvmProtected (HTuple trainingFile, HTuple password, HTuple featureList, HTuple selectionMethod, HTuple width, HTuple height, HTuple genParamName, HTuple genParamValue)
+		public static (HTuple OCRHandle, HTuple FeatureSet, HTuple Score) SelectFeatureSetTrainfSvmProtected (HTuple trainingFile, HTuple password, HTuple featureList, HTuple selectionMethod, HTuple width, HTuple height, HTuple genParamName, HTuple genParamValue)
 		{
 			HOperatorSet.SelectFeatureSetTrainfSvmProtected(trainingFile, password, featureList, selectionMethod, width, height, genParamName, genParamValue, out HTuple OCRHandle, out HTuple featureSet, out HTuple score);
 			return (OCRHandle,featureSet,score);
 		}
-		public static (HTuple OCRHandle, HTuple featureSet, HTuple score) SelectFeatureSetTrainfSvm (HTuple trainingFile, HTuple featureList, HTuple selectionMethod, HTuple width, HTuple height, HTuple genParamName, HTuple genParamValue)
+		public static (HTuple OCRHandle, HTuple FeatureSet, HTuple Score) SelectFeatureSetTrainfSvm (HTuple trainingFile, HTuple featureList, HTuple selectionMethod, HTuple width, HTuple height, HTuple genParamName, HTuple genParamValue)
 		{
 			HOperatorSet.SelectFeatureSetTrainfSvm(trainingFile, featureList, selectionMethod, width, height, genParamName, genParamValue, out HTuple OCRHandle, out HTuple featureSet, out HTuple score);
 			return (OCRHandle,featureSet,score);
@@ -6828,7 +6828,7 @@ namespace HalconWrapper
 		{
 			HOperatorSet.ClearLexicon(lexiconHandle);
 		}
-		public static (HTuple suggestion, HTuple numCorrections) SuggestLexicon (HTuple lexiconHandle, HTuple word)
+		public static (HTuple Suggestion, HTuple NumCorrections) SuggestLexicon (HTuple lexiconHandle, HTuple word)
 		{
 			HOperatorSet.SuggestLexicon(lexiconHandle, word, out HTuple suggestion, out HTuple numCorrections);
 			return (suggestion,numCorrections);
@@ -6885,7 +6885,7 @@ namespace HalconWrapper
 			HOperatorSet.GetFeaturesOcrClassSvm(character, OCRHandle, transform, out HTuple features);
 			return features;
 		}
-		public static (HTuple classVal, HTuple word, HTuple score) DoOcrWordSvm (HObject character, HObject image, HTuple OCRHandle, HTuple expression, HTuple numAlternatives, HTuple numCorrections)
+		public static (HTuple ClassVal, HTuple Word, HTuple Score) DoOcrWordSvm (HObject character, HObject image, HTuple OCRHandle, HTuple expression, HTuple numAlternatives, HTuple numCorrections)
 		{
 			HOperatorSet.DoOcrWordSvm(character, image, OCRHandle, expression, numAlternatives, numCorrections, out HTuple classVal, out HTuple word, out HTuple score);
 			return (classVal,word,score);
@@ -6913,12 +6913,12 @@ namespace HalconWrapper
 		{
 			HOperatorSet.TrainfOcrClassSvm(OCRHandle, trainingFile, epsilon, trainMode);
 		}
-		public static (HTuple informationCont, HTuple cumInformationCont) GetPrepInfoOcrClassSvm (HTuple OCRHandle, HTuple trainingFile, HTuple preprocessing)
+		public static (HTuple InformationCont, HTuple CumInformationCont) GetPrepInfoOcrClassSvm (HTuple OCRHandle, HTuple trainingFile, HTuple preprocessing)
 		{
 			HOperatorSet.GetPrepInfoOcrClassSvm(OCRHandle, trainingFile, preprocessing, out HTuple informationCont, out HTuple cumInformationCont);
 			return (informationCont,cumInformationCont);
 		}
-		public static (HTuple numSupportVectors, HTuple numSVPerSVM) GetSupportVectorNumOcrClassSvm (HTuple OCRHandle)
+		public static (HTuple NumSupportVectors, HTuple NumSVPerSVM) GetSupportVectorNumOcrClassSvm (HTuple OCRHandle)
 		{
 			HOperatorSet.GetSupportVectorNumOcrClassSvm(OCRHandle, out HTuple numSupportVectors, out HTuple numSVPerSVM);
 			return (numSupportVectors,numSVPerSVM);
@@ -6928,7 +6928,7 @@ namespace HalconWrapper
 			HOperatorSet.GetSupportVectorOcrClassSvm(OCRHandle, indexSupportVector, out HTuple index);
 			return index;
 		}
-		public static (HTuple widthCharacter, HTuple heightCharacter, HTuple interpolation, HTuple features, HTuple characters, HTuple kernelType, HTuple kernelParam, HTuple nu, HTuple mode, HTuple preprocessing, HTuple numComponents) GetParamsOcrClassSvm (HTuple OCRHandle)
+		public static (HTuple WidthCharacter, HTuple HeightCharacter, HTuple Interpolation, HTuple Features, HTuple Characters, HTuple KernelType, HTuple KernelParam, HTuple Nu, HTuple Mode, HTuple Preprocessing, HTuple NumComponents) GetParamsOcrClassSvm (HTuple OCRHandle)
 		{
 			HOperatorSet.GetParamsOcrClassSvm(OCRHandle, out HTuple widthCharacter, out HTuple heightCharacter, out HTuple interpolation, out HTuple features, out HTuple characters, out HTuple kernelType, out HTuple kernelParam, out HTuple nu, out HTuple mode, out HTuple preprocessing, out HTuple numComponents);
 			return (widthCharacter,heightCharacter,interpolation,features,characters,kernelType,kernelParam,nu,mode,preprocessing,numComponents);
@@ -6970,32 +6970,32 @@ namespace HalconWrapper
 			HOperatorSet.GetFeaturesOcrClassMlp(character, OCRHandle, transform, out HTuple features);
 			return features;
 		}
-		public static (HTuple classVal, HTuple confidence, HTuple word, HTuple score) DoOcrWordMlp (HObject character, HObject image, HTuple OCRHandle, HTuple expression, HTuple numAlternatives, HTuple numCorrections)
+		public static (HTuple ClassVal, HTuple Confidence, HTuple Word, HTuple Score) DoOcrWordMlp (HObject character, HObject image, HTuple OCRHandle, HTuple expression, HTuple numAlternatives, HTuple numCorrections)
 		{
 			HOperatorSet.DoOcrWordMlp(character, image, OCRHandle, expression, numAlternatives, numCorrections, out HTuple classVal, out HTuple confidence, out HTuple word, out HTuple score);
 			return (classVal,confidence,word,score);
 		}
-		public static (HTuple classVal, HTuple confidence) DoOcrMultiClassMlp (HObject character, HObject image, HTuple OCRHandle)
+		public static (HTuple ClassVal, HTuple Confidence) DoOcrMultiClassMlp (HObject character, HObject image, HTuple OCRHandle)
 		{
 			HOperatorSet.DoOcrMultiClassMlp(character, image, OCRHandle, out HTuple classVal, out HTuple confidence);
 			return (classVal,confidence);
 		}
-		public static (HTuple classVal, HTuple confidence) DoOcrSingleClassMlp (HObject character, HObject image, HTuple OCRHandle, HTuple num)
+		public static (HTuple ClassVal, HTuple Confidence) DoOcrSingleClassMlp (HObject character, HObject image, HTuple OCRHandle, HTuple num)
 		{
 			HOperatorSet.DoOcrSingleClassMlp(character, image, OCRHandle, num, out HTuple classVal, out HTuple confidence);
 			return (classVal,confidence);
 		}
-		public static (HTuple error, HTuple errorLog) TrainfOcrClassMlpProtected (HTuple OCRHandle, HTuple trainingFile, HTuple password, HTuple maxIterations, HTuple weightTolerance, HTuple errorTolerance)
+		public static (HTuple Error, HTuple ErrorLog) TrainfOcrClassMlpProtected (HTuple OCRHandle, HTuple trainingFile, HTuple password, HTuple maxIterations, HTuple weightTolerance, HTuple errorTolerance)
 		{
 			HOperatorSet.TrainfOcrClassMlpProtected(OCRHandle, trainingFile, password, maxIterations, weightTolerance, errorTolerance, out HTuple error, out HTuple errorLog);
 			return (error,errorLog);
 		}
-		public static (HTuple error, HTuple errorLog) TrainfOcrClassMlp (HTuple OCRHandle, HTuple trainingFile, HTuple maxIterations, HTuple weightTolerance, HTuple errorTolerance)
+		public static (HTuple Error, HTuple ErrorLog) TrainfOcrClassMlp (HTuple OCRHandle, HTuple trainingFile, HTuple maxIterations, HTuple weightTolerance, HTuple errorTolerance)
 		{
 			HOperatorSet.TrainfOcrClassMlp(OCRHandle, trainingFile, maxIterations, weightTolerance, errorTolerance, out HTuple error, out HTuple errorLog);
 			return (error,errorLog);
 		}
-		public static (HTuple informationCont, HTuple cumInformationCont) GetPrepInfoOcrClassMlp (HTuple OCRHandle, HTuple trainingFile, HTuple preprocessing)
+		public static (HTuple InformationCont, HTuple CumInformationCont) GetPrepInfoOcrClassMlp (HTuple OCRHandle, HTuple trainingFile, HTuple preprocessing)
 		{
 			HOperatorSet.GetPrepInfoOcrClassMlp(OCRHandle, trainingFile, preprocessing, out HTuple informationCont, out HTuple cumInformationCont);
 			return (informationCont,cumInformationCont);
@@ -7018,7 +7018,7 @@ namespace HalconWrapper
 		{
 			HOperatorSet.SetRegularizationParamsOcrClassMlp(OCRHandle, genParamName, genParamValue);
 		}
-		public static (HTuple widthCharacter, HTuple heightCharacter, HTuple interpolation, HTuple features, HTuple characters, HTuple numHidden, HTuple preprocessing, HTuple numComponents) GetParamsOcrClassMlp (HTuple OCRHandle)
+		public static (HTuple WidthCharacter, HTuple HeightCharacter, HTuple Interpolation, HTuple Features, HTuple Characters, HTuple NumHidden, HTuple Preprocessing, HTuple NumComponents) GetParamsOcrClassMlp (HTuple OCRHandle)
 		{
 			HOperatorSet.GetParamsOcrClassMlp(OCRHandle, out HTuple widthCharacter, out HTuple heightCharacter, out HTuple interpolation, out HTuple features, out HTuple characters, out HTuple numHidden, out HTuple preprocessing, out HTuple numComponents);
 			return (widthCharacter,heightCharacter,interpolation,features,characters,numHidden,preprocessing,numComponents);
@@ -7047,17 +7047,17 @@ namespace HalconWrapper
 			HOperatorSet.ReadOcr(fileName, out HTuple ocrHandle);
 			return ocrHandle;
 		}
-		public static (HTuple classes, HTuple confidences) DoOcrSingle (HObject character, HObject image, HTuple ocrHandle)
+		public static (HTuple Classes, HTuple Confidences) DoOcrSingle (HObject character, HObject image, HTuple ocrHandle)
 		{
 			HOperatorSet.DoOcrSingle(character, image, ocrHandle, out HTuple classes, out HTuple confidences);
 			return (classes,confidences);
 		}
-		public static (HTuple classVal, HTuple confidence) DoOcrMulti (HObject character, HObject image, HTuple ocrHandle)
+		public static (HTuple ClassVal, HTuple Confidence) DoOcrMulti (HObject character, HObject image, HTuple ocrHandle)
 		{
 			HOperatorSet.DoOcrMulti(character, image, ocrHandle, out HTuple classVal, out HTuple confidence);
 			return (classVal,confidence);
 		}
-		public static (HTuple widthPattern, HTuple heightPattern, HTuple interpolation, HTuple widthMaxChar, HTuple heightMaxChar, HTuple features, HTuple characters) InfoOcrClassBox (HTuple ocrHandle)
+		public static (HTuple WidthPattern, HTuple HeightPattern, HTuple Interpolation, HTuple WidthMaxChar, HTuple HeightMaxChar, HTuple Features, HTuple Characters) InfoOcrClassBox (HTuple ocrHandle)
 		{
 			HOperatorSet.InfoOcrClassBox(ocrHandle, out HTuple widthPattern, out HTuple heightPattern, out HTuple interpolation, out HTuple widthMaxChar, out HTuple heightMaxChar, out HTuple features, out HTuple characters);
 			return (widthPattern,heightPattern,interpolation,widthMaxChar,heightMaxChar,features,characters);
@@ -7129,22 +7129,22 @@ namespace HalconWrapper
 		{
 			HOperatorSet.AppendOcrTrainf(character, image, classVal, trainingFile);
 		}
-		public static (HTuple characterNames, HTuple characterCount) ReadOcrTrainfNamesProtected (HTuple trainingFile, HTuple password)
+		public static (HTuple CharacterNames, HTuple CharacterCount) ReadOcrTrainfNamesProtected (HTuple trainingFile, HTuple password)
 		{
 			HOperatorSet.ReadOcrTrainfNamesProtected(trainingFile, password, out HTuple characterNames, out HTuple characterCount);
 			return (characterNames,characterCount);
 		}
-		public static (HTuple characterNames, HTuple characterCount) ReadOcrTrainfNames (HTuple trainingFile)
+		public static (HTuple CharacterNames, HTuple CharacterCount) ReadOcrTrainfNames (HTuple trainingFile)
 		{
 			HOperatorSet.ReadOcrTrainfNames(trainingFile, out HTuple characterNames, out HTuple characterCount);
 			return (characterNames,characterCount);
 		}
-		public static (HObject characters, HTuple foundNames) ReadOcrTrainfSelect (HTuple trainingFile, HTuple searchNames)
+		public static (HObject Characters, HTuple FoundNames) ReadOcrTrainfSelect (HTuple trainingFile, HTuple searchNames)
 		{
 			HOperatorSet.ReadOcrTrainfSelect(out HObject characters, trainingFile, searchNames, out HTuple foundNames);
 			return (characters,foundNames);
 		}
-		public static (HObject characters, HTuple characterNames) ReadOcrTrainf (HTuple trainingFile)
+		public static (HObject Characters, HTuple CharacterNames) ReadOcrTrainf (HTuple trainingFile)
 		{
 			HOperatorSet.ReadOcrTrainf(out HObject characters, trainingFile, out HTuple characterNames);
 			return (characters,characterNames);
@@ -7219,7 +7219,7 @@ namespace HalconWrapper
 			HOperatorSet.HitOrMiss(region, structElement1, structElement2, out HObject regionHitMiss, row, column);
 			return regionHitMiss;
 		}
-		public static (HObject structElement1, HObject structElement2) GolayElements (HTuple golayElement, HTuple rotation, HTuple row, HTuple column)
+		public static (HObject StructElement1, HObject StructElement2) GolayElements (HTuple golayElement, HTuple rotation, HTuple row, HTuple column)
 		{
 			HOperatorSet.GolayElements(out HObject structElement1, out HObject structElement2, golayElement, rotation, row, column);
 			return (structElement1,structElement2);
@@ -7339,7 +7339,7 @@ namespace HalconWrapper
 			HOperatorSet.SmoothObjectModel3d(objectModel3D, method, genParamName, genParamValue, out HTuple smoothObjectModel3D);
 			return smoothObjectModel3D;
 		}
-		public static (HTuple triangulatedObjectModel3D, HTuple information) TriangulateObjectModel3d (HTuple objectModel3D, HTuple method, HTuple genParamName, HTuple genParamValue)
+		public static (HTuple TriangulatedObjectModel3D, HTuple Information) TriangulateObjectModel3d (HTuple objectModel3D, HTuple method, HTuple genParamName, HTuple genParamValue)
 		{
 			HOperatorSet.TriangulateObjectModel3d(objectModel3D, method, genParamName, genParamValue, out HTuple triangulatedObjectModel3D, out HTuple information);
 			return (triangulatedObjectModel3D,information);
@@ -7352,7 +7352,7 @@ namespace HalconWrapper
 		{
 			HOperatorSet.ClearStereoModel(stereoModelID);
 		}
-		public static (HTuple x, HTuple y, HTuple z, HTuple covWP, HTuple pointIdxOut) ReconstructPointsStereo (HTuple stereoModelID, HTuple row, HTuple column, HTuple covIP, HTuple cameraIdx, HTuple pointIdx)
+		public static (HTuple X, HTuple Y, HTuple Z, HTuple CovWP, HTuple PointIdxOut) ReconstructPointsStereo (HTuple stereoModelID, HTuple row, HTuple column, HTuple covIP, HTuple cameraIdx, HTuple pointIdx)
 		{
 			HOperatorSet.ReconstructPointsStereo(stereoModelID, row, column, covIP, cameraIdx, pointIdx, out HTuple x, out HTuple y, out HTuple z, out HTuple covWP, out HTuple pointIdxOut);
 			return (x,y,z,covWP,pointIdxOut);
@@ -7367,7 +7367,7 @@ namespace HalconWrapper
 			HOperatorSet.GetStereoModelObject(out HObject objectVal, stereoModelID, pairIndex, objectName);
 			return objectVal;
 		}
-		public static (HTuple from, HTuple to) GetStereoModelImagePairs (HTuple stereoModelID)
+		public static (HTuple From, HTuple To) GetStereoModelImagePairs (HTuple stereoModelID)
 		{
 			HOperatorSet.GetStereoModelImagePairs(stereoModelID, out HTuple from, out HTuple to);
 			return (from,to);
@@ -7551,7 +7551,7 @@ namespace HalconWrapper
 			HOperatorSet.CreateMutex(attribName, attribValue, out HTuple mutexHandle);
 			return mutexHandle;
 		}
-		public static (HTuple threadingClass, HTuple attribName, HTuple attribValue) GetThreadingAttrib (HTuple threadingHandle)
+		public static (HTuple ThreadingClass, HTuple AttribName, HTuple AttribValue) GetThreadingAttrib (HTuple threadingHandle)
 		{
 			HOperatorSet.GetThreadingAttrib(threadingHandle, out HTuple threadingClass, out HTuple attribName, out HTuple attribValue);
 			return (threadingClass,attribName,attribValue);
@@ -7565,7 +7565,7 @@ namespace HalconWrapper
 			HOperatorSet.GetAopInfo(operatorName, indexName, indexValue, infoName, out HTuple infoValue);
 			return infoValue;
 		}
-		public static (HTuple name, HTuple value) QueryAopInfo (HTuple operatorName, HTuple indexName, HTuple indexValue)
+		public static (HTuple Name, HTuple Value) QueryAopInfo (HTuple operatorName, HTuple indexName, HTuple indexValue)
 		{
 			HOperatorSet.QueryAopInfo(operatorName, indexName, indexValue, out HTuple name, out HTuple value);
 			return (name,value);
@@ -7578,7 +7578,7 @@ namespace HalconWrapper
 		{
 			HOperatorSet.WriteAopKnowledge(fileName, genParamName, genParamValue);
 		}
-		public static (HTuple attributes, HTuple operatorNames) ReadAopKnowledge (HTuple fileName, HTuple genParamName, HTuple genParamValue)
+		public static (HTuple Attributes, HTuple OperatorNames) ReadAopKnowledge (HTuple fileName, HTuple genParamName, HTuple genParamValue)
 		{
 			HOperatorSet.ReadAopKnowledge(fileName, genParamName, genParamValue, out HTuple attributes, out HTuple operatorNames);
 			return (attributes,operatorNames);
@@ -7834,17 +7834,17 @@ namespace HalconWrapper
 			HOperatorSet.GenImage1Rect(out HObject image, pixelPointer, width, height, verticalPitch, horizontalBitPitch, bitsPerPixel, doCopy, clearProc);
 			return image;
 		}
-		public static (HTuple pixelPointer, HTuple width, HTuple height, HTuple verticalPitch, HTuple horizontalBitPitch, HTuple bitsPerPixel) GetImagePointer1Rect (HObject image)
+		public static (HTuple PixelPointer, HTuple Width, HTuple Height, HTuple VerticalPitch, HTuple HorizontalBitPitch, HTuple BitsPerPixel) GetImagePointer1Rect (HObject image)
 		{
 			HOperatorSet.GetImagePointer1Rect(image, out HTuple pixelPointer, out HTuple width, out HTuple height, out HTuple verticalPitch, out HTuple horizontalBitPitch, out HTuple bitsPerPixel);
 			return (pixelPointer,width,height,verticalPitch,horizontalBitPitch,bitsPerPixel);
 		}
-		public static (HTuple pointerRed, HTuple pointerGreen, HTuple pointerBlue, HTuple type, HTuple width, HTuple height) GetImagePointer3 (HObject imageRGB)
+		public static (HTuple PointerRed, HTuple PointerGreen, HTuple PointerBlue, HTuple Type, HTuple Width, HTuple Height) GetImagePointer3 (HObject imageRGB)
 		{
 			HOperatorSet.GetImagePointer3(imageRGB, out HTuple pointerRed, out HTuple pointerGreen, out HTuple pointerBlue, out HTuple type, out HTuple width, out HTuple height);
 			return (pointerRed,pointerGreen,pointerBlue,type,width,height);
 		}
-		public static (HTuple pointer, HTuple type, HTuple width, HTuple height) GetImagePointer1 (HObject image)
+		public static (HTuple Pointer, HTuple Type, HTuple Width, HTuple Height) GetImagePointer1 (HObject image)
 		{
 			HOperatorSet.GetImagePointer1(image, out HTuple pointer, out HTuple type, out HTuple width, out HTuple height);
 			return (pointer,type,width,height);
@@ -7854,12 +7854,12 @@ namespace HalconWrapper
 			HOperatorSet.GetImageType(image, out HTuple type);
 			return type;
 		}
-		public static (HTuple width, HTuple height) GetImageSize (HObject image)
+		public static (HTuple Width, HTuple Height) GetImageSize (HObject image)
 		{
 			HOperatorSet.GetImageSize(image, out HTuple width, out HTuple height);
 			return (width,height);
 		}
-		public static (HTuple MSecond, HTuple second, HTuple minute, HTuple hour, HTuple day, HTuple YDay, HTuple month, HTuple year) GetImageTime (HObject image)
+		public static (HTuple MSecond, HTuple Second, HTuple Minute, HTuple Hour, HTuple Day, HTuple YDay, HTuple Month, HTuple Year) GetImageTime (HObject image)
 		{
 			HOperatorSet.GetImageTime(image, out HTuple MSecond, out HTuple second, out HTuple minute, out HTuple hour, out HTuple day, out HTuple YDay, out HTuple month, out HTuple year);
 			return (MSecond,second,minute,hour,day,YDay,month,year);
@@ -7874,37 +7874,37 @@ namespace HalconWrapper
 			HOperatorSet.GetGrayval(image, row, column, out HTuple grayval);
 			return grayval;
 		}
-		public static (HTuple thickness, HTuple histogramm) GetRegionThickness (HObject region)
+		public static (HTuple Thickness, HTuple Histogramm) GetRegionThickness (HObject region)
 		{
 			HOperatorSet.GetRegionThickness(region, out HTuple thickness, out HTuple histogramm);
 			return (thickness,histogramm);
 		}
-		public static (HTuple rows, HTuple columns) GetRegionPolygon (HObject region, HTuple tolerance)
+		public static (HTuple Rows, HTuple Columns) GetRegionPolygon (HObject region, HTuple tolerance)
 		{
 			HOperatorSet.GetRegionPolygon(region, tolerance, out HTuple rows, out HTuple columns);
 			return (rows,columns);
 		}
-		public static (HTuple rows, HTuple columns) GetRegionPoints (HObject region)
+		public static (HTuple Rows, HTuple Columns) GetRegionPoints (HObject region)
 		{
 			HOperatorSet.GetRegionPoints(region, out HTuple rows, out HTuple columns);
 			return (rows,columns);
 		}
-		public static (HTuple rows, HTuple columns) GetRegionContour (HObject region)
+		public static (HTuple Rows, HTuple Columns) GetRegionContour (HObject region)
 		{
 			HOperatorSet.GetRegionContour(region, out HTuple rows, out HTuple columns);
 			return (rows,columns);
 		}
-		public static (HTuple row, HTuple columnBegin, HTuple columnEnd) GetRegionRuns (HObject region)
+		public static (HTuple Row, HTuple ColumnBegin, HTuple ColumnEnd) GetRegionRuns (HObject region)
 		{
 			HOperatorSet.GetRegionRuns(region, out HTuple row, out HTuple columnBegin, out HTuple columnEnd);
 			return (row,columnBegin,columnEnd);
 		}
-		public static (HTuple row, HTuple column, HTuple chain) GetRegionChain (HObject region)
+		public static (HTuple Row, HTuple Column, HTuple Chain) GetRegionChain (HObject region)
 		{
 			HOperatorSet.GetRegionChain(region, out HTuple row, out HTuple column, out HTuple chain);
 			return (row,column,chain);
 		}
-		public static (HTuple rows, HTuple columns) GetRegionConvex (HObject region)
+		public static (HTuple Rows, HTuple Columns) GetRegionConvex (HObject region)
 		{
 			HOperatorSet.GetRegionConvex(region, out HTuple rows, out HTuple columns);
 			return (rows,columns);
@@ -7958,17 +7958,17 @@ namespace HalconWrapper
 			HOperatorSet.ShadeHeightField(imageHeight, out HObject imageShade, slant, tilt, albedo, ambient, shadows);
 			return imageShade;
 		}
-		public static (HTuple albedo, HTuple ambient) EstimateAlAm (HObject image)
+		public static (HTuple Albedo, HTuple Ambient) EstimateAlAm (HObject image)
 		{
 			HOperatorSet.EstimateAlAm(image, out HTuple albedo, out HTuple ambient);
 			return (albedo,ambient);
 		}
-		public static (HTuple slant, HTuple albedo) EstimateSlAlZc (HObject image)
+		public static (HTuple Slant, HTuple Albedo) EstimateSlAlZc (HObject image)
 		{
 			HOperatorSet.EstimateSlAlZc(image, out HTuple slant, out HTuple albedo);
 			return (slant,albedo);
 		}
-		public static (HTuple slant, HTuple albedo) EstimateSlAlLr (HObject image)
+		public static (HTuple Slant, HTuple Albedo) EstimateSlAlLr (HObject image)
 		{
 			HOperatorSet.EstimateSlAlLr(image, out HTuple slant, out HTuple albedo);
 			return (slant,albedo);
@@ -7988,7 +7988,7 @@ namespace HalconWrapper
 			HOperatorSet.ReconstructHeightFieldFromGradient(gradient, out HObject heightField, reconstructionMethod, genParamName, genParamValue);
 			return heightField;
 		}
-		public static (HObject heightField, HObject gradient, HObject albedo) PhotometricStereo (HObject images, HTuple slants, HTuple tilts, HTuple resultType, HTuple reconstructionMethod, HTuple genParamName, HTuple genParamValue)
+		public static (HObject HeightField, HObject Gradient, HObject Albedo) PhotometricStereo (HObject images, HTuple slants, HTuple tilts, HTuple resultType, HTuple reconstructionMethod, HTuple genParamName, HTuple genParamValue)
 		{
 			HOperatorSet.PhotometricStereo(images, out HObject heightField, out HObject gradient, out HObject albedo, slants, tilts, resultType, reconstructionMethod, genParamName, genParamValue);
 			return (heightField,gradient,albedo);
@@ -8034,7 +8034,7 @@ namespace HalconWrapper
 		{
 			HOperatorSet.ClearSerializedItem(serializedItemHandle);
 		}
-		public static (HTuple pointer, HTuple size) GetSerializedItemPtr (HTuple serializedItemHandle)
+		public static (HTuple Pointer, HTuple Size) GetSerializedItemPtr (HTuple serializedItemHandle)
 		{
 			HOperatorSet.GetSerializedItemPtr(serializedItemHandle, out HTuple pointer, out HTuple size);
 			return (pointer,size);
@@ -8109,7 +8109,7 @@ namespace HalconWrapper
 			HOperatorSet.SelectCharacters(region, out HObject regionCharacters, dotPrint, strokeWidth, charWidth, charHeight, punctuation, diacriticMarks, partitionMethod, partitionLines, fragmentDistance, connectFragments, clutterSizeMax, stopAfter);
 			return regionCharacters;
 		}
-		public static (HObject imageForeground, HObject regionForeground, HTuple usedThreshold) SegmentCharacters (HObject region, HObject image, HTuple method, HTuple eliminateLines, HTuple dotPrint, HTuple strokeWidth, HTuple charWidth, HTuple charHeight, HTuple thresholdOffset, HTuple contrast)
+		public static (HObject ImageForeground, HObject RegionForeground, HTuple UsedThreshold) SegmentCharacters (HObject region, HObject image, HTuple method, HTuple eliminateLines, HTuple dotPrint, HTuple strokeWidth, HTuple charWidth, HTuple charHeight, HTuple thresholdOffset, HTuple contrast)
 		{
 			HOperatorSet.SegmentCharacters(region, image, out HObject imageForeground, out HObject regionForeground, method, eliminateLines, dotPrint, strokeWidth, charWidth, charHeight, thresholdOffset, contrast, out HTuple usedThreshold);
 			return (imageForeground,regionForeground,usedThreshold);
@@ -8129,7 +8129,7 @@ namespace HalconWrapper
 			HOperatorSet.ClassifyImageClassLut(image, out HObject classRegions, classLUTHandle);
 			return classRegions;
 		}
-		public static (HObject classRegions, HObject distanceImage) ClassifyImageClassKnn (HObject image, HTuple KNNHandle, HTuple rejectionThreshold)
+		public static (HObject ClassRegions, HObject DistanceImage) ClassifyImageClassKnn (HObject image, HTuple KNNHandle, HTuple rejectionThreshold)
 		{
 			HOperatorSet.ClassifyImageClassKnn(image, out HObject classRegions, out HObject distanceImage, KNNHandle, rejectionThreshold);
 			return (classRegions,distanceImage);
@@ -8165,7 +8165,7 @@ namespace HalconWrapper
 		{
 			HOperatorSet.AddSamplesImageClassMlp(image, classRegions, MLPHandle);
 		}
-		public static (HTuple radius, HTuple center, HTuple quality) LearnNdimNorm (HObject foreground, HObject background, HObject image, HTuple metric, HTuple distance, HTuple minNumberPercent)
+		public static (HTuple Radius, HTuple Center, HTuple Quality) LearnNdimNorm (HObject foreground, HObject background, HObject image, HTuple metric, HTuple distance, HTuple minNumberPercent)
 		{
 			HOperatorSet.LearnNdimNorm(foreground, background, image, metric, distance, minNumberPercent, out HTuple radius, out HTuple center, out HTuple quality);
 			return (radius,center,quality);
@@ -8199,7 +8199,7 @@ namespace HalconWrapper
 			HOperatorSet.CheckDifference(image, pattern, out HObject selected, mode, diffLowerBound, diffUpperBound, grayOffset, addRow, addCol);
 			return selected;
 		}
-		public static (HObject characters, HTuple threshold) CharThreshold (HObject image, HObject histoRegion, HTuple sigma, HTuple percent)
+		public static (HObject Characters, HTuple Threshold) CharThreshold (HObject image, HObject histoRegion, HTuple sigma, HTuple percent)
 		{
 			HOperatorSet.CharThreshold(image, histoRegion, out HObject characters, sigma, percent, out HTuple threshold);
 			return (characters,threshold);
@@ -8224,7 +8224,7 @@ namespace HalconWrapper
 			HOperatorSet.HysteresisThreshold(image, out HObject regionHysteresis, low, high, maxLength);
 			return regionHysteresis;
 		}
-		public static (HObject region, HTuple usedThreshold) BinaryThreshold (HObject image, HTuple method, HTuple lightDark)
+		public static (HObject Region, HTuple UsedThreshold) BinaryThreshold (HObject image, HTuple method, HTuple lightDark)
 		{
 			HOperatorSet.BinaryThreshold(image, out HObject region, method, lightDark, out HTuple usedThreshold);
 			return (region,usedThreshold);
@@ -8279,7 +8279,7 @@ namespace HalconWrapper
 			HOperatorSet.WatershedsThreshold(image, out HObject basins, threshold);
 			return basins;
 		}
-		public static (HObject basins, HObject watersheds) Watersheds (HObject image)
+		public static (HObject Basins, HObject Watersheds) Watersheds (HObject image)
 		{
 			HOperatorSet.Watersheds(image, out HObject basins, out HObject watersheds);
 			return (basins,watersheds);
@@ -8334,7 +8334,7 @@ namespace HalconWrapper
 			HOperatorSet.PlateausCenter(image, out HObject plateaus);
 			return plateaus;
 		}
-		public static (HTuple minThresh, HTuple maxThresh) HistoToThresh (HTuple histogramm, HTuple sigma)
+		public static (HTuple MinThresh, HTuple MaxThresh) HistoToThresh (HTuple histogramm, HTuple sigma)
 		{
 			HOperatorSet.HistoToThresh(histogramm, sigma, out HTuple minThresh, out HTuple maxThresh);
 			return (minThresh,maxThresh);
@@ -8364,7 +8364,7 @@ namespace HalconWrapper
 			HOperatorSet.PolarTransRegion(region, out HObject polarTransRegion, row, column, angleStart, angleEnd, radiusStart, radiusEnd, width, height, interpolation);
 			return polarTransRegion;
 		}
-		public static (HObject currMergedRegions, HObject prevMergedRegions) MergeRegionsLineScan (HObject currRegions, HObject prevRegions, HTuple imageHeight, HTuple mergeBorder, HTuple maxImagesRegion)
+		public static (HObject CurrMergedRegions, HObject PrevMergedRegions) MergeRegionsLineScan (HObject currRegions, HObject prevRegions, HTuple imageHeight, HTuple mergeBorder, HTuple maxImagesRegion)
 		{
 			HOperatorSet.MergeRegionsLineScan(currRegions, prevRegions, out HObject currMergedRegions, out HObject prevMergedRegions, imageHeight, mergeBorder, maxImagesRegion);
 			return (currMergedRegions,prevMergedRegions);
@@ -8399,7 +8399,7 @@ namespace HalconWrapper
 			HOperatorSet.Union1(region, out HObject regionUnion);
 			return regionUnion;
 		}
-		public static (HObject distances, HObject closestPoints) ClosestPointTransform (HObject region, HTuple metric, HTuple foreground, HTuple closestPointMode, HTuple width, HTuple height)
+		public static (HObject Distances, HObject ClosestPoints) ClosestPointTransform (HObject region, HTuple metric, HTuple foreground, HTuple closestPointMode, HTuple width, HTuple height)
 		{
 			HOperatorSet.ClosestPointTransform(region, out HObject distances, out HObject closestPoints, metric, foreground, closestPointMode, width, height);
 			return (distances,closestPoints);
@@ -8439,7 +8439,7 @@ namespace HalconWrapper
 			HOperatorSet.MoveRegion(region, out HObject regionMoved, row, column);
 			return regionMoved;
 		}
-		public static (HObject endPoints, HObject juncPoints) JunctionsSkeleton (HObject region)
+		public static (HObject EndPoints, HObject JuncPoints) JunctionsSkeleton (HObject region)
 		{
 			HOperatorSet.JunctionsSkeleton(region, out HObject endPoints, out HObject juncPoints);
 			return (endPoints,juncPoints);
@@ -8534,32 +8534,32 @@ namespace HalconWrapper
 			HOperatorSet.ExpandGrayRef(regions, image, forbiddenArea, out HObject regionExpand, iterations, mode, refGray, threshold);
 			return regionExpand;
 		}
-		public static (HTuple beginRow, HTuple beginCol, HTuple endRow, HTuple endCol) SplitSkeletonLines (HObject skeletonRegion, HTuple maxDistance)
+		public static (HTuple BeginRow, HTuple BeginCol, HTuple EndRow, HTuple EndCol) SplitSkeletonLines (HObject skeletonRegion, HTuple maxDistance)
 		{
 			HOperatorSet.SplitSkeletonLines(skeletonRegion, maxDistance, out HTuple beginRow, out HTuple beginCol, out HTuple endRow, out HTuple endCol);
 			return (beginRow,beginCol,endRow,endCol);
 		}
-		public static (HTuple homMat2D, HTuple kappa, HTuple error, HTuple points1, HTuple points2) ProjMatchPointsDistortionRansacGuided (HObject image1, HObject image2, HTuple rows1, HTuple cols1, HTuple rows2, HTuple cols2, HTuple grayMatchMethod, HTuple maskSize, HTuple homMat2DGuide, HTuple kappaGuide, HTuple distanceTolerance, HTuple matchThreshold, HTuple estimationMethod, HTuple distanceThreshold, HTuple randSeed)
+		public static (HTuple HomMat2D, HTuple Kappa, HTuple Error, HTuple Points1, HTuple Points2) ProjMatchPointsDistortionRansacGuided (HObject image1, HObject image2, HTuple rows1, HTuple cols1, HTuple rows2, HTuple cols2, HTuple grayMatchMethod, HTuple maskSize, HTuple homMat2DGuide, HTuple kappaGuide, HTuple distanceTolerance, HTuple matchThreshold, HTuple estimationMethod, HTuple distanceThreshold, HTuple randSeed)
 		{
 			HOperatorSet.ProjMatchPointsDistortionRansacGuided(image1, image2, rows1, cols1, rows2, cols2, grayMatchMethod, maskSize, homMat2DGuide, kappaGuide, distanceTolerance, matchThreshold, estimationMethod, distanceThreshold, randSeed, out HTuple homMat2D, out HTuple kappa, out HTuple error, out HTuple points1, out HTuple points2);
 			return (homMat2D,kappa,error,points1,points2);
 		}
-		public static (HTuple homMat2D, HTuple kappa, HTuple error, HTuple points1, HTuple points2) ProjMatchPointsDistortionRansac (HObject image1, HObject image2, HTuple rows1, HTuple cols1, HTuple rows2, HTuple cols2, HTuple grayMatchMethod, HTuple maskSize, HTuple rowMove, HTuple colMove, HTuple rowTolerance, HTuple colTolerance, HTuple rotation, HTuple matchThreshold, HTuple estimationMethod, HTuple distanceThreshold, HTuple randSeed)
+		public static (HTuple HomMat2D, HTuple Kappa, HTuple Error, HTuple Points1, HTuple Points2) ProjMatchPointsDistortionRansac (HObject image1, HObject image2, HTuple rows1, HTuple cols1, HTuple rows2, HTuple cols2, HTuple grayMatchMethod, HTuple maskSize, HTuple rowMove, HTuple colMove, HTuple rowTolerance, HTuple colTolerance, HTuple rotation, HTuple matchThreshold, HTuple estimationMethod, HTuple distanceThreshold, HTuple randSeed)
 		{
 			HOperatorSet.ProjMatchPointsDistortionRansac(image1, image2, rows1, cols1, rows2, cols2, grayMatchMethod, maskSize, rowMove, colMove, rowTolerance, colTolerance, rotation, matchThreshold, estimationMethod, distanceThreshold, randSeed, out HTuple homMat2D, out HTuple kappa, out HTuple error, out HTuple points1, out HTuple points2);
 			return (homMat2D,kappa,error,points1,points2);
 		}
-		public static (HTuple homMat2D, HTuple points1, HTuple points2) ProjMatchPointsRansacGuided (HObject image1, HObject image2, HTuple rows1, HTuple cols1, HTuple rows2, HTuple cols2, HTuple grayMatchMethod, HTuple maskSize, HTuple homMat2DGuide, HTuple distanceTolerance, HTuple matchThreshold, HTuple estimationMethod, HTuple distanceThreshold, HTuple randSeed)
+		public static (HTuple HomMat2D, HTuple Points1, HTuple Points2) ProjMatchPointsRansacGuided (HObject image1, HObject image2, HTuple rows1, HTuple cols1, HTuple rows2, HTuple cols2, HTuple grayMatchMethod, HTuple maskSize, HTuple homMat2DGuide, HTuple distanceTolerance, HTuple matchThreshold, HTuple estimationMethod, HTuple distanceThreshold, HTuple randSeed)
 		{
 			HOperatorSet.ProjMatchPointsRansacGuided(image1, image2, rows1, cols1, rows2, cols2, grayMatchMethod, maskSize, homMat2DGuide, distanceTolerance, matchThreshold, estimationMethod, distanceThreshold, randSeed, out HTuple homMat2D, out HTuple points1, out HTuple points2);
 			return (homMat2D,points1,points2);
 		}
-		public static (HTuple homMat2D, HTuple points1, HTuple points2) ProjMatchPointsRansac (HObject image1, HObject image2, HTuple rows1, HTuple cols1, HTuple rows2, HTuple cols2, HTuple grayMatchMethod, HTuple maskSize, HTuple rowMove, HTuple colMove, HTuple rowTolerance, HTuple colTolerance, HTuple rotation, HTuple matchThreshold, HTuple estimationMethod, HTuple distanceThreshold, HTuple randSeed)
+		public static (HTuple HomMat2D, HTuple Points1, HTuple Points2) ProjMatchPointsRansac (HObject image1, HObject image2, HTuple rows1, HTuple cols1, HTuple rows2, HTuple cols2, HTuple grayMatchMethod, HTuple maskSize, HTuple rowMove, HTuple colMove, HTuple rowTolerance, HTuple colTolerance, HTuple rotation, HTuple matchThreshold, HTuple estimationMethod, HTuple distanceThreshold, HTuple randSeed)
 		{
 			HOperatorSet.ProjMatchPointsRansac(image1, image2, rows1, cols1, rows2, cols2, grayMatchMethod, maskSize, rowMove, colMove, rowTolerance, colTolerance, rotation, matchThreshold, estimationMethod, distanceThreshold, randSeed, out HTuple homMat2D, out HTuple points1, out HTuple points2);
 			return (homMat2D,points1,points2);
 		}
-		public static (HTuple homMat2D, HTuple kappa, HTuple error) VectorToProjHomMat2dDistortion (HTuple points1Row, HTuple points1Col, HTuple points2Row, HTuple points2Col, HTuple covRR1, HTuple covRC1, HTuple covCC1, HTuple covRR2, HTuple covRC2, HTuple covCC2, HTuple imageWidth, HTuple imageHeight, HTuple method)
+		public static (HTuple HomMat2D, HTuple Kappa, HTuple Error) VectorToProjHomMat2dDistortion (HTuple points1Row, HTuple points1Col, HTuple points2Row, HTuple points2Col, HTuple covRR1, HTuple covRC1, HTuple covCC1, HTuple covRR2, HTuple covRC2, HTuple covCC2, HTuple imageWidth, HTuple imageHeight, HTuple method)
 		{
 			HOperatorSet.VectorToProjHomMat2dDistortion(points1Row, points1Col, points2Row, points2Col, covRR1, covRC1, covCC1, covRR2, covRC2, covCC2, imageWidth, imageHeight, method, out HTuple homMat2D, out HTuple kappa, out HTuple error);
 			return (homMat2D,kappa,error);
@@ -8569,12 +8569,12 @@ namespace HalconWrapper
 			HOperatorSet.HomVectorToProjHomMat2d(px, py, pw, qx, qy, qw, method, out HTuple homMat2D);
 			return homMat2D;
 		}
-		public static (HTuple homMat2D, HTuple covariance) VectorToProjHomMat2d (HTuple px, HTuple py, HTuple qx, HTuple qy, HTuple method, HTuple covXX1, HTuple covYY1, HTuple covXY1, HTuple covXX2, HTuple covYY2, HTuple covXY2)
+		public static (HTuple HomMat2D, HTuple Covariance) VectorToProjHomMat2d (HTuple px, HTuple py, HTuple qx, HTuple qy, HTuple method, HTuple covXX1, HTuple covYY1, HTuple covXY1, HTuple covXX2, HTuple covYY2, HTuple covXY2)
 		{
 			HOperatorSet.VectorToProjHomMat2d(px, py, qx, qy, method, covXX1, covYY1, covXY1, covXX2, covYY2, covXY2, out HTuple homMat2D, out HTuple covariance);
 			return (homMat2D,covariance);
 		}
-		public static (HTuple sx, HTuple sy, HTuple phi, HTuple theta, HTuple tx, HTuple ty) HomMat2dToAffinePar (HTuple homMat2D)
+		public static (HTuple Sx, HTuple Sy, HTuple Phi, HTuple Theta, HTuple Tx, HTuple Ty) HomMat2dToAffinePar (HTuple homMat2D)
 		{
 			HOperatorSet.HomMat2dToAffinePar(homMat2D, out HTuple sx, out HTuple sy, out HTuple phi, out HTuple theta, out HTuple tx, out HTuple ty);
 			return (sx,sy,phi,theta,tx,ty);
@@ -8609,22 +8609,22 @@ namespace HalconWrapper
 			HOperatorSet.VectorToHomMat2d(px, py, qx, qy, out HTuple homMat2D);
 			return homMat2D;
 		}
-		public static (HTuple rowTrans, HTuple colTrans) ProjectiveTransPixel (HTuple homMat2D, HTuple row, HTuple col)
+		public static (HTuple RowTrans, HTuple ColTrans) ProjectiveTransPixel (HTuple homMat2D, HTuple row, HTuple col)
 		{
 			HOperatorSet.ProjectiveTransPixel(homMat2D, row, col, out HTuple rowTrans, out HTuple colTrans);
 			return (rowTrans,colTrans);
 		}
-		public static (HTuple qx, HTuple qy, HTuple qw) ProjectiveTransPoint2d (HTuple homMat2D, HTuple px, HTuple py, HTuple pw)
+		public static (HTuple Qx, HTuple Qy, HTuple Qw) ProjectiveTransPoint2d (HTuple homMat2D, HTuple px, HTuple py, HTuple pw)
 		{
 			HOperatorSet.ProjectiveTransPoint2d(homMat2D, px, py, pw, out HTuple qx, out HTuple qy, out HTuple qw);
 			return (qx,qy,qw);
 		}
-		public static (HTuple rowTrans, HTuple colTrans) AffineTransPixel (HTuple homMat2D, HTuple row, HTuple col)
+		public static (HTuple RowTrans, HTuple ColTrans) AffineTransPixel (HTuple homMat2D, HTuple row, HTuple col)
 		{
 			HOperatorSet.AffineTransPixel(homMat2D, row, col, out HTuple rowTrans, out HTuple colTrans);
 			return (rowTrans,colTrans);
 		}
-		public static (HTuple qx, HTuple qy) AffineTransPoint2d (HTuple homMat2D, HTuple px, HTuple py)
+		public static (HTuple Qx, HTuple Qy) AffineTransPoint2d (HTuple homMat2D, HTuple px, HTuple py)
 		{
 			HOperatorSet.AffineTransPoint2d(homMat2D, px, py, out HTuple qx, out HTuple qy);
 			return (qx,qy);
@@ -8732,7 +8732,7 @@ namespace HalconWrapper
 			HOperatorSet.InterpolateScatteredDataImage(image, regionInterpolate, out HObject imageInterpolated, method, genParamName, genParamValue);
 			return imageInterpolated;
 		}
-		public static (HTuple MSecond, HTuple second, HTuple minute, HTuple hour, HTuple day, HTuple YDay, HTuple month, HTuple year) GetSystemTime ()
+		public static (HTuple MSecond, HTuple Second, HTuple Minute, HTuple Hour, HTuple Day, HTuple YDay, HTuple Month, HTuple Year) GetSystemTime ()
 		{
 			HOperatorSet.GetSystemTime(out HTuple MSecond, out HTuple second, out HTuple minute, out HTuple hour, out HTuple day, out HTuple YDay, out HTuple month, out HTuple year);
 			return (MSecond,second,minute,hour,day,YDay,month,year);
@@ -8798,7 +8798,7 @@ namespace HalconWrapper
 			HOperatorSet.ReadSerial(serialHandle, numCharacters, out HTuple data);
 			return data;
 		}
-		public static (HTuple baudRate, HTuple dataBits, HTuple flowControl, HTuple parity, HTuple stopBits, HTuple totalTimeOut, HTuple interCharTimeOut) GetSerialParam (HTuple serialHandle)
+		public static (HTuple BaudRate, HTuple DataBits, HTuple FlowControl, HTuple Parity, HTuple StopBits, HTuple TotalTimeOut, HTuple InterCharTimeOut) GetSerialParam (HTuple serialHandle)
 		{
 			HOperatorSet.GetSerialParam(serialHandle, out HTuple baudRate, out HTuple dataBits, out HTuple flowControl, out HTuple parity, out HTuple stopBits, out HTuple totalTimeOut, out HTuple interCharTimeOut);
 			return (baudRate,dataBits,flowControl,parity,stopBits,totalTimeOut,interCharTimeOut);
@@ -8901,7 +8901,7 @@ namespace HalconWrapper
 		{
 			HOperatorSet.SendTuple(socket, tuple);
 		}
-		public static (HTuple data, HTuple from) ReceiveData (HTuple socket, HTuple format)
+		public static (HTuple Data, HTuple From) ReceiveData (HTuple socket, HTuple format)
 		{
 			HOperatorSet.ReceiveData(socket, format, out HTuple data, out HTuple from);
 			return (data,from);
@@ -8952,117 +8952,117 @@ namespace HalconWrapper
 			HOperatorSet.OpenSocketAccept(port, genParamName, genParamValue, out HTuple acceptingSocket);
 			return acceptingSocket;
 		}
-		public static (HTuple operatorName, HTuple errorCode, HTuple errorMessage) GetExtendedErrorInfo ()
+		public static (HTuple OperatorName, HTuple ErrorCode, HTuple ErrorMessage) GetExtendedErrorInfo ()
 		{
 			HOperatorSet.GetExtendedErrorInfo(out HTuple operatorName, out HTuple errorCode, out HTuple errorMessage);
 			return (operatorName,errorCode,errorMessage);
 		}
-		public static (HTuple usedModules, HTuple moduleKey) GetModules ()
+		public static (HTuple UsedModules, HTuple ModuleKey) GetModules ()
 		{
 			HOperatorSet.GetModules(out HTuple usedModules, out HTuple moduleKey);
 			return (usedModules,moduleKey);
 		}
-		public static (HObject distance, HObject score) BinocularDistanceMs (HObject imageRect1, HObject imageRect2, HTuple camParamRect1, HTuple camParamRect2, HTuple relPoseRect, HTuple minDisparity, HTuple maxDisparity, HTuple surfaceSmoothing, HTuple edgeSmoothing, HTuple genParamName, HTuple genParamValue)
+		public static (HObject Distance, HObject Score) BinocularDistanceMs (HObject imageRect1, HObject imageRect2, HTuple camParamRect1, HTuple camParamRect2, HTuple relPoseRect, HTuple minDisparity, HTuple maxDisparity, HTuple surfaceSmoothing, HTuple edgeSmoothing, HTuple genParamName, HTuple genParamValue)
 		{
 			HOperatorSet.BinocularDistanceMs(imageRect1, imageRect2, out HObject distance, out HObject score, camParamRect1, camParamRect2, relPoseRect, minDisparity, maxDisparity, surfaceSmoothing, edgeSmoothing, genParamName, genParamValue);
 			return (distance,score);
 		}
-		public static (HObject disparity, HObject score) BinocularDisparityMs (HObject imageRect1, HObject imageRect2, HTuple minDisparity, HTuple maxDisparity, HTuple surfaceSmoothing, HTuple edgeSmoothing, HTuple genParamName, HTuple genParamValue)
+		public static (HObject Disparity, HObject Score) BinocularDisparityMs (HObject imageRect1, HObject imageRect2, HTuple minDisparity, HTuple maxDisparity, HTuple surfaceSmoothing, HTuple edgeSmoothing, HTuple genParamName, HTuple genParamValue)
 		{
 			HOperatorSet.BinocularDisparityMs(imageRect1, imageRect2, out HObject disparity, out HObject score, minDisparity, maxDisparity, surfaceSmoothing, edgeSmoothing, genParamName, genParamValue);
 			return (disparity,score);
 		}
-		public static (HObject distance, HObject score) BinocularDistanceMg (HObject imageRect1, HObject imageRect2, HTuple camParamRect1, HTuple camParamRect2, HTuple relPoseRect, HTuple grayConstancy, HTuple gradientConstancy, HTuple smoothness, HTuple initialGuess, HTuple calculateScore, HTuple MGParamName, HTuple MGParamValue)
+		public static (HObject Distance, HObject Score) BinocularDistanceMg (HObject imageRect1, HObject imageRect2, HTuple camParamRect1, HTuple camParamRect2, HTuple relPoseRect, HTuple grayConstancy, HTuple gradientConstancy, HTuple smoothness, HTuple initialGuess, HTuple calculateScore, HTuple MGParamName, HTuple MGParamValue)
 		{
 			HOperatorSet.BinocularDistanceMg(imageRect1, imageRect2, out HObject distance, out HObject score, camParamRect1, camParamRect2, relPoseRect, grayConstancy, gradientConstancy, smoothness, initialGuess, calculateScore, MGParamName, MGParamValue);
 			return (distance,score);
 		}
-		public static (HObject disparity, HObject score) BinocularDisparityMg (HObject imageRect1, HObject imageRect2, HTuple grayConstancy, HTuple gradientConstancy, HTuple smoothness, HTuple initialGuess, HTuple calculateScore, HTuple MGParamName, HTuple MGParamValue)
+		public static (HObject Disparity, HObject Score) BinocularDisparityMg (HObject imageRect1, HObject imageRect2, HTuple grayConstancy, HTuple gradientConstancy, HTuple smoothness, HTuple initialGuess, HTuple calculateScore, HTuple MGParamName, HTuple MGParamValue)
 		{
 			HOperatorSet.BinocularDisparityMg(imageRect1, imageRect2, out HObject disparity, out HObject score, grayConstancy, gradientConstancy, smoothness, initialGuess, calculateScore, MGParamName, MGParamValue);
 			return (disparity,score);
 		}
-		public static (HTuple x, HTuple y, HTuple z, HTuple w, HTuple covXYZW) Reconst3dFromFundamentalMatrix (HTuple rows1, HTuple cols1, HTuple rows2, HTuple cols2, HTuple covRR1, HTuple covRC1, HTuple covCC1, HTuple covRR2, HTuple covRC2, HTuple covCC2, HTuple FMatrix, HTuple covFMat)
+		public static (HTuple X, HTuple Y, HTuple Z, HTuple W, HTuple CovXYZW) Reconst3dFromFundamentalMatrix (HTuple rows1, HTuple cols1, HTuple rows2, HTuple cols2, HTuple covRR1, HTuple covRC1, HTuple covCC1, HTuple covRR2, HTuple covRC2, HTuple covCC2, HTuple FMatrix, HTuple covFMat)
 		{
 			HOperatorSet.Reconst3dFromFundamentalMatrix(rows1, cols1, rows2, cols2, covRR1, covRC1, covCC1, covRR2, covRC2, covCC2, FMatrix, covFMat, out HTuple x, out HTuple y, out HTuple z, out HTuple w, out HTuple covXYZW);
 			return (x,y,z,w,covXYZW);
 		}
-		public static (HObject map1, HObject map2, HTuple covFMatRect, HTuple h1, HTuple h2) GenBinocularProjRectification (HTuple FMatrix, HTuple covFMat, HTuple width1, HTuple height1, HTuple width2, HTuple height2, HTuple subSampling, HTuple mapping)
+		public static (HObject Map1, HObject Map2, HTuple CovFMatRect, HTuple H1, HTuple H2) GenBinocularProjRectification (HTuple FMatrix, HTuple covFMat, HTuple width1, HTuple height1, HTuple width2, HTuple height2, HTuple subSampling, HTuple mapping)
 		{
 			HOperatorSet.GenBinocularProjRectification(out HObject map1, out HObject map2, FMatrix, covFMat, width1, height1, width2, height2, subSampling, mapping, out HTuple covFMatRect, out HTuple h1, out HTuple h2);
 			return (map1,map2,covFMatRect,h1,h2);
 		}
-		public static (HTuple FMatrix, HTuple kappa, HTuple error, HTuple x, HTuple y, HTuple z, HTuple w) VectorToFundamentalMatrixDistortion (HTuple rows1, HTuple cols1, HTuple rows2, HTuple cols2, HTuple covRR1, HTuple covRC1, HTuple covCC1, HTuple covRR2, HTuple covRC2, HTuple covCC2, HTuple imageWidth, HTuple imageHeight, HTuple method)
+		public static (HTuple FMatrix, HTuple Kappa, HTuple Error, HTuple X, HTuple Y, HTuple Z, HTuple W) VectorToFundamentalMatrixDistortion (HTuple rows1, HTuple cols1, HTuple rows2, HTuple cols2, HTuple covRR1, HTuple covRC1, HTuple covCC1, HTuple covRR2, HTuple covRC2, HTuple covCC2, HTuple imageWidth, HTuple imageHeight, HTuple method)
 		{
 			HOperatorSet.VectorToFundamentalMatrixDistortion(rows1, cols1, rows2, cols2, covRR1, covRC1, covCC1, covRR2, covRC2, covCC2, imageWidth, imageHeight, method, out HTuple FMatrix, out HTuple kappa, out HTuple error, out HTuple x, out HTuple y, out HTuple z, out HTuple w);
 			return (FMatrix,kappa,error,x,y,z,w);
 		}
-		public static (HTuple FMatrix, HTuple covFMat) RelPoseToFundamentalMatrix (HTuple relPose, HTuple covRelPose, HTuple camPar1, HTuple camPar2)
+		public static (HTuple FMatrix, HTuple CovFMat) RelPoseToFundamentalMatrix (HTuple relPose, HTuple covRelPose, HTuple camPar1, HTuple camPar2)
 		{
 			HOperatorSet.RelPoseToFundamentalMatrix(relPose, covRelPose, camPar1, camPar2, out HTuple FMatrix, out HTuple covFMat);
 			return (FMatrix,covFMat);
 		}
-		public static (HTuple FMatrix, HTuple covFMat) EssentialToFundamentalMatrix (HTuple EMatrix, HTuple covEMat, HTuple camMat1, HTuple camMat2)
+		public static (HTuple FMatrix, HTuple CovFMat) EssentialToFundamentalMatrix (HTuple EMatrix, HTuple covEMat, HTuple camMat1, HTuple camMat2)
 		{
 			HOperatorSet.EssentialToFundamentalMatrix(EMatrix, covEMat, camMat1, camMat2, out HTuple FMatrix, out HTuple covFMat);
 			return (FMatrix,covFMat);
 		}
-		public static (HTuple relPose, HTuple covRelPose, HTuple error, HTuple x, HTuple y, HTuple z, HTuple covXYZ) VectorToRelPose (HTuple rows1, HTuple cols1, HTuple rows2, HTuple cols2, HTuple covRR1, HTuple covRC1, HTuple covCC1, HTuple covRR2, HTuple covRC2, HTuple covCC2, HTuple camPar1, HTuple camPar2, HTuple method)
+		public static (HTuple RelPose, HTuple CovRelPose, HTuple Error, HTuple X, HTuple Y, HTuple Z, HTuple CovXYZ) VectorToRelPose (HTuple rows1, HTuple cols1, HTuple rows2, HTuple cols2, HTuple covRR1, HTuple covRC1, HTuple covCC1, HTuple covRR2, HTuple covRC2, HTuple covCC2, HTuple camPar1, HTuple camPar2, HTuple method)
 		{
 			HOperatorSet.VectorToRelPose(rows1, cols1, rows2, cols2, covRR1, covRC1, covCC1, covRR2, covRC2, covCC2, camPar1, camPar2, method, out HTuple relPose, out HTuple covRelPose, out HTuple error, out HTuple x, out HTuple y, out HTuple z, out HTuple covXYZ);
 			return (relPose,covRelPose,error,x,y,z,covXYZ);
 		}
-		public static (HTuple EMatrix, HTuple covEMat, HTuple error, HTuple x, HTuple y, HTuple z, HTuple covXYZ) VectorToEssentialMatrix (HTuple rows1, HTuple cols1, HTuple rows2, HTuple cols2, HTuple covRR1, HTuple covRC1, HTuple covCC1, HTuple covRR2, HTuple covRC2, HTuple covCC2, HTuple camMat1, HTuple camMat2, HTuple method)
+		public static (HTuple EMatrix, HTuple CovEMat, HTuple Error, HTuple X, HTuple Y, HTuple Z, HTuple CovXYZ) VectorToEssentialMatrix (HTuple rows1, HTuple cols1, HTuple rows2, HTuple cols2, HTuple covRR1, HTuple covRC1, HTuple covCC1, HTuple covRR2, HTuple covRC2, HTuple covCC2, HTuple camMat1, HTuple camMat2, HTuple method)
 		{
 			HOperatorSet.VectorToEssentialMatrix(rows1, cols1, rows2, cols2, covRR1, covRC1, covCC1, covRR2, covRC2, covCC2, camMat1, camMat2, method, out HTuple EMatrix, out HTuple covEMat, out HTuple error, out HTuple x, out HTuple y, out HTuple z, out HTuple covXYZ);
 			return (EMatrix,covEMat,error,x,y,z,covXYZ);
 		}
-		public static (HTuple FMatrix, HTuple covFMat, HTuple error, HTuple x, HTuple y, HTuple z, HTuple w, HTuple covXYZW) VectorToFundamentalMatrix (HTuple rows1, HTuple cols1, HTuple rows2, HTuple cols2, HTuple covRR1, HTuple covRC1, HTuple covCC1, HTuple covRR2, HTuple covRC2, HTuple covCC2, HTuple method)
+		public static (HTuple FMatrix, HTuple CovFMat, HTuple Error, HTuple X, HTuple Y, HTuple Z, HTuple W, HTuple CovXYZW) VectorToFundamentalMatrix (HTuple rows1, HTuple cols1, HTuple rows2, HTuple cols2, HTuple covRR1, HTuple covRC1, HTuple covCC1, HTuple covRR2, HTuple covRC2, HTuple covCC2, HTuple method)
 		{
 			HOperatorSet.VectorToFundamentalMatrix(rows1, cols1, rows2, cols2, covRR1, covRC1, covCC1, covRR2, covRC2, covCC2, method, out HTuple FMatrix, out HTuple covFMat, out HTuple error, out HTuple x, out HTuple y, out HTuple z, out HTuple w, out HTuple covXYZW);
 			return (FMatrix,covFMat,error,x,y,z,w,covXYZW);
 		}
-		public static (HTuple FMatrix, HTuple kappa, HTuple error, HTuple points1, HTuple points2) MatchFundamentalMatrixDistortionRansac (HObject image1, HObject image2, HTuple rows1, HTuple cols1, HTuple rows2, HTuple cols2, HTuple grayMatchMethod, HTuple maskSize, HTuple rowMove, HTuple colMove, HTuple rowTolerance, HTuple colTolerance, HTuple rotation, HTuple matchThreshold, HTuple estimationMethod, HTuple distanceThreshold, HTuple randSeed)
+		public static (HTuple FMatrix, HTuple Kappa, HTuple Error, HTuple Points1, HTuple Points2) MatchFundamentalMatrixDistortionRansac (HObject image1, HObject image2, HTuple rows1, HTuple cols1, HTuple rows2, HTuple cols2, HTuple grayMatchMethod, HTuple maskSize, HTuple rowMove, HTuple colMove, HTuple rowTolerance, HTuple colTolerance, HTuple rotation, HTuple matchThreshold, HTuple estimationMethod, HTuple distanceThreshold, HTuple randSeed)
 		{
 			HOperatorSet.MatchFundamentalMatrixDistortionRansac(image1, image2, rows1, cols1, rows2, cols2, grayMatchMethod, maskSize, rowMove, colMove, rowTolerance, colTolerance, rotation, matchThreshold, estimationMethod, distanceThreshold, randSeed, out HTuple FMatrix, out HTuple kappa, out HTuple error, out HTuple points1, out HTuple points2);
 			return (FMatrix,kappa,error,points1,points2);
 		}
-		public static (HTuple relPose, HTuple covRelPose, HTuple error, HTuple points1, HTuple points2) MatchRelPoseRansac (HObject image1, HObject image2, HTuple rows1, HTuple cols1, HTuple rows2, HTuple cols2, HTuple camPar1, HTuple camPar2, HTuple grayMatchMethod, HTuple maskSize, HTuple rowMove, HTuple colMove, HTuple rowTolerance, HTuple colTolerance, HTuple rotation, HTuple matchThreshold, HTuple estimationMethod, HTuple distanceThreshold, HTuple randSeed)
+		public static (HTuple RelPose, HTuple CovRelPose, HTuple Error, HTuple Points1, HTuple Points2) MatchRelPoseRansac (HObject image1, HObject image2, HTuple rows1, HTuple cols1, HTuple rows2, HTuple cols2, HTuple camPar1, HTuple camPar2, HTuple grayMatchMethod, HTuple maskSize, HTuple rowMove, HTuple colMove, HTuple rowTolerance, HTuple colTolerance, HTuple rotation, HTuple matchThreshold, HTuple estimationMethod, HTuple distanceThreshold, HTuple randSeed)
 		{
 			HOperatorSet.MatchRelPoseRansac(image1, image2, rows1, cols1, rows2, cols2, camPar1, camPar2, grayMatchMethod, maskSize, rowMove, colMove, rowTolerance, colTolerance, rotation, matchThreshold, estimationMethod, distanceThreshold, randSeed, out HTuple relPose, out HTuple covRelPose, out HTuple error, out HTuple points1, out HTuple points2);
 			return (relPose,covRelPose,error,points1,points2);
 		}
-		public static (HTuple EMatrix, HTuple covEMat, HTuple error, HTuple points1, HTuple points2) MatchEssentialMatrixRansac (HObject image1, HObject image2, HTuple rows1, HTuple cols1, HTuple rows2, HTuple cols2, HTuple camMat1, HTuple camMat2, HTuple grayMatchMethod, HTuple maskSize, HTuple rowMove, HTuple colMove, HTuple rowTolerance, HTuple colTolerance, HTuple rotation, HTuple matchThreshold, HTuple estimationMethod, HTuple distanceThreshold, HTuple randSeed)
+		public static (HTuple EMatrix, HTuple CovEMat, HTuple Error, HTuple Points1, HTuple Points2) MatchEssentialMatrixRansac (HObject image1, HObject image2, HTuple rows1, HTuple cols1, HTuple rows2, HTuple cols2, HTuple camMat1, HTuple camMat2, HTuple grayMatchMethod, HTuple maskSize, HTuple rowMove, HTuple colMove, HTuple rowTolerance, HTuple colTolerance, HTuple rotation, HTuple matchThreshold, HTuple estimationMethod, HTuple distanceThreshold, HTuple randSeed)
 		{
 			HOperatorSet.MatchEssentialMatrixRansac(image1, image2, rows1, cols1, rows2, cols2, camMat1, camMat2, grayMatchMethod, maskSize, rowMove, colMove, rowTolerance, colTolerance, rotation, matchThreshold, estimationMethod, distanceThreshold, randSeed, out HTuple EMatrix, out HTuple covEMat, out HTuple error, out HTuple points1, out HTuple points2);
 			return (EMatrix,covEMat,error,points1,points2);
 		}
-		public static (HTuple FMatrix, HTuple covFMat, HTuple error, HTuple points1, HTuple points2) MatchFundamentalMatrixRansac (HObject image1, HObject image2, HTuple rows1, HTuple cols1, HTuple rows2, HTuple cols2, HTuple grayMatchMethod, HTuple maskSize, HTuple rowMove, HTuple colMove, HTuple rowTolerance, HTuple colTolerance, HTuple rotation, HTuple matchThreshold, HTuple estimationMethod, HTuple distanceThreshold, HTuple randSeed)
+		public static (HTuple FMatrix, HTuple CovFMat, HTuple Error, HTuple Points1, HTuple Points2) MatchFundamentalMatrixRansac (HObject image1, HObject image2, HTuple rows1, HTuple cols1, HTuple rows2, HTuple cols2, HTuple grayMatchMethod, HTuple maskSize, HTuple rowMove, HTuple colMove, HTuple rowTolerance, HTuple colTolerance, HTuple rotation, HTuple matchThreshold, HTuple estimationMethod, HTuple distanceThreshold, HTuple randSeed)
 		{
 			HOperatorSet.MatchFundamentalMatrixRansac(image1, image2, rows1, cols1, rows2, cols2, grayMatchMethod, maskSize, rowMove, colMove, rowTolerance, colTolerance, rotation, matchThreshold, estimationMethod, distanceThreshold, randSeed, out HTuple FMatrix, out HTuple covFMat, out HTuple error, out HTuple points1, out HTuple points2);
 			return (FMatrix,covFMat,error,points1,points2);
 		}
-		public static (HObject distance, HObject score) BinocularDistance (HObject imageRect1, HObject imageRect2, HTuple camParamRect1, HTuple camParamRect2, HTuple relPoseRect, HTuple method, HTuple maskWidth, HTuple maskHeight, HTuple textureThresh, HTuple minDisparity, HTuple maxDisparity, HTuple numLevels, HTuple scoreThresh, HTuple filter, HTuple subDistance)
+		public static (HObject Distance, HObject Score) BinocularDistance (HObject imageRect1, HObject imageRect2, HTuple camParamRect1, HTuple camParamRect2, HTuple relPoseRect, HTuple method, HTuple maskWidth, HTuple maskHeight, HTuple textureThresh, HTuple minDisparity, HTuple maxDisparity, HTuple numLevels, HTuple scoreThresh, HTuple filter, HTuple subDistance)
 		{
 			HOperatorSet.BinocularDistance(imageRect1, imageRect2, out HObject distance, out HObject score, camParamRect1, camParamRect2, relPoseRect, method, maskWidth, maskHeight, textureThresh, minDisparity, maxDisparity, numLevels, scoreThresh, filter, subDistance);
 			return (distance,score);
 		}
-		public static (HObject disparity, HObject score) BinocularDisparity (HObject imageRect1, HObject imageRect2, HTuple method, HTuple maskWidth, HTuple maskHeight, HTuple textureThresh, HTuple minDisparity, HTuple maxDisparity, HTuple numLevels, HTuple scoreThresh, HTuple filter, HTuple subDisparity)
+		public static (HObject Disparity, HObject Score) BinocularDisparity (HObject imageRect1, HObject imageRect2, HTuple method, HTuple maskWidth, HTuple maskHeight, HTuple textureThresh, HTuple minDisparity, HTuple maxDisparity, HTuple numLevels, HTuple scoreThresh, HTuple filter, HTuple subDisparity)
 		{
 			HOperatorSet.BinocularDisparity(imageRect1, imageRect2, out HObject disparity, out HObject score, method, maskWidth, maskHeight, textureThresh, minDisparity, maxDisparity, numLevels, scoreThresh, filter, subDisparity);
 			return (disparity,score);
 		}
-		public static (HTuple x, HTuple y, HTuple z, HTuple dist) IntersectLinesOfSight (HTuple camParam1, HTuple camParam2, HTuple relPose, HTuple row1, HTuple col1, HTuple row2, HTuple col2)
+		public static (HTuple X, HTuple Y, HTuple Z, HTuple Dist) IntersectLinesOfSight (HTuple camParam1, HTuple camParam2, HTuple relPose, HTuple row1, HTuple col1, HTuple row2, HTuple col2)
 		{
 			HOperatorSet.IntersectLinesOfSight(camParam1, camParam2, relPose, row1, col1, row2, col2, out HTuple x, out HTuple y, out HTuple z, out HTuple dist);
 			return (x,y,z,dist);
 		}
-		public static (HObject x, HObject y, HObject z) DisparityImageToXyz (HObject disparity, HTuple camParamRect1, HTuple camParamRect2, HTuple relPoseRect)
+		public static (HObject X, HObject Y, HObject Z) DisparityImageToXyz (HObject disparity, HTuple camParamRect1, HTuple camParamRect2, HTuple relPoseRect)
 		{
 			HOperatorSet.DisparityImageToXyz(disparity, out HObject x, out HObject y, out HObject z, camParamRect1, camParamRect2, relPoseRect);
 			return (x,y,z);
 		}
-		public static (HTuple x, HTuple y, HTuple z) DisparityToPoint3d (HTuple camParamRect1, HTuple camParamRect2, HTuple relPoseRect, HTuple row1, HTuple col1, HTuple disparity)
+		public static (HTuple X, HTuple Y, HTuple Z) DisparityToPoint3d (HTuple camParamRect1, HTuple camParamRect2, HTuple relPoseRect, HTuple row1, HTuple col1, HTuple disparity)
 		{
 			HOperatorSet.DisparityToPoint3d(camParamRect1, camParamRect2, relPoseRect, row1, col1, disparity, out HTuple x, out HTuple y, out HTuple z);
 			return (x,y,z);
@@ -9077,17 +9077,17 @@ namespace HalconWrapper
 			HOperatorSet.DistanceToDisparity(camParamRect1, camParamRect2, relPoseRect, distance, out HTuple disparity);
 			return disparity;
 		}
-		public static (HObject map1, HObject map2, HTuple camParamRect1, HTuple camParamRect2, HTuple camPoseRect1, HTuple camPoseRect2, HTuple relPoseRect) GenBinocularRectificationMap (HTuple camParam1, HTuple camParam2, HTuple relPose, HTuple subSampling, HTuple method, HTuple mapType)
+		public static (HObject Map1, HObject Map2, HTuple CamParamRect1, HTuple CamParamRect2, HTuple CamPoseRect1, HTuple CamPoseRect2, HTuple RelPoseRect) GenBinocularRectificationMap (HTuple camParam1, HTuple camParam2, HTuple relPose, HTuple subSampling, HTuple method, HTuple mapType)
 		{
 			HOperatorSet.GenBinocularRectificationMap(out HObject map1, out HObject map2, camParam1, camParam2, relPose, subSampling, method, mapType, out HTuple camParamRect1, out HTuple camParamRect2, out HTuple camPoseRect1, out HTuple camPoseRect2, out HTuple relPoseRect);
 			return (map1,map2,camParamRect1,camParamRect2,camPoseRect1,camPoseRect2,relPoseRect);
 		}
-		public static (HTuple camParam1, HTuple camParam2, HTuple NFinalPose1, HTuple NFinalPose2, HTuple relPose, HTuple errors) BinocularCalibration (HTuple NX, HTuple NY, HTuple NZ, HTuple NRow1, HTuple NCol1, HTuple NRow2, HTuple NCol2, HTuple startCamParam1, HTuple startCamParam2, HTuple NStartPose1, HTuple NStartPose2, HTuple estimateParams)
+		public static (HTuple CamParam1, HTuple CamParam2, HTuple NFinalPose1, HTuple NFinalPose2, HTuple RelPose, HTuple Errors) BinocularCalibration (HTuple NX, HTuple NY, HTuple NZ, HTuple NRow1, HTuple NCol1, HTuple NRow2, HTuple NCol2, HTuple startCamParam1, HTuple startCamParam2, HTuple NStartPose1, HTuple NStartPose2, HTuple estimateParams)
 		{
 			HOperatorSet.BinocularCalibration(NX, NY, NZ, NRow1, NCol1, NRow2, NCol2, startCamParam1, startCamParam2, NStartPose1, NStartPose2, estimateParams, out HTuple camParam1, out HTuple camParam2, out HTuple NFinalPose1, out HTuple NFinalPose2, out HTuple relPose, out HTuple errors);
 			return (camParam1,camParam2,NFinalPose1,NFinalPose2,relPose,errors);
 		}
-		public static (HTuple classes, HTuple values) QuerySpy ()
+		public static (HTuple Classes, HTuple Values) QuerySpy ()
 		{
 			HOperatorSet.QuerySpy(out HTuple classes, out HTuple values);
 			return (classes,values);
@@ -9611,12 +9611,12 @@ namespace HalconWrapper
 			HOperatorSet.ReadTuple(fileName, out HTuple tuple);
 			return tuple;
 		}
-		public static (HTuple averagePose, HTuple quality) PoseAverage (HTuple poses, HTuple weights, HTuple mode, HTuple sigmaT, HTuple sigmaR)
+		public static (HTuple AveragePose, HTuple Quality) PoseAverage (HTuple poses, HTuple weights, HTuple mode, HTuple sigmaT, HTuple sigmaR)
 		{
 			HOperatorSet.PoseAverage(poses, weights, mode, sigmaT, sigmaR, out HTuple averagePose, out HTuple quality);
 			return (averagePose,quality);
 		}
-		public static (HTuple qx, HTuple qy, HTuple qz) QuatRotatePoint3d (HTuple quaternion, HTuple px, HTuple py, HTuple pz)
+		public static (HTuple Qx, HTuple Qy, HTuple Qz) QuatRotatePoint3d (HTuple quaternion, HTuple px, HTuple py, HTuple pz)
 		{
 			HOperatorSet.QuatRotatePoint3d(quaternion, px, py, pz, out HTuple qx, out HTuple qy, out HTuple qz);
 			return (qx,qy,qz);
@@ -9701,17 +9701,17 @@ namespace HalconWrapper
 			HOperatorSet.SerializeQuat(quaternion, out HTuple serializedItemHandle);
 			return serializedItemHandle;
 		}
-		public static (HTuple qx, HTuple qy, HTuple qz, HTuple qw) ProjectiveTransHomPoint3d (HTuple homMat3D, HTuple px, HTuple py, HTuple pz, HTuple pw)
+		public static (HTuple Qx, HTuple Qy, HTuple Qz, HTuple Qw) ProjectiveTransHomPoint3d (HTuple homMat3D, HTuple px, HTuple py, HTuple pz, HTuple pw)
 		{
 			HOperatorSet.ProjectiveTransHomPoint3d(homMat3D, px, py, pz, pw, out HTuple qx, out HTuple qy, out HTuple qz, out HTuple qw);
 			return (qx,qy,qz,qw);
 		}
-		public static (HTuple qx, HTuple qy, HTuple qz) ProjectiveTransPoint3d (HTuple homMat3D, HTuple px, HTuple py, HTuple pz)
+		public static (HTuple Qx, HTuple Qy, HTuple Qz) ProjectiveTransPoint3d (HTuple homMat3D, HTuple px, HTuple py, HTuple pz)
 		{
 			HOperatorSet.ProjectiveTransPoint3d(homMat3D, px, py, pz, out HTuple qx, out HTuple qy, out HTuple qz);
 			return (qx,qy,qz);
 		}
-		public static (HTuple qx, HTuple qy, HTuple qz) AffineTransPoint3d (HTuple homMat3D, HTuple px, HTuple py, HTuple pz)
+		public static (HTuple Qx, HTuple Qy, HTuple Qz) AffineTransPoint3d (HTuple homMat3D, HTuple px, HTuple py, HTuple pz)
 		{
 			HOperatorSet.AffineTransPoint3d(homMat3D, px, py, pz, out HTuple qx, out HTuple qy, out HTuple qz);
 			return (qx,qy,qz);
@@ -9781,7 +9781,7 @@ namespace HalconWrapper
 			HOperatorSet.HomMat3dProject(homMat3D, principalPointRow, principalPointCol, focus, out HTuple homMat2D);
 			return homMat2D;
 		}
-		public static (HTuple mosaicMatrices2D, HTuple rows, HTuple cols, HTuple error) BundleAdjustMosaic (HTuple numImages, HTuple referenceImage, HTuple mappingSource, HTuple mappingDest, HTuple homMatrices2D, HTuple rows1, HTuple cols1, HTuple rows2, HTuple cols2, HTuple numCorrespondences, HTuple transformation)
+		public static (HTuple MosaicMatrices2D, HTuple Rows, HTuple Cols, HTuple Error) BundleAdjustMosaic (HTuple numImages, HTuple referenceImage, HTuple mappingSource, HTuple mappingDest, HTuple homMatrices2D, HTuple rows1, HTuple cols1, HTuple rows2, HTuple cols2, HTuple numCorrespondences, HTuple transformation)
 		{
 			HOperatorSet.BundleAdjustMosaic(numImages, referenceImage, mappingSource, mappingDest, homMatrices2D, rows1, cols1, rows2, cols2, numCorrespondences, transformation, out HTuple mosaicMatrices2D, out HTuple rows, out HTuple cols, out HTuple error);
 			return (mosaicMatrices2D,rows,cols,error);
@@ -9801,7 +9801,7 @@ namespace HalconWrapper
 			HOperatorSet.PolarTransContourXld(contour, out HObject polarTransContour, row, column, angleStart, angleEnd, radiusStart, radiusEnd, width, height);
 			return polarTransContour;
 		}
-		public static (HTuple ctrlRows, HTuple ctrlCols, HTuple knots) GenNurbsInterp (HTuple rows, HTuple cols, HTuple tangents, HTuple degree)
+		public static (HTuple CtrlRows, HTuple CtrlCols, HTuple Knots) GenNurbsInterp (HTuple rows, HTuple cols, HTuple tangents, HTuple degree)
 		{
 			HOperatorSet.GenNurbsInterp(rows, cols, tangents, degree, out HTuple ctrlRows, out HTuple ctrlCols, out HTuple knots);
 			return (ctrlRows,ctrlCols,knots);
@@ -9871,7 +9871,7 @@ namespace HalconWrapper
 			HOperatorSet.SortContoursXld(contours, out HObject sortedContours, sortMode, order, rowOrCol);
 			return sortedContours;
 		}
-		public static (HObject currMergedConts, HObject prevMergedConts) MergeContLineScanXld (HObject currConts, HObject prevConts, HTuple imageHeight, HTuple margin, HTuple mergeBorder, HTuple maxImagesCont)
+		public static (HObject CurrMergedConts, HObject PrevMergedConts) MergeContLineScanXld (HObject currConts, HObject prevConts, HTuple imageHeight, HTuple margin, HTuple mergeBorder, HTuple maxImagesCont)
 		{
 			HOperatorSet.MergeContLineScanXld(currConts, prevConts, out HObject currMergedConts, out HObject prevMergedConts, imageHeight, margin, mergeBorder, maxImagesCont);
 			return (currMergedConts,prevMergedConts);
@@ -9914,7 +9914,7 @@ namespace HalconWrapper
 			HOperatorSet.DistRectangle2ContourPointsXld(contour, clippingEndPoints, row, column, phi, length1, length2, out HTuple distances);
 			return distances;
 		}
-		public static (HTuple row, HTuple column, HTuple phi, HTuple length1, HTuple length2, HTuple pointOrder) FitRectangle2ContourXld (HObject contours, HTuple algorithm, HTuple maxNumPoints, HTuple maxClosureDist, HTuple clippingEndPoints, HTuple iterations, HTuple clippingFactor)
+		public static (HTuple Row, HTuple Column, HTuple Phi, HTuple Length1, HTuple Length2, HTuple PointOrder) FitRectangle2ContourXld (HObject contours, HTuple algorithm, HTuple maxNumPoints, HTuple maxClosureDist, HTuple clippingEndPoints, HTuple iterations, HTuple clippingFactor)
 		{
 			HOperatorSet.FitRectangle2ContourXld(contours, algorithm, maxNumPoints, maxClosureDist, clippingEndPoints, iterations, clippingFactor, out HTuple row, out HTuple column, out HTuple phi, out HTuple length1, out HTuple length2, out HTuple pointOrder);
 			return (row,column,phi,length1,length2,pointOrder);
@@ -9929,12 +9929,12 @@ namespace HalconWrapper
 			HOperatorSet.SegmentContoursXld(contours, out HObject contoursSplit, mode, smoothCont, maxLineDist1, maxLineDist2);
 			return contoursSplit;
 		}
-		public static (HTuple row, HTuple column, HTuple radius, HTuple startPhi, HTuple endPhi, HTuple pointOrder) FitCircleContourXld (HObject contours, HTuple algorithm, HTuple maxNumPoints, HTuple maxClosureDist, HTuple clippingEndPoints, HTuple iterations, HTuple clippingFactor)
+		public static (HTuple Row, HTuple Column, HTuple Radius, HTuple StartPhi, HTuple EndPhi, HTuple PointOrder) FitCircleContourXld (HObject contours, HTuple algorithm, HTuple maxNumPoints, HTuple maxClosureDist, HTuple clippingEndPoints, HTuple iterations, HTuple clippingFactor)
 		{
 			HOperatorSet.FitCircleContourXld(contours, algorithm, maxNumPoints, maxClosureDist, clippingEndPoints, iterations, clippingFactor, out HTuple row, out HTuple column, out HTuple radius, out HTuple startPhi, out HTuple endPhi, out HTuple pointOrder);
 			return (row,column,radius,startPhi,endPhi,pointOrder);
 		}
-		public static (HTuple rowBegin, HTuple colBegin, HTuple rowEnd, HTuple colEnd, HTuple nr, HTuple nc, HTuple dist) FitLineContourXld (HObject contours, HTuple algorithm, HTuple maxNumPoints, HTuple clippingEndPoints, HTuple iterations, HTuple clippingFactor)
+		public static (HTuple RowBegin, HTuple ColBegin, HTuple RowEnd, HTuple ColEnd, HTuple Nr, HTuple Nc, HTuple Dist) FitLineContourXld (HObject contours, HTuple algorithm, HTuple maxNumPoints, HTuple clippingEndPoints, HTuple iterations, HTuple clippingFactor)
 		{
 			HOperatorSet.FitLineContourXld(contours, algorithm, maxNumPoints, clippingEndPoints, iterations, clippingFactor, out HTuple rowBegin, out HTuple colBegin, out HTuple rowEnd, out HTuple colEnd, out HTuple nr, out HTuple nc, out HTuple dist);
 			return (rowBegin,colBegin,rowEnd,colEnd,nr,nc,dist);
@@ -9944,12 +9944,12 @@ namespace HalconWrapper
 			HOperatorSet.DistEllipseContourPointsXld(contour, distanceMode, clippingEndPoints, row, column, phi, radius1, radius2, out HTuple distances);
 			return distances;
 		}
-		public static (HTuple minDist, HTuple maxDist, HTuple avgDist, HTuple sigmaDist) DistEllipseContourXld (HObject contours, HTuple mode, HTuple maxNumPoints, HTuple clippingEndPoints, HTuple row, HTuple column, HTuple phi, HTuple radius1, HTuple radius2)
+		public static (HTuple MinDist, HTuple MaxDist, HTuple AvgDist, HTuple SigmaDist) DistEllipseContourXld (HObject contours, HTuple mode, HTuple maxNumPoints, HTuple clippingEndPoints, HTuple row, HTuple column, HTuple phi, HTuple radius1, HTuple radius2)
 		{
 			HOperatorSet.DistEllipseContourXld(contours, mode, maxNumPoints, clippingEndPoints, row, column, phi, radius1, radius2, out HTuple minDist, out HTuple maxDist, out HTuple avgDist, out HTuple sigmaDist);
 			return (minDist,maxDist,avgDist,sigmaDist);
 		}
-		public static (HTuple row, HTuple column, HTuple phi, HTuple radius1, HTuple radius2, HTuple startPhi, HTuple endPhi, HTuple pointOrder) FitEllipseContourXld (HObject contours, HTuple algorithm, HTuple maxNumPoints, HTuple maxClosureDist, HTuple clippingEndPoints, HTuple vossTabSize, HTuple iterations, HTuple clippingFactor)
+		public static (HTuple Row, HTuple Column, HTuple Phi, HTuple Radius1, HTuple Radius2, HTuple StartPhi, HTuple EndPhi, HTuple PointOrder) FitEllipseContourXld (HObject contours, HTuple algorithm, HTuple maxNumPoints, HTuple maxClosureDist, HTuple clippingEndPoints, HTuple vossTabSize, HTuple iterations, HTuple clippingFactor)
 		{
 			HOperatorSet.FitEllipseContourXld(contours, algorithm, maxNumPoints, maxClosureDist, clippingEndPoints, vossTabSize, iterations, clippingFactor, out HTuple row, out HTuple column, out HTuple phi, out HTuple radius1, out HTuple radius2, out HTuple startPhi, out HTuple endPhi, out HTuple pointOrder);
 			return (row,column,phi,radius1,radius2,startPhi,endPhi,pointOrder);
@@ -9979,17 +9979,17 @@ namespace HalconWrapper
 			HOperatorSet.MaxParallelsXld(extParallels, out HObject maxPolygons);
 			return maxPolygons;
 		}
-		public static (HObject modParallels, HObject extParallels) ModParallelsXld (HObject parallels, HObject image, HTuple quality, HTuple minGray, HTuple maxGray, HTuple maxStandard)
+		public static (HObject ModParallels, HObject ExtParallels) ModParallelsXld (HObject parallels, HObject image, HTuple quality, HTuple minGray, HTuple maxGray, HTuple maxStandard)
 		{
 			HOperatorSet.ModParallelsXld(parallels, image, out HObject modParallels, out HObject extParallels, quality, minGray, maxGray, maxStandard);
 			return (modParallels,extParallels);
 		}
-		public static (HTuple qualityMin, HTuple qualityMax, HTuple grayMin, HTuple grayMax, HTuple standardMin, HTuple standardMax) InfoParallelsXld (HObject parallels, HObject image)
+		public static (HTuple QualityMin, HTuple QualityMax, HTuple GrayMin, HTuple GrayMax, HTuple StandardMin, HTuple StandardMax) InfoParallelsXld (HObject parallels, HObject image)
 		{
 			HOperatorSet.InfoParallelsXld(parallels, image, out HTuple qualityMin, out HTuple qualityMax, out HTuple grayMin, out HTuple grayMax, out HTuple standardMin, out HTuple standardMax);
 			return (qualityMin,qualityMax,grayMin,grayMax,standardMin,standardMax);
 		}
-		public static (HTuple row1, HTuple col1, HTuple length1, HTuple phi1, HTuple row2, HTuple col2, HTuple length2, HTuple phi2) GetParallelsXld (HObject parallels)
+		public static (HTuple Row1, HTuple Col1, HTuple Length1, HTuple Phi1, HTuple Row2, HTuple Col2, HTuple Length2, HTuple Phi2) GetParallelsXld (HObject parallels)
 		{
 			HOperatorSet.GetParallelsXld(parallels, out HTuple row1, out HTuple col1, out HTuple length1, out HTuple phi1, out HTuple row2, out HTuple col2, out HTuple length2, out HTuple phi2);
 			return (row1,col1,length1,phi1,row2,col2,length2,phi2);
@@ -9999,12 +9999,12 @@ namespace HalconWrapper
 			HOperatorSet.GenParallelsXld(polygons, out HObject parallels, len, dist, alpha, merge);
 			return parallels;
 		}
-		public static (HTuple beginRow, HTuple beginCol, HTuple endRow, HTuple endCol, HTuple length, HTuple phi) GetLinesXld (HObject polygon)
+		public static (HTuple BeginRow, HTuple BeginCol, HTuple EndRow, HTuple EndCol, HTuple Length, HTuple Phi) GetLinesXld (HObject polygon)
 		{
 			HOperatorSet.GetLinesXld(polygon, out HTuple beginRow, out HTuple beginCol, out HTuple endRow, out HTuple endCol, out HTuple length, out HTuple phi);
 			return (beginRow,beginCol,endRow,endCol,length,phi);
 		}
-		public static (HTuple row, HTuple col, HTuple length, HTuple phi) GetPolygonXld (HObject polygon)
+		public static (HTuple Row, HTuple Col, HTuple Length, HTuple Phi) GetPolygonXld (HObject polygon)
 		{
 			HOperatorSet.GetPolygonXld(polygon, out HTuple row, out HTuple col, out HTuple length, out HTuple phi);
 			return (row,col,length,phi);
@@ -10054,7 +10054,7 @@ namespace HalconWrapper
 			HOperatorSet.LocalMaxContoursXld(contours, image, out HObject localMaxContours, minPercent, minDiff, distance);
 			return localMaxContours;
 		}
-		public static (HObject unionContours, HObject selectedContours, HTuple histoValues) UnionStraightContoursHistoXld (HObject contours, HTuple refLineStartRow, HTuple refLineStartColumn, HTuple refLineEndRow, HTuple refLineEndColumn, HTuple width, HTuple maxWidth, HTuple filterSize)
+		public static (HObject UnionContours, HObject SelectedContours, HTuple HistoValues) UnionStraightContoursHistoXld (HObject contours, HTuple refLineStartRow, HTuple refLineStartColumn, HTuple refLineEndRow, HTuple refLineEndColumn, HTuple width, HTuple maxWidth, HTuple filterSize)
 		{
 			HOperatorSet.UnionStraightContoursHistoXld(contours, out HObject unionContours, out HObject selectedContours, refLineStartRow, refLineStartColumn, refLineEndRow, refLineEndColumn, width, maxWidth, filterSize, out HTuple histoValues);
 			return (unionContours,selectedContours,histoValues);
@@ -10084,7 +10084,7 @@ namespace HalconWrapper
 			HOperatorSet.SelectContoursXld(contours, out HObject selectedContours, feature, min1, max1, min2, max2);
 			return selectedContours;
 		}
-		public static (HTuple length, HTuple nx, HTuple ny, HTuple dist, HTuple fpx, HTuple fpy, HTuple lpx, HTuple lpy, HTuple mean, HTuple deviation) GetRegressParamsXld (HObject contours)
+		public static (HTuple Length, HTuple Nx, HTuple Ny, HTuple Dist, HTuple Fpx, HTuple Fpy, HTuple Lpx, HTuple Lpy, HTuple Mean, HTuple Deviation) GetRegressParamsXld (HObject contours)
 		{
 			HOperatorSet.GetRegressParamsXld(contours, out HTuple length, out HTuple nx, out HTuple ny, out HTuple dist, out HTuple fpx, out HTuple fpy, out HTuple lpx, out HTuple lpy, out HTuple mean, out HTuple deviation);
 			return (length,nx,ny,dist,fpx,fpy,lpx,lpy,mean,deviation);
@@ -10129,7 +10129,7 @@ namespace HalconWrapper
 			HOperatorSet.GetContourAttribXld(contour, name, out HTuple attrib);
 			return attrib;
 		}
-		public static (HTuple row, HTuple col) GetContourXld (HObject contour)
+		public static (HTuple Row, HTuple Col) GetContourXld (HObject contour)
 		{
 			HOperatorSet.GetContourXld(contour, out HTuple row, out HTuple col);
 			return (row,col);
@@ -10207,12 +10207,12 @@ namespace HalconWrapper
 		{
 			HOperatorSet.WriteVariationModel(modelID, fileName);
 		}
-		public static (HObject minImage, HObject maxImage) GetThreshImagesVariationModel (HTuple modelID)
+		public static (HObject MinImage, HObject MaxImage) GetThreshImagesVariationModel (HTuple modelID)
 		{
 			HOperatorSet.GetThreshImagesVariationModel(out HObject minImage, out HObject maxImage, modelID);
 			return (minImage,maxImage);
 		}
-		public static (HObject image, HObject varImage) GetVariationModel (HTuple modelID)
+		public static (HObject Image, HObject VarImage) GetVariationModel (HTuple modelID)
 		{
 			HOperatorSet.GetVariationModel(out HObject image, out HObject varImage, modelID);
 			return (image,varImage);
@@ -10321,7 +10321,7 @@ namespace HalconWrapper
 			HOperatorSet.TupleType(t, out HTuple type);
 			return type;
 		}
-		public static (HTuple histo, HTuple binSize) TupleHistoRange (HTuple tuple, HTuple min, HTuple max, HTuple numBins)
+		public static (HTuple Histo, HTuple BinSize) TupleHistoRange (HTuple tuple, HTuple min, HTuple max, HTuple numBins)
 		{
 			HOperatorSet.TupleHistoRange(tuple, min, max, numBins, out HTuple histo, out HTuple binSize);
 			return (histo,binSize);
